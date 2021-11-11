@@ -8,22 +8,21 @@ namespace Assets.Scripts.Debug
         public bool isPlayerTurn;
 
         public TurnOrderController TurnOrderController;
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (isPlayerTurn)
-                {
-                    TurnOrderController.EndPlayerTurn();
-                    isPlayerTurn = !isPlayerTurn;
-                }
-                else
-                {
-                    TurnOrderController.StartPlayerTurn();
-                    isPlayerTurn = !isPlayerTurn;
-                }
-            }
 
+        public void SwapTurn()
+        {
+            if (isPlayerTurn)
+            {
+                TurnOrderController.EndPlayerTurn();
+                isPlayerTurn = !isPlayerTurn;
+
+                SwapTurn();
+            }
+            else
+            {
+                TurnOrderController.StartPlayerTurn();
+                isPlayerTurn = !isPlayerTurn;
+            }
         }
     }
 }

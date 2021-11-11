@@ -15,12 +15,13 @@ public class King_Structure : MonoBehaviour
     private void Start()
     {
         WorldObject = GetComponent<WorldObject>();
-        WorldObject.SetUp();
 
         GameWorldMapManager = GameWorldMapManager.instance;
 
         terrirtoryCreator = GetComponent<TerritoryCreator>();
 
-        terrirtoryCreator.CreateTerritory(WorldObject.worldPosition, GameWorldMapManager);
+        terrirtoryCreator.CreateTerritory(GameWorldMapManager.GetTilePosition(this.transform.position), GameWorldMapManager);
+
+        WorldObject.SetUp();
     }
 }

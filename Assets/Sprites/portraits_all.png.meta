@@ -11,6 +11,18 @@ TextureImporter:
   - first:
       213: -4144663764703026226
     second: portraits_all_2
+  - first:
+      213: 5661981247972350680
+    second: portraits_all_3
+  - first:
+      213: 5741885263490710462
+    second: portraits_all_4
+  - first:
+      213: -2650184116886012886
+    second: portraits_all_5
+  - first:
+      213: -8541581982530116824
+    second: portraits_all_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -145,8 +157,8 @@ TextureImporter:
       name: portraits_all_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 32
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -158,6 +170,90 @@ TextureImporter:
       bones: []
       spriteID: ec3617fe3423b76c0800000000000000
       internalID: -4144663764703026226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: portraits_all_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8da905252f5639e40800000000000000
+      internalID: 5661981247972350680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: portraits_all_4
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebbf96fa9364faf40800000000000000
+      internalID: 5741885263490710462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: portraits_all_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2c70a34697a83bd0800000000000000
+      internalID: -2650184116886012886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: portraits_all_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8236a6f2174367980800000000000000
+      internalID: -8541581982530116824
       vertices: []
       indices: 
       edges: []

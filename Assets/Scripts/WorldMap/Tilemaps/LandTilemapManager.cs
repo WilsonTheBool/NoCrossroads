@@ -10,7 +10,21 @@ public class LandTilemapManager : MonoBehaviour
     public Tilemap landTIlemap;
     public bool IsLandTile(Vector3Int pos)
     {
-        return LandTIlesData_SO.IsLandTile(landTIlemap.GetTile(pos));
+        return landTIlemap.HasTile(pos) && LandTIlesData_SO.IsLandTile(landTIlemap.GetTile(pos));
+    }
+
+    public Vector3Int[] GetAllLandPositions()
+    {
+        List<Vector3Int> posList = new List<Vector3Int>();
+        foreach(Vector3Int pos in landTIlemap.cellBounds.allPositionsWithin)
+        {
+            if (IsLandTile(pos))
+            {
+                posList.Add(pos);
+            }
+        }
+
+        return posList.ToArray();
     }
 }
 

@@ -22,7 +22,7 @@ public class ResourceCountPanel : MonoBehaviour
     {
         foreach(ResourcePanel_Holder holder in holders)
         {
-            holder.UpdateHolder(resourceManager.GetResourceCount(holder.resource));
+            holder.UpdateHolder(resourceManager.GetResourceCount(holder.resource), resourceManager.GetResourcePerTurn(holder.resource));
         }
     }
 }

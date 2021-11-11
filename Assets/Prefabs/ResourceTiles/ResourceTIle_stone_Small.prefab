@@ -104,6 +104,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   mapManager: {fileID: 0}
+  blockMovement: 1
 --- !u!114 &5428891906013131216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,6 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldObject: {fileID: 0}
   resource: {fileID: 11400000, guid: c6eb2057a2a362049b603efc852c4739, type: 2}
+  ResourceIconController: {fileID: 0}
   baseMineAmmount: 10
   isFree: 0
   OnFreeStateChanged:

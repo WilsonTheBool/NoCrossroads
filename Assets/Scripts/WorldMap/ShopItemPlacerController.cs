@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 public class ShopItemPlacerController : MonoBehaviour
 {
+    public UI_CanvasGroupsController UI_CanvasGroupsController;
+
     public InputHandler inputHandler; 
 
     GameWorldMapManager gameWorldMapManager;
@@ -15,6 +17,9 @@ public class ShopItemPlacerController : MonoBehaviour
     public SpriteRenderer cursorObject;
 
     private Sprite itemSprite;
+
+    public UnityEvent OnStartPlacement;
+    public UnityEvent OnEndPlacement;
 
     private void Start()
     {
@@ -31,25 +36,26 @@ public class ShopItemPlacerController : MonoBehaviour
         curentItem = element.itemPrefab.GetComponent<PlacableObject>();
         itemSprite = element.itemPrefab.GetComponent<SpriteRenderer>().sprite;
 
-        //Clear all ui
-
-        //Draw tiles (can/can not spawn)
-        foreach (Vector3Int pos in gameWorldMapManager.playerTerritory)
-        {
-            if (curentItem.CanSpawn(pos, gameWorldMapManager))
-            {
-                SpecialTilemapManager.DrawTile_CanPlaceTile(pos);
-            }
-            else
-            {
-                SpecialTilemapManager.DrawTile_NoPlaceTile(pos);
-            }
-        }
-
         gameWorldMapManager.TerritoryTilemapManager.territoryTilemap.gameObject.SetActive(false);
         gameWorldMapManager.LandTilemapManager.landTIlemap.color = new Color(0.8f, 0.8f, 0.8f);
         //follow mouse object placment
         ShowCursorObject();
+
+        curentItem.UnitPlacementController.OnPlacementStart(SpecialTilemapManager, gameWorldMapManager);
+
+        OnStartPlacement.Invoke();
+    }
+
+    public void SetUi_OnStart()
+    {
+        UI_CanvasGroupsController.CanvasGroupFlags flags = new UI_CanvasGroupsController.CanvasGroupFlags() { setDefault = true };
+        UI_CanvasGroupsController.SetActiveWindows(flags, false);
+    }
+
+    public void SeUi_OnEnd()
+    {
+        UI_CanvasGroupsController.CanvasGroupFlags flags = new UI_CanvasGroupsController.CanvasGroupFlags() { setDefault = true };
+        UI_CanvasGroupsController.SetActiveWindows(flags, true);
     }
 
     public void DisableInputModule()
@@ -87,18 +93,24 @@ public class ShopItemPlacerController : MonoBehaviour
             if (curentItem.CanSpawn(data.tileMousePosition, gameWorldMapManager))
                 cursorObject.transform.position = gameWorldMapManager.GetTileCenterInWorld(data.tileMousePosition);
             else
-                cursorObject.transform.position = new Vector3(-1, -1, -100);
+                cursorObject.transform.position = new Vector3(-1000, -1000, -1000);
+
+            curentItem.UnitPlacementController.OnPlacementUpdate(data, SpecialTilemapManager, gameWorldMapManager);
         }
         
     }
 
     private void EndSelectPlace()
     {
-        gameWorldMapManager.SpecialTilemapManager.ClearTilemap();
+
         gameWorldMapManager.TerritoryTilemapManager.territoryTilemap.gameObject.SetActive(true);
         gameWorldMapManager.LandTilemapManager.landTIlemap.color = new Color(1, 1, 1);
+
         DisableInputModule();
         HideCursorObject();
+
+        curentItem.UnitPlacementController.OnPlacementEnd(SpecialTilemapManager, gameWorldMapManager);
+        OnEndPlacement.Invoke();
     }
 
     public void CancelPlacement(GameInputData inputData)

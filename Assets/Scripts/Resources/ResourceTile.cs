@@ -23,6 +23,11 @@ public class ResourceTile : MonoBehaviour
         isFree = true;
     }
 
+    private void Start()
+    {
+        worldObject.SetUp();
+    }
+
     public void SetIsFree(bool value)
     {
         isFree = value;

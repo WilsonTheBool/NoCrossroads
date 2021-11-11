@@ -16,7 +16,6 @@ public class ShopItem_DescriptionManager : MonoBehaviour
 
     public void RemoveDescription()
     {
-        print("Remove");
         Destroy(descriptionObject.gameObject);
     }
 }

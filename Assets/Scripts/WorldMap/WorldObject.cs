@@ -12,7 +12,9 @@ public class WorldObject : MonoBehaviour
 
     public GameWorldMapManager mapManager;
 
-    private void Start()
+    public bool blockMovement;
+
+    public void SetUp()
     {
         if (mapManager == null)
         {
@@ -20,11 +22,7 @@ public class WorldObject : MonoBehaviour
         }
 
         worldPosition = mapManager.GetTilePosition(this.transform.position);
-    }
-
-    public void SetUp()
-    {
-        Start();
+        mapManager.AddWorldObject(this);
     }
 
     public void ChangePosition(Vector3Int newPos)
