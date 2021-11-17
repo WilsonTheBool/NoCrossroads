@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 public class KillableCharacter : MonoBehaviour
@@ -8,16 +9,16 @@ public class KillableCharacter : MonoBehaviour
     public float maxHp;
     public float hp;
 
-    public UnityEngine.Events.UnityEvent OnDeath;
-    public UnityEngine.Events.UnityEvent OnTakeDamage;
-    public UnityEngine.Events.UnityEvent OnHealSelf;
+    public UnityEvent OnDeath;
+    public DamageEvent OnTakeDamage;
+    public DamageEvent OnHealSelf;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
     }
 
-    public void Diel()
+    public void Die()
     {
         if(animator != null)
         animator.SetTrigger("Death");
@@ -30,17 +31,18 @@ public class KillableCharacter : MonoBehaviour
         Destroy(this);
     }
 
-    public void TakeDamage(float ammount)
+    public void TakeDamage(float ammount, AttackingCharacter attacker)
     {
         hp -= ammount;
 
         if(hp <= 0)
         {
-            Diel();
+            OnTakeDamage?.Invoke(new DamageEventArgs() { damage = ammount, isCountered = true, attacker = attacker});
+            Die();
         }
         else
         {
-            OnTakeDamage?.Invoke();
+            OnTakeDamage?.Invoke(new DamageEventArgs() {damage = ammount, isCountered = true, attacker = attacker });
 
             if(animator != null)
             {
@@ -48,6 +50,26 @@ public class KillableCharacter : MonoBehaviour
             }
         }
 
+    }
+
+    public void TakeDamage_NoRetaliation(float ammount, AttackingCharacter attacker)
+    {
+        hp -= ammount;
+
+        if (hp <= 0)
+        {
+            OnTakeDamage?.Invoke(new DamageEventArgs() { damage = ammount, isCountered = false, attacker = attacker });
+            Die();
+        }
+        else
+        {
+            OnTakeDamage?.Invoke(new DamageEventArgs() { damage = ammount, isCountered = false, attacker = attacker });
+
+            if (animator != null)
+            {
+                animator.SetTrigger("Hit");
+            }
+        }
     }
 
     public void HealSelf(float ammount)
@@ -61,8 +83,24 @@ public class KillableCharacter : MonoBehaviour
                 hp = maxHp;
             }
 
-            OnHealSelf?.Invoke();
+            OnHealSelf?.Invoke(new DamageEventArgs() { damage = ammount });
         }
        
+    }
+
+    [System.Serializable]
+    public class DamageEvent: UnityEvent<DamageEventArgs>
+    {
+
+    }
+
+    [System.Serializable]
+    public class DamageEventArgs
+    {
+        public float damage;
+
+        public bool isCountered;
+
+        public AttackingCharacter attacker;
     }
 }

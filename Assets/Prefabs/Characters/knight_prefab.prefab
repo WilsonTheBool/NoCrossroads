@@ -64,6 +64,9 @@ GameObject:
   - component: {fileID: 8782812116646191689}
   - component: {fileID: 8782812116646191687}
   - component: {fileID: -8442769618266310302}
+  - component: {fileID: 8986730338952670293}
+  - component: {fileID: -5994980081211833689}
+  - component: {fileID: -7784051520588340534}
   m_Layer: 0
   m_Name: knight_prefab
   m_TagString: Untagged
@@ -251,6 +254,8 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 50f036b1ba15e9f4b869b660aed9492c, type: 2}
   selectModules:
   - {fileID: 11400000, guid: 1b28f58847ceebc42be4b8db02451746, type: 2}
+  - {fileID: 11400000, guid: 67d13d6a8211cb649b4796825c44050d, type: 2}
+  - {fileID: 11400000, guid: 405e1fcacc9324742b71eb9bdbf428f2, type: 2}
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
@@ -287,10 +292,58 @@ MonoBehaviour:
   hp: 20
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8986730338952670293}
+        m_TargetAssemblyTypeName: CharacterDeathController, Assembly-CSharp
+        m_MethodName: OnDeath_Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -5994980081211833689}
+        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
+        m_MethodName: DeleteHealthBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnTakeDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -5994980081211833689}
+        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
+        m_MethodName: Spawn_DamageText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8782812116646191689}
+        m_TargetAssemblyTypeName: AttackingCharacter, Assembly-CSharp
+        m_MethodName: TryToRetaliate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHealSelf:
     m_PersistentCalls:
       m_Calls: []
@@ -309,6 +362,13 @@ MonoBehaviour:
   targetRules:
   - {fileID: 11400000, guid: 40cf43f4a129ed941ad9dd57c3917567, type: 2}
   damage: 15
+  GameWorldMapManager: {fileID: 0}
+  OnAttackStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttackEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8782812116646191687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,8 +381,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e3e189062375e40af17e8d0d62421b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePoints: 2
-  maxMovePoints: 2
+  movePoints: 3
+  maxMovePoints: 3
 --- !u!114 &-8442769618266310302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,6 +401,54 @@ MonoBehaviour:
   OnCantEat:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8986730338952670293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8782812116646191692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f74baa6b4bf5547b0f30b769e3e74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smokePrefab: {fileID: 6864265418000636999, guid: ad350efe4b5bfc24b96464247cc0d46f, type: 3}
+  WorldObject: {fileID: 8782812116646191691}
+  sprite: {fileID: 8782812116646191693}
+  WeaponSprite: {fileID: 8782812117351415283}
+  destroyDelay: 1.5
+  smokeDelay: 0.7
+--- !u!114 &-5994980081211833689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8782812116646191692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2451ca44fe3ce534884bcbdafb101f7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameWorldUIController: {fileID: 11400000, guid: d85f334486f0adc4da57f232b8a1076d, type: 2}
+  HpBar_prefab: {fileID: 1795801909851451307, guid: 34b369a0eb91ffe418984643e8c2cb8d, type: 3}
+  damageText_prefab: {fileID: 4898742278718063514, guid: c58ea78c0b3bd264dba402a66f2457be, type: 3}
+  owner: {fileID: 8782812116646191688}
+--- !u!114 &-7784051520588340534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8782812116646191692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16fb44dcecc9324e9e7017f84f03e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smokePrefab: {fileID: 6864265418000636999, guid: ad350efe4b5bfc24b96464247cc0d46f, type: 3}
+  destroySmokeDelay: 0.7
 --- !u!1 &8782812117351415281
 GameObject:
   m_ObjectHideFlags: 0

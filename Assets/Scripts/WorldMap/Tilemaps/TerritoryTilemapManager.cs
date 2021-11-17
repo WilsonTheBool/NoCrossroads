@@ -26,6 +26,24 @@ public class TerritoryTilemapManager : MonoBehaviour
         }
     }
 
+    public void AddNewTerritory_Player(Vector3Int pos)
+    {
+        territoryTilemap.SetTile(pos, tiles.playerTerritioryTile);
+    }
+
+    public void AddNewTerritory_Enemy(Vector3Int[] positions)
+    {
+        foreach (Vector3Int pos in positions)
+        {
+            territoryTilemap.SetTile(pos, tiles.enemyTerritoryTile);
+        }
+    }
+
+    public void AddNewTerritory_Enemy(Vector3Int pos)
+    {
+        territoryTilemap.SetTile(pos, tiles.enemyTerritoryTile);
+    }
+
     public void RemoveTerritory(Vector3Int[] positions)
     {
         foreach (Vector3Int pos in positions)

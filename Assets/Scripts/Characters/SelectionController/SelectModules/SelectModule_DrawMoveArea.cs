@@ -10,10 +10,10 @@ public class SelectModule_DrawMoveArea : SelectModule
 
     public override void OnSelect_Start(GameInputData inputData, SelectEventArgs selectEventArgs)
     {
-        GameUnitMovementController gameUnitMovementController = selectEventArgs.GameUnitMovementController;
         SpecialTilemapManager specialTilemapManager = selectEventArgs.SpecialTilemapManager;
-
-        Vector3Int[] movePos = gameUnitMovementController.GetMovementCircle(inputData.tileMousePosition, selectEventArgs.MovingCharacter.movePoints);
+        selectEventArgs.MovingCharacter.UnitMovementData.SetUp(selectEventArgs.NewGameMovementController, 
+            inputData.tileMousePosition, selectEventArgs.MovingCharacter.movePoints);
+        Vector3Int[] movePos = selectEventArgs.MovingCharacter.UnitMovementData.GetMovementArea();
 
         foreach(Vector3Int pos in movePos)
         {

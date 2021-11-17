@@ -10,11 +10,11 @@ public class SelectModule_DrawMoveAndMeleeAttack : SelectModule
 
     public override void OnSelect_Start(GameInputData inputData, SelectEventArgs selectEventArgs)
     {
-        GameUnitMovementController gameUnitMovementController = selectEventArgs.GameUnitMovementController;
         SpecialTilemapManager specialTilemapManager = selectEventArgs.SpecialTilemapManager;
-        Vector3Int[] attackPos;
-        Vector3Int[] movePos = gameUnitMovementController.GetMovementAndAttackCircle(inputData.tileMousePosition, 
-            selectEventArgs.MovingCharacter.movePoints, out attackPos);
+        selectEventArgs.MovingCharacter.UnitMovementData.SetUp(selectEventArgs.NewGameMovementController,
+            inputData.tileMousePosition, selectEventArgs.MovingCharacter.movePoints);
+        Vector3Int[] movePos = selectEventArgs.MovingCharacter.UnitMovementData.GetMovementArea();
+        Vector3Int[] attackPos = selectEventArgs.MovingCharacter.UnitMovementData.GetPossiableAttackTiles();
 
         foreach (Vector3Int pos in movePos)
         {

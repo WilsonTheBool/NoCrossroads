@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SpecialTilesData
   m_EditorClassIdentifier: 
   playerTerritioryTile: {fileID: 11400000, guid: 601ad616627db0240b5de84288cf6aa0, type: 2}
-  enemyTerritoryTile: {fileID: 0}
+  enemyTerritoryTile: {fileID: 11400000, guid: 8963a604e9ed3a84e8bca86d053bbd53, type: 2}
   CanPlaceTile: {fileID: 11400000, guid: 69cbc10cc8c8cef46b3e6f9bd7ea945a, type: 2}
   NotPlaceTIle: {fileID: 11400000, guid: 8963a604e9ed3a84e8bca86d053bbd53, type: 2}

@@ -19,6 +19,10 @@ GameObject:
   - component: {fileID: 3468627774947244687}
   - component: {fileID: 7024771231874943642}
   - component: {fileID: 1373348890611692419}
+  - component: {fileID: -8275723968767761155}
+  - component: {fileID: -4314727651721478199}
+  - component: {fileID: -1325378971586401911}
+  - component: {fileID: -8634114805996030363}
   m_Layer: 0
   m_Name: worker_prefab
   m_TagString: Untagged
@@ -231,13 +235,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: e6733136338fc304f97e589dcf4dbbe6, type: 2}
+  selectModules: []
   OnSelect:
     m_PersistentCalls:
       m_Calls: []
   OnDeselect:
     m_PersistentCalls:
       m_Calls: []
-  isPlayerSide: 0
+  isPlayerSide: 1
 --- !u!65 &7024771231874943642
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -269,6 +274,99 @@ MonoBehaviour:
   OnCantEat:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-8275723968767761155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391871275883942171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ec2bc4973ea0a4b983cb6c0ace94b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 5
+  hp: 5
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2391871275883942175}
+        m_TargetAssemblyTypeName: Miner_Structure, Assembly-CSharp
+        m_MethodName: Free_Resource
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -4314727651721478199}
+        m_TargetAssemblyTypeName: CharacterDeathController, Assembly-CSharp
+        m_MethodName: OnDeath_Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealSelf:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-4314727651721478199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391871275883942171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f74baa6b4bf5547b0f30b769e3e74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smokePrefab: {fileID: 6864265418000636999, guid: ad350efe4b5bfc24b96464247cc0d46f, type: 3}
+  WorldObject: {fileID: 2391871275883942172}
+  sprite: {fileID: 2391871275883942170}
+  WeaponSprite: {fileID: 2391871276522049188}
+  destroyDelay: 1.5
+  smokeDelay: 0.7
+--- !u!114 &-1325378971586401911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391871275883942171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16fb44dcecc9324e9e7017f84f03e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smokePrefab: {fileID: 6864265418000636999, guid: ad350efe4b5bfc24b96464247cc0d46f, type: 3}
+  destroySmokeDelay: 0.7
+--- !u!114 &-8634114805996030363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391871275883942171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cdad253ed1a82143999ea2dcd763c0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldObject: {fileID: 2391871275883942172}
+  noizeLevel: 5
 --- !u!1 &2391871276522049190
 GameObject:
   m_ObjectHideFlags: 0

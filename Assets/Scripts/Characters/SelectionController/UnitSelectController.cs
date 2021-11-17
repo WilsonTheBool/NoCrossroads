@@ -12,12 +12,14 @@ public class UnitSelectController : MonoBehaviour
     public SelectableObject curentSelect;
 
     public GameUnitMovementController GameUnitMovementController;
+    public NewGameMovementController NewGameMovementController;
     public SpecialTilemapManager specialTilemapManager;
     public GameWorldMapManager GameWorldMapManager;
 
     private SelectModule.SelectEventArgs curentSelectEventArgs;
     private void Start()
     {
+        NewGameMovementController = FindObjectOfType<NewGameMovementController>();
         GameWorldMapManager = GameWorldMapManager.instance;
     }
     /// <summary>
@@ -44,8 +46,9 @@ public class UnitSelectController : MonoBehaviour
                 curentSelectEventArgs = new SelectModule.SelectEventArgs
                 {
                     SelectableObject = curentSelect,
-                    GameUnitMovementController = GameUnitMovementController,
+                    //GameUnitMovementController = GameUnitMovementController,
                     GameWorldMapManager = this.GameWorldMapManager,
+                    NewGameMovementController = this.NewGameMovementController,
                     SpecialTilemapManager = this.specialTilemapManager,
                     MovingCharacter = curentSelect.GetComponent<MovingCharacter>(),
                     AttackingCharacter = curentSelect.GetComponent<AttackingCharacter>()
@@ -71,13 +74,9 @@ public class UnitSelectController : MonoBehaviour
     {
         if(curentSelect != null)
         {
-            MovingCharacter movingCharacter = curentSelect.GetComponent<MovingCharacter>();
-            if (movingCharacter != null && specialTilemapManager.TilemapHasTile_CanPlaceTIle(data.tileMousePosition))
-            {
-                
-                movingCharacter.Move(data.tileMousePosition, 0);
-                RemoveSelected(data);
-            }
+            curentSelect.Seleect_Accept(data, curentSelectEventArgs);
+            RemoveSelected(data);
+
         }
     }
 
@@ -108,6 +107,14 @@ public class UnitSelectController : MonoBehaviour
 
         groupsController.SetActiveWindows(flags, true);
         groupsController.SetActiveWindows(flags2, false);
+    }
+
+    public void UpdateSelected(GameInputData inputData)
+    {
+        if(curentSelect != null && inputData.oldTileMousePosition != inputData.tileMousePosition)
+        {
+            curentSelect.Select_Update(inputData, curentSelectEventArgs);
+        }
     }
 
     public void RemoveSelected(GameInputData inputData)

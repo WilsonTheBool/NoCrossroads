@@ -9,6 +9,7 @@ public class GameWorldMapManager : MonoBehaviour
     public LandTilemapManager LandTilemapManager;
     public TerritoryTilemapManager TerritoryTilemapManager;
     public SpecialTilemapManager SpecialTilemapManager;
+    public PathTilemapManager pathTilemap;
 
     public Tilemap mainTilemap;
     //public List<ResourceTile> resourceTiles;
@@ -39,7 +40,6 @@ public class GameWorldMapManager : MonoBehaviour
             instance = this;
         }
 
-        GetAllMapObjects();
 
         //Change later (!!!)......................
         foreach (Vector3Int pos in TerritoryTilemapManager.territoryTilemap.cellBounds.allPositionsWithin)
@@ -92,21 +92,11 @@ public class GameWorldMapManager : MonoBehaviour
         return list.ToArray();
     }
 
-    private void GetAllMapObjects()
+   public void RemoveWorldObject(WorldObject worldObject)
     {
-        allObjectsOnMap = new List<WorldObject>(FindObjectsOfType<WorldObject>());
+        allObjectsOnMap.Remove(worldObject);
+        OnUnitDeath.Invoke(this, new UnitEventArgs(worldObject));
     }
-
-    private void GetAllResourceTilesOnMap()
-    {
-        //resourceTiles = new List<ResourceTile>(FindObjectsOfType<ResourceTile>());
-    }
-
-    private void GetAllMinerStructuresOnMap()
-    {
-       // miners = new List<Miner_Structure>(FindObjectsOfType<Miner_Structure>());
-    }
-
     public Vector3Int GetTilePosition(Vector3 position)
     {
         return mainTilemap.WorldToCell(position);
@@ -143,6 +133,27 @@ public class GameWorldMapManager : MonoBehaviour
         TerritoryTilemapManager.AddNewTerritory_Player(positions);
 
         OnPlayerTerritoryAdd?.Invoke(positions);
+    }
+
+    public void AddPlayerTerritory(Vector3Int position)
+    {
+        TerritoryTilemapManager.AddNewTerritory_Player(position);
+    }
+
+
+    public void AddEnemyTerritory(Vector3Int[] positions)
+    {
+        TerritoryTilemapManager.AddNewTerritory_Enemy(positions);
+    }
+
+    public void AddEnemyTerritory(Vector3Int position)
+    {
+        TerritoryTilemapManager.AddNewTerritory_Enemy(position);
+    }
+
+    public void ClearTerritory(Vector3Int[] positions)
+    {
+        TerritoryTilemapManager.RemoveTerritory(positions);
     }
 
     public void RemovePlayerTerritory(Vector3Int[] positions)

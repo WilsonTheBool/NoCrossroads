@@ -30,7 +30,8 @@ public class SelectModule : ScriptableObject
 
         public GameWorldMapManager GameWorldMapManager;
 
-        public GameUnitMovementController GameUnitMovementController;
+        //public GameUnitMovementController GameUnitMovementController;
+        public NewGameMovementController NewGameMovementController;
 
         public SelectableObject SelectableObject;
 

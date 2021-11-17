@@ -33,4 +33,14 @@ public class WorldObject : MonoBehaviour
             OnPositionChnaged?.Invoke();
         }
     }
+
+    public void RemoveFromWorld()
+    {
+        mapManager.RemoveWorldObject(this);
+    }
+
+    private void OnDestroy()
+    {
+        
+    }
 }

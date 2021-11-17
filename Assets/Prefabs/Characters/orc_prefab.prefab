@@ -100,6 +100,10 @@ GameObject:
   - component: {fileID: 2761760127051881943}
   - component: {fileID: 2761760127051881942}
   - component: {fileID: 2761760127051881944}
+  - component: {fileID: -7280877034485768788}
+  - component: {fileID: 4135467767806403581}
+  - component: {fileID: -1718492943725292454}
+  - component: {fileID: -6850933027216987044}
   m_Layer: 0
   m_Name: orc_prefab
   m_TagString: Untagged
@@ -277,14 +281,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ec2bc4973ea0a4b983cb6c0ace94b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 20
-  hp: 20
+  maxHp: 10
+  hp: 10
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -7280877034485768788}
+        m_TargetAssemblyTypeName: CharacterDeathController, Assembly-CSharp
+        m_MethodName: OnDeath_Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -1718492943725292454}
+        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
+        m_MethodName: DeleteHealthBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnTakeDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -1718492943725292454}
+        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
+        m_MethodName: Spawn_DamageText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2761760127051881942}
+        m_TargetAssemblyTypeName: AttackingCharacter, Assembly-CSharp
+        m_MethodName: TryToRetaliate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHealSelf:
     m_PersistentCalls:
       m_Calls: []
@@ -300,8 +352,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a396302db58db8644b950d922d00d315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetRules: []
+  targetRules:
+  - {fileID: 11400000, guid: 2640fa16cbcb7a94a9a52675f1967436, type: 2}
   damage: 15
+  GameWorldMapManager: {fileID: 0}
+  OnAttackStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAttackEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2761760127051881944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,3 +376,73 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movePoints: 2
   maxMovePoints: 2
+--- !u!114 &-7280877034485768788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761760127051881939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f74baa6b4bf5547b0f30b769e3e74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smokePrefab: {fileID: 6864265418000636999, guid: ad350efe4b5bfc24b96464247cc0d46f, type: 3}
+  WorldObject: {fileID: 2761760127051881940}
+  sprite: {fileID: 2761760127051881938}
+  WeaponSprite: {fileID: 2761760125273801324}
+  destroyDelay: 1.5
+  smokeDelay: 0.7
+--- !u!114 &4135467767806403581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761760127051881939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4a4617f6b9f1cd4186825b6198db3ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovingCharacter: {fileID: 2761760127051881944}
+  AttackingCharacter: {fileID: 2761760127051881942}
+  WorldObject: {fileID: 2761760127051881940}
+  killable: {fileID: 2761760127051881943}
+  AiBehaviourController: {fileID: 0}
+  behaviourNodes:
+  - {fileID: 11400000, guid: 561c5822df441994e9188ad871853d4e, type: 2}
+  - {fileID: 11400000, guid: 43a6e07032a37f64faed09264f194b12, type: 2}
+  - {fileID: 11400000, guid: f8385799818b2fd4a9f9c3121c2f96ad, type: 2}
+  nest: {fileID: 0}
+--- !u!114 &-1718492943725292454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761760127051881939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2451ca44fe3ce534884bcbdafb101f7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameWorldUIController: {fileID: 11400000, guid: d85f334486f0adc4da57f232b8a1076d, type: 2}
+  HpBar_prefab: {fileID: 1795801909851451307, guid: 34b369a0eb91ffe418984643e8c2cb8d, type: 3}
+  damageText_prefab: {fileID: 4898742278718063514, guid: c58ea78c0b3bd264dba402a66f2457be, type: 3}
+  owner: {fileID: 2761760127051881943}
+--- !u!114 &-6850933027216987044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761760127051881939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16fb44dcecc9324e9e7017f84f03e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smokePrefab: {fileID: 6864265418000636999, guid: ad350efe4b5bfc24b96464247cc0d46f, type: 3}
+  destroySmokeDelay: 0.7

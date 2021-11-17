@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 public class AttackingCharacter : MonoBehaviour
@@ -7,14 +8,20 @@ public class AttackingCharacter : MonoBehaviour
 
     public float damage;
 
+    public GameWorldMapManager GameWorldMapManager;
+
+    public UnityEvent OnAttackStart;
+    public UnityEvent OnAttackEnd;
+
+
     public bool CanTarget(KillableCharacter killableCharacter)
     {
-        if(targetRules.Length == 0)
+        if (targetRules.Length == 0)
         {
             return false;
         }
 
-        foreach(TargetRule_data_SO rule in targetRules)
+        foreach (TargetRule_data_SO rule in targetRules)
         {
             if (!rule.CanAttack(killableCharacter))
             {
@@ -25,9 +32,46 @@ public class AttackingCharacter : MonoBehaviour
         return true;
     }
 
-    public void DealDamage(KillableCharacter ch)
+    public void Attack(Vector3Int pos)
     {
-        ch.TakeDamage(damage);
+        foreach (WorldObject worldObject in GameWorldMapManager.GetAllWorldObjectsOnPosition(pos))
+        {
+            if (worldObject.TryGetComponent<KillableCharacter>(out KillableCharacter killableCharacter))
+            {
+                print("Attack" + worldObject.name);
+                OnAttackStart.Invoke();
+                DealDamage(killableCharacter);
+                OnAttackEnd.Invoke();
+            }
+        }
     }
 
+    public void Attack(KillableCharacter killableCharacter)
+    {
+        OnAttackStart.Invoke();
+        DealDamage(killableCharacter);
+        OnAttackEnd.Invoke();
+    } 
+
+    private void DealDamage(KillableCharacter ch)
+    {
+        ch.TakeDamage(damage, this);
+    }
+
+    private void Start()
+    {
+        GameWorldMapManager = GameWorldMapManager.instance;
+    }
+
+    public void TryToRetaliate(KillableCharacter.DamageEventArgs args)
+    {
+        if (args.isCountered)
+        {
+            var killable = args.attacker.GetComponent<KillableCharacter>();
+            if(killable != null)
+            {
+                killable.TakeDamage_NoRetaliation(damage, this);
+            }
+        }
+    }
 }

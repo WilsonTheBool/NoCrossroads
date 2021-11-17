@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class GameUnitMovementController : MonoBehaviour
 {
-    private MovementGridCell[,] movementGrid;
+
+    public MovementGridCell[,] movementGrid;
 
     public  Vector3Int offset;
 
@@ -329,7 +330,7 @@ public class GameUnitMovementController : MonoBehaviour
 
     public int GetPathCost(Vector3Int destination)
     {
-        return moveArray[destination.x + startPos.x, destination.y + startPos.y];
+        return 0;
     }
 
     public struct MovementGridCell 
@@ -355,4 +356,6 @@ public class GameUnitMovementController : MonoBehaviour
     }
 
 }
+
+
 

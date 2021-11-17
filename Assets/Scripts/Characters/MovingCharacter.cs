@@ -5,9 +5,16 @@ public class MovingCharacter : MonoBehaviour
 {
     public event System.EventHandler<MoveEventArg> OnMove;
 
+    public UnitMovementData UnitMovementData;
+
     GameWorldMapManager game;
 
     WorldObject WorldObject;
+
+    private void Awake()
+    {
+        UnitMovementData = new UnitMovementData();
+    }
 
     private void Start()
     {

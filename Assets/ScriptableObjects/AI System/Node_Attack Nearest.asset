@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 578724ab216986c47a877976b3f33c18, type: 3}
+  m_Name: Node_Attack Nearest
+  m_EditorClassIdentifier: 
+  actionTimeDelay: 0.1
+  visionRnage: 4
+  TargetSelectModule: {fileID: 11400000, guid: 34bcfec3b4d4ecc4b96aab37abe2a27a, type: 2}

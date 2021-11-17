@@ -16,6 +16,11 @@ public  class Miner_Structure: MonoBehaviour
 
     GameWorldMapManager gameWorldMapManager;
 
+    public void Free_Resource()
+    {
+        resourceTile.SetIsFree(true);
+    }
+
     public void Mine()
     {
         resourceManager.AddResource(resourceTile.resource, resourceTile.GetMineAmmount(Structure.workEffectivenessValue));
