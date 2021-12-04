@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: Orc camp
   unitDiscription: structure that spawns orcs
-  unitIcon: {fileID: -8541581982530116824, guid: ec0101e032e76254fa272906cd650f4a, type: 3}
+  unitIcon: {fileID: -298092319164930752, guid: ec0101e032e76254fa272906cd650f4a, type: 3}

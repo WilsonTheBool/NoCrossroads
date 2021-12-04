@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &294051917465655605
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6024909699066898240, guid: 84900ccbd926e2c4daba370ed40ca3f2, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024909699066898240, guid: 84900ccbd926e2c4daba370ed40ca3f2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -11.925964
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024909699066898240, guid: 84900ccbd926e2c4daba370ed40ca3f2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.75074
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024909699066898240, guid: 84900ccbd926e2c4daba370ed40ca3f2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024909699066898240, guid: 84900ccbd926e2c4daba370ed40ca3f2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024909699066898240, guid: 84900ccbd926e2c4daba370ed40ca3f2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024909699066898240, guid: 84900ccbd926e2c4daba370ed40ca3f2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024909699066898240, guid: 84900ccbd926e2c4daba370ed40ca3f2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024909699066898240, guid: 84900ccbd926e2c4daba370ed40ca3f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024909699066898240, guid: 84900ccbd926e2c4daba370ed40ca3f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024909699066898240, guid: 84900ccbd926e2c4daba370ed40ca3f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6024909699066898241, guid: 84900ccbd926e2c4daba370ed40ca3f2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2247219587750280319, guid: f0fe2182a68a66d4b9f88f31c4d37ca3, type: 3}
+    - target: {fileID: 6024909699066898242, guid: 84900ccbd926e2c4daba370ed40ca3f2, type: 3}
+      propertyPath: m_Name
+      value: stone_large_winter
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 84900ccbd926e2c4daba370ed40ca3f2, type: 3}

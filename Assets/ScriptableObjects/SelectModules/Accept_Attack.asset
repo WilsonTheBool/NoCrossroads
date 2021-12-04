@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f3eb1f29a769294593c5904bc89af41, type: 3}
   m_Name: Accept_Attack
   m_EditorClassIdentifier: 
-  attackAreaTile: {fileID: 11400000, guid: 8963a604e9ed3a84e8bca86d053bbd53, type: 2}
+  attackAreaTile: {fileID: 11400000, guid: 7c671448243b08845a7e718ba672b46f, type: 2}
   moveAreaTile: {fileID: 11400000, guid: 69cbc10cc8c8cef46b3e6f9bd7ea945a, type: 2}

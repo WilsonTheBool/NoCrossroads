@@ -41,13 +41,13 @@ public class GameWorldMapManager : MonoBehaviour
         }
 
 
-        //Change later (!!!)......................
-        foreach (Vector3Int pos in TerritoryTilemapManager.territoryTilemap.cellBounds.allPositionsWithin)
-        {
-            if(TerritoryTilemapManager.territoryTilemap.HasTile(pos))
-            playerTerritory.Add(pos);
-        }
-        //.....................................
+        ////Change later (!!!)......................
+        //foreach (Vector3Int pos in TerritoryTilemapManager.territoryTilemap.cellBounds.allPositionsWithin)
+        //{
+        //    if(TerritoryTilemapManager.territoryTilemap.HasTile(pos))
+        //    playerTerritory.Add(pos);
+        //}
+        ////.....................................
 
         if (mainTilemap == null)
         {
@@ -55,8 +55,34 @@ public class GameWorldMapManager : MonoBehaviour
         }
     }
 
+    public bool isSetUpComplete;
+
+    private void Start()
+    {
+        
+
+
+        GameWorldMap_Dependable[] dependables = FindObjectsOfType<GameWorldMap_Dependable>();
+
+        foreach(GameWorldMap_Dependable dependable in dependables)
+        {
+            dependable.SetUp();
+        }
+
+        allObjectsOnMap = new List<WorldObject>();
+
+        foreach (WorldObject worldObject in FindObjectsOfType<WorldObject>(false))
+        {
+
+            worldObject.SetUp();
+        }
+
+        isSetUpComplete = true;
+    }
+
     public void AddWorldObject(WorldObject worldObject)
     {
+        
         allObjectsOnMap.Add(worldObject);
         
 
@@ -209,6 +235,21 @@ public class GameWorldMapManager : MonoBehaviour
 
         king = null;
         return false;
+    }
+
+    public WorldObject[] GetAllObjectsByTypeName(string name)
+    {
+        List<WorldObject> worldObjects = new List<WorldObject>();
+
+        foreach(WorldObject worldObject in allObjectsOnMap)
+        {
+            if(worldObject.typeName == name)
+            {
+                worldObjects.Add(worldObject);
+            }
+        }
+
+        return worldObjects.ToArray();
     }
 
     public class UnitEventArgs: System.EventArgs

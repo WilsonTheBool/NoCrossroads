@@ -14,6 +14,8 @@ public class TerritoryCreator : MonoBehaviour
 
     List<Vector3Int> territory;
 
+
+
     private void Start()
     {
         WorldObject = GetComponent<WorldObject>();
@@ -27,6 +29,13 @@ public class TerritoryCreator : MonoBehaviour
     public Vector3Int[] GetAllTerritory()
     {
         return territory.ToArray();
+    }
+
+    public void UpdateTerritory(Vector3Int startPos, GameWorldMapManager GameWorldMapManager)
+    {
+        GameWorldMapManager.ClearTerritory(territory.ToArray());
+        CreateTerritory(startPos, GameWorldMapManager);
+
     }
 
     public void CreateTerritory(Vector3Int startPos, GameWorldMapManager GameWorldMapManager)

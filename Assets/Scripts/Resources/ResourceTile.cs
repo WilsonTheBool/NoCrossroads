@@ -25,7 +25,7 @@ public class ResourceTile : MonoBehaviour
 
     private void Start()
     {
-        worldObject.SetUp();
+        //worldObject.SetUp();
     }
 
     public void SetIsFree(bool value)

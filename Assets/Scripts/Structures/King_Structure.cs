@@ -12,16 +12,20 @@ public class King_Structure : MonoBehaviour
 
     TerritoryCreator terrirtoryCreator;
 
-    private void Start()
+    private void Awake()
     {
         WorldObject = GetComponent<WorldObject>();
 
-        GameWorldMapManager = GameWorldMapManager.instance;
-
         terrirtoryCreator = GetComponent<TerritoryCreator>();
 
-        terrirtoryCreator.CreateTerritory(GameWorldMapManager.GetTilePosition(this.transform.position), GameWorldMapManager);
+        WorldObject.OnSetUpComplete.AddListener(SetUp);
 
-        WorldObject.SetUp();
+        //WorldObject.SetUp();
+    }
+
+    private void SetUp()
+    {
+        GameWorldMapManager = GameWorldMapManager.instance;
+        terrirtoryCreator.CreateTerritory(GameWorldMapManager.GetTilePosition(this.transform.position), GameWorldMapManager);
     }
 }

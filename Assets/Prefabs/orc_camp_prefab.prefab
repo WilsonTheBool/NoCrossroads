@@ -21,7 +21,12 @@ GameObject:
   - component: {fileID: 5087028557272258858}
   - component: {fileID: 5087028557272258859}
   - component: {fileID: 5087028557272258857}
-  - component: {fileID: 5087028557272258856}
+  - component: {fileID: 6551953273281007342}
+  - component: {fileID: 8546348434014221770}
+  - component: {fileID: 956934658025304335}
+  - component: {fileID: -2373893661933810183}
+  - component: {fileID: 6909882384695194701}
+  - component: {fileID: 2918516419686652442}
   m_Layer: 0
   m_Name: orc_camp_prefab
   m_TagString: Untagged
@@ -110,12 +115,7 @@ MonoBehaviour:
   killable: {fileID: 5087028557272258851}
   nestTerritory: []
   territoryCreator: {fileID: 5087028557272258844}
-  spawnRules:
-  - {fileID: 11400000, guid: 3679c269dd1333b4987ba932e7dd199f, type: 2}
-  - {fileID: 11400000, guid: 50cff27e3e14a8f4d843b2a215c39b7e, type: 2}
   behaviourController: {fileID: 0}
-  maxAgentNumber: 5
-  spawnController: {fileID: 11400000, guid: e3908055e708df74d8e7d46d43285aa9, type: 2}
   nestRange: 3
   OnNestAttacked:
     m_PersistentCalls:
@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28f8af21ae09c4cacca2188d34c40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeName: 
   canMove: 0
   worldPosition: {x: 0, y: 0, z: 0}
   OnPositionChnaged:
@@ -145,6 +146,11 @@ MonoBehaviour:
       m_Calls: []
   mapManager: {fileID: 0}
   blockMovement: 1
+  pathableForPlayer: 0
+  pathableForEnemy: 0
+  OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5087028557272258851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,10 +182,34 @@ MonoBehaviour:
         m_CallState: 2
   OnTakeDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6909882384695194701}
+        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
+        m_MethodName: Spawn_DamageText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHealSelf:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6909882384695194701}
+        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
+        m_MethodName: Spawn_HealText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5087028557272258844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +249,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isPlayerSide: 0
+  canAutoSelect: 0
+  WorldObject: {fileID: 0}
 --- !u!65 &5087028557272258854
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -248,7 +280,13 @@ MonoBehaviour:
   OnNewTurn:
     m_PersistentCalls:
       m_Calls: []
+  OnNewTurn_Late:
+    m_PersistentCalls:
+      m_Calls: []
   OnTurnEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTurnEnd_Late:
     m_PersistentCalls:
       m_Calls: []
 --- !u!95 &5087028557272258852
@@ -314,13 +352,108 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dcc93e165c00424f9bf782dce52af84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CreateTurnDelay: 10
-  DestroyTurnDelay: 10
+  CreateTurnDelay: 35
+  DestroyTurnDelay: 2
+  TargetMaxAgentCount: 5
   NoizeGameWorldController: {fileID: 0}
   controller: {fileID: 0}
   nest: {fileID: 5087028557272258849}
-  TargetMaxAgentCount: 3
---- !u!114 &5087028557272258856
+--- !u!114 &6551953273281007342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5087028557272258846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf1da239ca8efd848a15057ad1d7cacc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldObject: {fileID: 0}
+  OnFadeStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8546348434014221770}
+        m_TargetAssemblyTypeName: FadingObject, Assembly-CSharp
+        m_MethodName: Fade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnFadeEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8546348434014221770}
+        m_TargetAssemblyTypeName: FadingObject, Assembly-CSharp
+        m_MethodName: UnFade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8546348434014221770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5087028557272258846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85eb0a46647510245926499b4cbe065c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FadingColor: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 0.88235295}
+  NormalColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &956934658025304335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5087028557272258846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e06e7dcc8f9870749bed122030c22954, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAgentNumber: 5
+  maxDefendersNumber: 2
+  AgentSpawnDelay: 2
+  spawnRules:
+  - {fileID: 11400000, guid: 3679c269dd1333b4987ba932e7dd199f, type: 2}
+  - {fileID: 11400000, guid: 50cff27e3e14a8f4d843b2a215c39b7e, type: 2}
+  nest: {fileID: 5087028557272258849}
+  spawnController: {fileID: 11400000, guid: e3908055e708df74d8e7d46d43285aa9, type: 2}
+--- !u!114 &-2373893661933810183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5087028557272258846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dcc93e165c00424f9bf782dce52af84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CreateTurnDelay: 8
+  DestroyTurnDelay: 2
+  TargetMaxAgentCount: 2
+  NoizeGameWorldController: {fileID: 0}
+  controller: {fileID: 0}
+  nest: {fileID: 5087028557272258849}
+--- !u!114 &6909882384695194701
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -335,4 +468,21 @@ MonoBehaviour:
   GameWorldUIController: {fileID: 11400000, guid: d85f334486f0adc4da57f232b8a1076d, type: 2}
   HpBar_prefab: {fileID: 1795801909851451307, guid: 34b369a0eb91ffe418984643e8c2cb8d, type: 3}
   damageText_prefab: {fileID: 4898742278718063514, guid: c58ea78c0b3bd264dba402a66f2457be, type: 3}
+  exp_text_prefab: {fileID: 8691338739696596141, guid: bf8029a0536f1114cb6576fc86d09a99, type: 3}
+  levelUpText: {fileID: 6024816972111273595, guid: 78201593e30fad545af54ba943c6f6db, type: 3}
+  heal_text_prefab: {fileID: 3089663678013084167, guid: 5e036b009c30f4f4f9f888cd2285fa39, type: 3}
   owner: {fileID: 5087028557272258851}
+--- !u!114 &2918516419686652442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5087028557272258846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0018c347b7e55554394a6d61406a68c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  regenAmmount: 5
+  KillableCharacter: {fileID: 5087028557272258851}

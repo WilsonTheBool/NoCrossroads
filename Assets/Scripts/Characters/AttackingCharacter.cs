@@ -8,6 +8,9 @@ public class AttackingCharacter : MonoBehaviour
 
     public float damage;
 
+    public bool isRanged;
+    public bool canRetaliate;
+
     public GameWorldMapManager GameWorldMapManager;
 
     public UnityEvent OnAttackStart;
@@ -38,7 +41,6 @@ public class AttackingCharacter : MonoBehaviour
         {
             if (worldObject.TryGetComponent<KillableCharacter>(out KillableCharacter killableCharacter))
             {
-                print("Attack" + worldObject.name);
                 OnAttackStart.Invoke();
                 DealDamage(killableCharacter);
                 OnAttackEnd.Invoke();
@@ -65,7 +67,7 @@ public class AttackingCharacter : MonoBehaviour
 
     public void TryToRetaliate(KillableCharacter.DamageEventArgs args)
     {
-        if (args.isCountered)
+        if (args.isCountered && !args.attacker.isRanged && canRetaliate)
         {
             var killable = args.attacker.GetComponent<KillableCharacter>();
             if(killable != null)

@@ -63,10 +63,16 @@ GameObject:
   - component: {fileID: 8782812116646191688}
   - component: {fileID: 8782812116646191689}
   - component: {fileID: 8782812116646191687}
-  - component: {fileID: -8442769618266310302}
   - component: {fileID: 8986730338952670293}
   - component: {fileID: -5994980081211833689}
   - component: {fileID: -7784051520588340534}
+  - component: {fileID: 7647389875331186040}
+  - component: {fileID: 3906386894573404231}
+  - component: {fileID: -1182013230977389142}
+  - component: {fileID: 7367754635322079937}
+  - component: {fileID: -6838341215775404584}
+  - component: {fileID: 5949481377153015769}
+  - component: {fileID: 7240543047706126295}
   m_Layer: 0
   m_Name: knight_prefab
   m_TagString: Untagged
@@ -172,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28f8af21ae09c4cacca2188d34c40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeName: Knight
   canMove: 1
   worldPosition: {x: 0, y: 0, z: 0}
   OnPositionChnaged:
@@ -179,6 +186,11 @@ MonoBehaviour:
       m_Calls: []
   mapManager: {fileID: 0}
   blockMovement: 1
+  pathableForPlayer: 1
+  pathableForEnemy: 0
+  OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8782812116646191690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,6 +206,27 @@ MonoBehaviour:
   controller: {fileID: 11400000, guid: 464bb92e4beac884db33557143f3ed91, type: 2}
   OnNewTurn:
     m_PersistentCalls:
+      m_Calls: []
+  OnNewTurn_Late:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTurnEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5949481377153015769}
+        m_TargetAssemblyTypeName: RegenCharacter, Assembly-CSharp
+        m_MethodName: Regen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTurnEnd_Late:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8782812116646191687}
         m_TargetAssemblyTypeName: MovingCharacter, Assembly-CSharp
@@ -207,21 +240,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: -8442769618266310302}
-        m_TargetAssemblyTypeName: Spending_Structure, Assembly-CSharp
-        m_MethodName: TryEat
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnTurnEnd:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &5360309382200189375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,11 +276,37 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 405e1fcacc9324742b71eb9bdbf428f2, type: 2}
   OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7240543047706126295}
+        m_TargetAssemblyTypeName: MaterialSwapController, Assembly-CSharp
+        m_MethodName: Swap_To_New
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDeselect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7240543047706126295}
+        m_TargetAssemblyTypeName: MaterialSwapController, Assembly-CSharp
+        m_MethodName: Swap_To_Default
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   isPlayerSide: 1
+  canAutoSelect: 1
+  WorldObject: {fileID: 0}
 --- !u!65 &4156386370694068685
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -274,8 +318,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6613064, y: 0.68493164, z: 0.2}
-  m_Center: {x: -0.15590644, y: -0.10753435, z: 0}
+  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8782812116646191688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,6 +361,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -1182013230977389142}
+        m_TargetAssemblyTypeName: CharacterAudioController, Assembly-CSharp
+        m_MethodName: PlayAudio_Death
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnTakeDamage:
     m_PersistentCalls:
       m_Calls:
@@ -344,9 +400,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -1182013230977389142}
+        m_TargetAssemblyTypeName: CharacterAudioController, Assembly-CSharp
+        m_MethodName: PlayAudio_Hit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHealSelf:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -5994980081211833689}
+        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
+        m_MethodName: Spawn_HealText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8782812116646191689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,6 +442,8 @@ MonoBehaviour:
   targetRules:
   - {fileID: 11400000, guid: 40cf43f4a129ed941ad9dd57c3917567, type: 2}
   damage: 15
+  isRanged: 0
+  canRetaliate: 1
   GameWorldMapManager: {fileID: 0}
   OnAttackStart:
     m_PersistentCalls:
@@ -381,26 +463,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e3e189062375e40af17e8d0d62421b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onMove:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -1182013230977389142}
+        m_TargetAssemblyTypeName: CharacterAudioController, Assembly-CSharp
+        m_MethodName: PlayAudio_Move
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   movePoints: 3
   maxMovePoints: 3
---- !u!114 &-8442769618266310302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8782812116646191692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f44b4ccf89cec8243a881d8a9e6b3791, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resourcesSpendPerTurn:
-  - data: {fileID: 11400000, guid: 8af0702f014885c4387f483801aef08d, type: 2}
-    value: 5
-  OnCantEat:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &8986730338952670293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,6 +513,9 @@ MonoBehaviour:
   GameWorldUIController: {fileID: 11400000, guid: d85f334486f0adc4da57f232b8a1076d, type: 2}
   HpBar_prefab: {fileID: 1795801909851451307, guid: 34b369a0eb91ffe418984643e8c2cb8d, type: 3}
   damageText_prefab: {fileID: 4898742278718063514, guid: c58ea78c0b3bd264dba402a66f2457be, type: 3}
+  exp_text_prefab: {fileID: 8691338739696596141, guid: bf8029a0536f1114cb6576fc86d09a99, type: 3}
+  levelUpText: {fileID: 6024816972111273595, guid: 78201593e30fad545af54ba943c6f6db, type: 3}
+  heal_text_prefab: {fileID: 3089663678013084167, guid: 5e036b009c30f4f4f9f888cd2285fa39, type: 3}
   owner: {fileID: 8782812116646191688}
 --- !u!114 &-7784051520588340534
 MonoBehaviour:
@@ -449,6 +531,176 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokePrefab: {fileID: 6864265418000636999, guid: ad350efe4b5bfc24b96464247cc0d46f, type: 3}
   destroySmokeDelay: 0.7
+--- !u!114 &7647389875331186040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8782812116646191692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcc69f115d1894542bfacd46369b0481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovingCharacter: {fileID: 8782812116646191687}
+  GameWorld_ExplorationController: {fileID: 0}
+  worldObject: {fileID: 0}
+  ExploreRange: 4
+--- !u!114 &3906386894573404231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8782812116646191692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf1da239ca8efd848a15057ad1d7cacc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldObject: {fileID: 8782812116646191691}
+  OnFadeStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -5994980081211833689}
+        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
+        m_MethodName: DeleteHealthBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnFadeEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -5994980081211833689}
+        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
+        m_MethodName: Spawn_HPBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-1182013230977389142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8782812116646191692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd5e4d38a331944fa58da2484d1f9ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio_name_onHit: unit_hit
+  audio_name_onDeath: unit_death
+  audio_name_onMove: unit_move
+--- !u!114 &7367754635322079937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8782812116646191692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bebd8cf1f1024d45b9795697b76614c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelingTable: {fileID: 11400000, guid: 881a3a83cbab82c4eae039f36fa3d673, type: 2}
+  upgradableCharacter: {fileID: -6838341215775404584}
+  WorldObject: {fileID: 8782812116646191691}
+  curentLevel: 0
+  maxLevel: 0
+  curentExp: 0
+  newLevelExp: 0
+  OnExpGain:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -5994980081211833689}
+        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
+        m_MethodName: Spawn_ExpText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnNewLevel:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -5994980081211833689}
+        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
+        m_MethodName: Spawn_LevelUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-6838341215775404584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8782812116646191692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df459f45fca8752428f9b6a412e3c991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldObject: {fileID: 0}
+  AttackingCharacter: {fileID: 8782812116646191689}
+  KillableCharacter: {fileID: 8782812116646191688}
+  MovingCharacter: {fileID: 8782812116646191687}
+  TerritoryCreator: {fileID: 0}
+--- !u!114 &5949481377153015769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8782812116646191692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0018c347b7e55554394a6d61406a68c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  regenAmmount: 5
+  KillableCharacter: {fileID: 8782812116646191688}
+--- !u!114 &7240543047706126295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8782812116646191692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745f74c7d12db154392639c06e9c6662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  swapMaterial: {fileID: 2100000, guid: 36b3b6b87fe02964abb41b47da6cdfaf, type: 2}
+  SpriteRenderer: {fileID: 8782812116646191693}
+  weaponSprite: {fileID: 8782812117351415283}
 --- !u!1 &8782812117351415281
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewGameMovementController: MonoBehaviour
+public class NewGameMovementController: GameWorldMap_Dependable
 {
 
     public MovementGridCell[,] movementGrid;
@@ -17,15 +17,26 @@ public class NewGameMovementController: MonoBehaviour
 
     GameWorldMapManager GameWorldMapManager;
 
+    public bool isPlayerMoveGrid;
+
     public struct MovementGridCell
     {
         public bool isLand;
         public bool isUnit;
 
+        public bool isPathablePlayer;
+        public bool isPathableEnemy;
 
-        public bool CanMoveTo()
+        public bool CanMoveTo(bool isPlayer)
         {
-            return isLand && !isUnit;
+            if (isPlayer)
+            {
+                return isLand && (!isUnit || (isUnit && isPathablePlayer));
+            }
+            else
+            {
+                return isLand && (!isUnit || (isUnit && isPathableEnemy));
+            }
         }
 
         public void SetLand(bool isLand)
@@ -39,7 +50,12 @@ public class NewGameMovementController: MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Awake()
+    {
+        
+    }
+
+    public override void SetUp()
     {
         GameWorldMapManager = GameWorldMapManager.instance;
         GameWorldMapManager.OnUnitMove += GameWorldMapManager_OnUnitMove;
@@ -48,38 +64,65 @@ public class NewGameMovementController: MonoBehaviour
 
         CreateEmptyGrid(GameMap.MapSize, GameMap.MapOffset);
 
-        LandTilemapManager landTilemapManager = FindObjectOfType<LandTilemapManager>();
-        SpecialTilemapManager specialTilemapManager = FindObjectOfType<SpecialTilemapManager>();
+        LandTilemapManager landTilemapManager = GameWorldMapManager.LandTilemapManager;
+        SpecialTilemapManager specialTilemapManager = GameWorldMapManager.SpecialTilemapManager;
         SetLand(landTilemapManager.GetAllLandPositions(), true);
+    }
 
-        foreach (WorldObject worldObject in GameWorldMapManager.allObjectsOnMap)
-        {
-            if (worldObject.blockMovement)
-            {
-                SetUnit(worldObject.worldPosition, true);
-            }
-        }
+    private void Start()
+    {
+
+        
+
+
+
+
+        //foreach (WorldObject worldObject in GameWorldMapManager.allObjectsOnMap)
+        //{
+        //    if (worldObject.blockMovement)
+        //    {
+        //        SetUnit(worldObject.worldPosition, true);
+
+        //        SetPathable(worldObject.worldPosition, worldObject.pathableForPlayer, worldObject.pathableForEnemy);
+        //    }
+
+
+        //}
     }
 
     private void GameWorldMapManager_OnUnitDeath(object sender, GameWorldMapManager.UnitEventArgs e)
     {
         if (e.worldObject.blockMovement)
+        {
             SetUnit(e.worldObject.worldPosition, false);
+
+            SetPathable(e.worldObject.worldPosition, false, false);
+        }
+            
     }
 
     private void GameWorldMapManager_OnUnitCreate(object sender, GameWorldMapManager.UnitEventArgs e)
     {
         if (e.worldObject.blockMovement)
+        {
             SetUnit(e.worldObject.worldPosition, true);
+
+            SetPathable(e.worldObject.worldPosition, e.worldObject.pathableForPlayer, e.worldObject.pathableForEnemy);
+        }
+            
     }
 
 
 
     private void GameWorldMapManager_OnUnitMove(object sender, MovingCharacter.MoveEventArg e)
     {
+
         SetUnit(e.oldPos, false);
+        SetPathable(e.oldPos, false, false);
+
         SetUnit(e.newPos, true);
-        
+        SetPathable(e.newPos, e.worldObject.pathableForPlayer, e.worldObject.pathableForEnemy);
+
     }
 
     public void CreateEmptyGrid(Vector3Int size, Vector3Int offset)
@@ -120,9 +163,22 @@ public class NewGameMovementController: MonoBehaviour
 
     }
 
+    public bool IsPathable(Vector3Int position)
+    {
+        position -= offset;
+        return (isPlayerMoveGrid && movementGrid[position.x, position.y].isPathablePlayer) || (!isPlayerMoveGrid && movementGrid[position.x, position.y].isPathableEnemy);
+    }
+
+    public void SetPathable(Vector3Int position, bool isPathablePlayer, bool isPathableEnemy)
+    {
+        position -= offset;
+        movementGrid[position.x, position.y].isPathableEnemy = isPathableEnemy;
+        movementGrid[position.x, position.y].isPathablePlayer = isPathablePlayer;
+    }
+
     public bool CanMoveTo(Vector3Int local)
     {
-        return IsVectorInsideArray(local) && movementGrid[local.x, local.y].CanMoveTo();
+        return IsVectorInsideArray(local) && movementGrid[local.x, local.y].CanMoveTo(isPlayerMoveGrid);
     }
 
     public bool IsUnit(Vector3Int local)

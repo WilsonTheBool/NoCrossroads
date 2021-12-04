@@ -10,6 +10,8 @@ public class GameWorldUI_MovingObject : MonoBehaviour
 
     public float fadeAwaySpeed;
 
+    public float fadeInSpeeed = 1000;
+
     public CanvasGroup CanvasGroup;
 
     public void StartMovement()
@@ -20,6 +22,12 @@ public class GameWorldUI_MovingObject : MonoBehaviour
     private IEnumerator MovementCo()
     {
         float time = 0;
+
+        while (CanvasGroup.alpha < 1)
+        {
+            CanvasGroup.alpha += fadeInSpeeed * Time.deltaTime;
+            yield return null;
+        }
 
         while(time < destroyDelay)
         {

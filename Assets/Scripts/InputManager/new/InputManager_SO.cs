@@ -83,6 +83,7 @@ public class GameInputData
     public Vector3Int oldTileMousePosition;
 
     public Vector3 worldMousePosition;
+    public Vector3 mouseMositionScreen;
 
     public bool AcceptTrigger;
     public bool CancelTrigger;

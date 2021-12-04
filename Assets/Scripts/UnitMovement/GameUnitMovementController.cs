@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-public class GameUnitMovementController : MonoBehaviour
+public class GameUnitMovementController : GameWorldMap_Dependable
 {
 
     public MovementGridCell[,] movementGrid;
@@ -18,6 +18,18 @@ public class GameUnitMovementController : MonoBehaviour
 
     private void Start()
     {
+
+        //foreach(WorldObject worldObject in GameWorldMapManager.allObjectsOnMap)
+        //{
+        //    if (worldObject.blockMovement)
+        //    {
+        //        SetUnit(worldObject.worldPosition, true);
+        //    }
+        //}
+    }
+
+    public override void SetUp()
+    {
         GameWorldMapManager = GameWorldMapManager.instance;
         GameWorldMapManager.OnUnitMove += GameWorldMapManager_OnUnitMove;
         GameWorldMapManager.OnUnitCreate += GameWorldMapManager_OnUnitCreate;
@@ -28,14 +40,6 @@ public class GameUnitMovementController : MonoBehaviour
         LandTilemapManager landTilemapManager = FindObjectOfType<LandTilemapManager>();
         SpecialTilemapManager specialTilemapManager = FindObjectOfType<SpecialTilemapManager>();
         SetLand(landTilemapManager.GetAllLandPositions(), true);
-
-        foreach(WorldObject worldObject in GameWorldMapManager.allObjectsOnMap)
-        {
-            if (worldObject.blockMovement)
-            {
-                SetUnit(worldObject.worldPosition, true);
-            }
-        }
     }
 
     private void GameWorldMapManager_OnUnitDeath(object sender, GameWorldMapManager.UnitEventArgs e)

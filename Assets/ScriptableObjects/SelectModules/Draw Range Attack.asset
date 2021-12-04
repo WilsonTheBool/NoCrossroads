@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d814117c8d6515540a6320c87cf45828, type: 3}
+  m_Name: Draw Range Attack
+  m_EditorClassIdentifier: 
+  tileToDraw: {fileID: 11400000, guid: 69cbc10cc8c8cef46b3e6f9bd7ea945a, type: 2}
+  tileToDraw_attack: {fileID: 11400000, guid: 7c671448243b08845a7e718ba672b46f, type: 2}
+  tileToDraw_attackRange: {fileID: 11400000, guid: c916dca6a6eb9834eb3f6412e65c2572, type: 2}
+  attackRange: 4

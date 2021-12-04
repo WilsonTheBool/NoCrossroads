@@ -37,23 +37,36 @@ public class DefaulGameMap_InputModule : MonoBehaviour
         }
     }
 
-
+    ResourceTile lastTile;
     public void UpdateResourceIcon(GameInputData data)
     {
-        if(data.oldTileMousePosition != data.tileMousePosition)
+        if (!data.isOverUI)
         {
-            if(GameWorldMapManager.TryGetResourceTIle(data.oldTileMousePosition, out ResourceTile tile))
+            if (data.oldTileMousePosition != data.tileMousePosition)
             {
-                tile.Deselect();
-            }
-            
+                if (GameWorldMapManager.TryGetResourceTIle(data.oldTileMousePosition, out ResourceTile tile))
+                {
+                    lastTile = null;
+                    tile.Deselect();
+                }
 
-            if(GameWorldMapManager.TryGetResourceTIle(data.tileMousePosition, out tile))
-            {
-                tile.Select();
+
+                if (GameWorldMapManager.TryGetResourceTIle(data.tileMousePosition, out tile))
+                {
+                    lastTile = tile;
+                    tile.Select();
+                }
+
             }
-            
         }
+        else
+        {
+            if(lastTile != null)
+            {
+                lastTile.Deselect();
+            }
+        }
+        
     }
 
     public void OnFocus()
@@ -64,5 +77,10 @@ public class DefaulGameMap_InputModule : MonoBehaviour
     public void OnLostFocus()
     {
         selectTile.SetActive(false);
+
+        if(lastTile != null)
+        {
+            lastTile.Deselect();
+        }
     }
 }

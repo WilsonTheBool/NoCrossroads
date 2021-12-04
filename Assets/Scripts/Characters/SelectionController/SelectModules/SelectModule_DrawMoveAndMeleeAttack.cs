@@ -10,30 +10,34 @@ public class SelectModule_DrawMoveAndMeleeAttack : SelectModule
 
     public override void OnSelect_Start(GameInputData inputData, SelectEventArgs selectEventArgs)
     {
-        SpecialTilemapManager specialTilemapManager = selectEventArgs.SpecialTilemapManager;
-        selectEventArgs.MovingCharacter.UnitMovementData.SetUp(selectEventArgs.NewGameMovementController,
-            inputData.tileMousePosition, selectEventArgs.MovingCharacter.movePoints);
-        Vector3Int[] movePos = selectEventArgs.MovingCharacter.UnitMovementData.GetMovementArea();
-        Vector3Int[] attackPos = selectEventArgs.MovingCharacter.UnitMovementData.GetPossiableAttackTiles();
-
-        foreach (Vector3Int pos in movePos)
+        if (selectEventArgs.MovingCharacter.movePoints > 0)
         {
-            specialTilemapManager.DrawTile(pos, tileToDraw);
-        }
+            SpecialTilemapManager specialTilemapManager = selectEventArgs.SpecialTilemapManager;
+            selectEventArgs.MovingCharacter.UnitMovementData.SetUp(selectEventArgs.NewGameMovementController,
+                inputData.tileMousePosition, selectEventArgs.MovingCharacter.movePoints);
+            Vector3Int[] movePos = selectEventArgs.MovingCharacter.UnitMovementData.GetMovementArea();
+            Vector3Int[] attackPos = selectEventArgs.MovingCharacter.UnitMovementData.GetPossiableAttackTiles();
 
-        foreach (Vector3Int pos in attackPos)
-        {
-            foreach(WorldObject worldObject in selectEventArgs.GameWorldMapManager.GetAllWorldObjectsOnPosition(pos))
+            foreach (Vector3Int pos in movePos)
             {
+                specialTilemapManager.DrawTile(pos, tileToDraw);
+            }
 
-                if(worldObject.TryGetComponent<KillableCharacter>(out KillableCharacter killableCharacter))
+            foreach (Vector3Int pos in attackPos)
+            {
+                foreach (WorldObject worldObject in selectEventArgs.GameWorldMapManager.GetAllWorldObjectsOnPosition(pos))
                 {
-                    if (selectEventArgs.AttackingCharacter.CanTarget(killableCharacter))
+
+                    if (worldObject.TryGetComponent<KillableCharacter>(out KillableCharacter killableCharacter))
                     {
-                        specialTilemapManager.DrawTile(pos,tileToDraw_attack);
+                        if (selectEventArgs.AttackingCharacter.CanTarget(killableCharacter))
+                        {
+                            specialTilemapManager.DrawTile(pos, tileToDraw_attack);
+                        }
                     }
                 }
             }
+
         }
 
     }
@@ -41,5 +45,6 @@ public class SelectModule_DrawMoveAndMeleeAttack : SelectModule
     public override void OnSelect_End(GameInputData inputData, SelectEventArgs selectEventArgs)
     {
         selectEventArgs.SpecialTilemapManager.ClearTilemap();
+        
     }
 }

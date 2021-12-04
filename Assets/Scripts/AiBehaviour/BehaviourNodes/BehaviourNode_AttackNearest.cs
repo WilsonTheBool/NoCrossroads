@@ -16,15 +16,18 @@ public class BehaviourNode_AttackNearest : BehaviourNode
 
     public override void Activate(AiBehaviourController controller, AiAgent owner)
     {
-        owner.MovingCharacter.UnitMovementData.SetUp(controller.NewGameMovementController, owner.WorldObject.worldPosition, owner.MovingCharacter.movePoints);
+        owner.MovingCharacter.UnitMovementData.SetUp(controller.NewGameMovementController, owner.WorldObject.worldPosition, UnitMovementData.UnitsVisionRange);
 
-        Vector3Int[] movingArea = owner.MovingCharacter.UnitMovementData.GetMovementArea();
+        Vector3Int[] visionArea = owner.MovingCharacter.UnitMovementData.GetMovementArea();
+        Vector3Int[] movingArea = owner.MovingCharacter.UnitMovementData.GetMovementArea(owner.MovingCharacter.movePoints);
 
         AiTargetData target = TargetSelectModule.GetTarget(controller.GetAllEnemiesInRange(owner.WorldObject.worldPosition, visionRnage), owner);
 
-        if (GetMovePosition(target.WorldObject.worldPosition, movingArea, out Vector3Int movePos))
+        if (GetMovePosition(target.WorldObject.worldPosition, visionArea, owner.MovingCharacter, out Vector3Int movePos))
         {
             owner.MovingCharacter.Move(movePos, 0);
+
+           
             owner.AttackingCharacter.Attack(target.KillableCharacter);
         }
         else

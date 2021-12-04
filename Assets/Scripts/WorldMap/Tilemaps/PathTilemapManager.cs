@@ -16,5 +16,13 @@ public class PathTilemapManager : MonoBehaviour
         }
         
     }
+
+    public void DrawTiles(Vector3Int[] pos, TileBase tile)
+    {
+        foreach (Vector3Int vec in pos)
+        {
+            pathTilemap.SetTile(vec, tile);
+        }
+    }
     
 }

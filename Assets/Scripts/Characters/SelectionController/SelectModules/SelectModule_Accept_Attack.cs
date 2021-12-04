@@ -11,13 +11,15 @@ public class SelectModule_Accept_Attack : SelectModule
 
     public override void OnSelect_AcceptPressed(GameInputData inputData, SelectEventArgs selectEventArgs)
     {
-        if (selectEventArgs.SpecialTilemapManager.specialTilemap.GetTile(inputData.tileMousePosition) == attackAreaTile)
+        if (selectEventArgs.SpecialTilemapManager.specialTilemap.GetTile(inputData.tileMousePosition) == attackAreaTile && selectEventArgs.MovingCharacter.movePoints > 0)
         {
-            selectEventArgs.AttackingCharacter.Attack(inputData.tileMousePosition);
+            
 
             Vector3Int movePos = GetMovePosition(inputData.tileMousePosition, selectEventArgs.MovingCharacter.UnitMovementData.GetMovementArea(), inputData, selectEventArgs);
 
             selectEventArgs.MovingCharacter.Move(movePos, 0);
+
+            selectEventArgs.AttackingCharacter.Attack(inputData.tileMousePosition);
 
             selectEventArgs.MovingCharacter.movePoints = 0;
         }
@@ -30,7 +32,11 @@ public class SelectModule_Accept_Attack : SelectModule
             Vector3Int movePos;
             movePos = GetMovePosition(inputData.tileMousePosition, selectEventArgs.MovingCharacter.UnitMovementData.GetMovementArea(), inputData, selectEventArgs);
             selectEventArgs.GameWorldMapManager.pathTilemap.pathTilemap.ClearAllTiles();
-            selectEventArgs.GameWorldMapManager.pathTilemap.SetPathTiles(selectEventArgs.MovingCharacter.UnitMovementData.GetPath(movePos));
+
+            var path = selectEventArgs.MovingCharacter.UnitMovementData.GetPath(movePos);
+            selectEventArgs.GameWorldMapManager.pathTilemap.SetPathTiles(path);
+
+
         }
 
        
@@ -51,7 +57,7 @@ public class SelectModule_Accept_Attack : SelectModule
             float distance = Vector3Int.Distance(vec, attackPos);
             if (distance <= 1)
             {
-                float worldDistance = Vector3.Distance(selectEventArgs.GameWorldMapManager.GetTileCenterInWorld(vec), mousePos);
+                float worldDistance = Vector3.Distance(selectEventArgs.GameWorldMapManager.GetTileCenterInWorld(vec), selectEventArgs.MovingCharacter.transform.position);
                 if (worldDistance < minDistace)
                 {
                     minDistace = worldDistance;

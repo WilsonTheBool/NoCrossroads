@@ -4,6 +4,7 @@ using System.Collections;
 public class MovingCharacter : MonoBehaviour
 {
     public event System.EventHandler<MoveEventArg> OnMove;
+    public UnityEngine.Events.UnityEvent onMove;
 
     public UnitMovementData UnitMovementData;
 
@@ -14,13 +15,14 @@ public class MovingCharacter : MonoBehaviour
     private void Awake()
     {
         UnitMovementData = new UnitMovementData();
+        WorldObject = GetComponent<WorldObject>();
     }
 
     private void Start()
     {
         game = GameWorldMapManager.instance;
-        WorldObject = GetComponent<WorldObject>();
-        WorldObject.SetUp();
+        
+        //WorldObject.SetUp();
     }
 
     public void RegenMovePoints()
@@ -37,8 +39,8 @@ public class MovingCharacter : MonoBehaviour
 
         movePoints -= cost;
         this.transform.position = game.GetTileCenterInWorld(pos);
-        OnMove?.Invoke(this, new MoveEventArg(WorldObject.worldPosition, pos));
-        
+        OnMove?.Invoke(this, new MoveEventArg(WorldObject.worldPosition, pos, this, WorldObject));
+        onMove?.Invoke();
         WorldObject.ChangePosition(pos);
     }
 
@@ -46,11 +48,21 @@ public class MovingCharacter : MonoBehaviour
     {
         public Vector3Int oldPos;
         public Vector3Int newPos;
+        public MovingCharacter MovingCharacter;
+        public WorldObject worldObject;
 
         public MoveEventArg(Vector3Int old, Vector3Int newPos)
         {
             this.oldPos = old;
             this.newPos = newPos;
+        }
+
+        public MoveEventArg(Vector3Int old, Vector3Int newPos, MovingCharacter movingCharacter, WorldObject worldObject)
+        {
+            this.oldPos = old;
+            this.newPos = newPos;
+            this.MovingCharacter = movingCharacter;
+            this.worldObject = worldObject;
         }
     }
 }

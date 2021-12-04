@@ -4,6 +4,7 @@ using System.Collections;
 [CreateAssetMenu(menuName = "GameObjects/TurnOrderController")]
 public class TurnOrderController : ScriptableObject
 {
+
     public void StartPlayerTurn()
     {
         OnTurnStarted?.Invoke(this, null);

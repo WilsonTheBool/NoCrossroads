@@ -7,6 +7,8 @@ public class NestBehaviour_CreateTarget: MonoBehaviour
 
     public int DestroyTurnDelay;
 
+    public int TargetMaxAgentCount;
+
     [HideInInspector]
     public NoizeGameWorldController NoizeGameWorldController;
 
@@ -18,12 +20,12 @@ public class NestBehaviour_CreateTarget: MonoBehaviour
 
     public AiAgentNest nest;
 
-    public int TargetMaxAgentCount;
+    
 
     private void Start()
     {
         NoizeGameWorldController = FindObjectOfType<NoizeGameWorldController>();
-        controller = FindObjectOfType<TurnTimerController>();
+        controller = TurnTimerController.instance;
 
         CreateTimer = controller.GetTimer(CreateTurnDelay);
         DestroyTimer = controller.GetTimer(CreateTurnDelay + DestroyTurnDelay);
@@ -59,7 +61,8 @@ public class NestBehaviour_CreateTarget: MonoBehaviour
     private void CreateTimer_OnEnd()
     {
         var target = NoizeGameWorldController.GetNearestNoizeStructure(nest.WorldObject.worldPosition);
-        print("new target:" + target.name);
+        
+        if(target != null)
         AddNewTarget(target.WorldObject.worldPosition);
     }
 }

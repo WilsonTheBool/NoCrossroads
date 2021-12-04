@@ -21,6 +21,8 @@ public class ShopItemPlacerController : MonoBehaviour
     public UnityEvent OnStartPlacement;
     public UnityEvent OnEndPlacement;
 
+    public string CantPlaceItem_error_text;
+
     private void Start()
     {
         gameWorldMapManager = GameWorldMapManager.instance;
@@ -77,14 +79,17 @@ public class ShopItemPlacerController : MonoBehaviour
         {
             ShopElement.ConfirmBuy();
             ShopElement.SpawnItem(pos);
+            EndSelectPlace();
         }
         else
         {
-            //play error sound or smth
+            OnCanNotPlaceItem.Invoke();
         }
 
-        EndSelectPlace();
+        
     }
+
+    public UnityEvent OnCanNotPlaceItem;
 
     public void UpdatePlacement(GameInputData data)
     {

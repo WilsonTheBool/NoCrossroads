@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 838d643cb251400428c87a4457488f8d, type: 3}
   m_Name: Enemy_DrawMoveArea
   m_EditorClassIdentifier: 
-  tileToDraw: {fileID: 11400000, guid: 8963a604e9ed3a84e8bca86d053bbd53, type: 2}
+  tileToDraw: {fileID: 11400000, guid: 7c671448243b08845a7e718ba672b46f, type: 2}

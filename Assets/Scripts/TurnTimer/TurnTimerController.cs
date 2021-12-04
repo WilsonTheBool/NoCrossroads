@@ -9,6 +9,20 @@ public class TurnTimerController : MonoBehaviour
 
     public event Action OnTick;
 
+    public static TurnTimerController instance;
+
+    private void Awake()
+    {
+        if(instance != null)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
     private void Start()
     {
         TurnOrderController.OnTurnEnded += TurnOrderController_OnTurnEnded;

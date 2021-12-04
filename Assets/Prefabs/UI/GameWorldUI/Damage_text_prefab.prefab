@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 13.4897, y: 5.5846}
+  m_AnchoredPosition: {x: 0.1125, y: 0}
+  m_SizeDelta: {x: 15.7391, y: 5.5846}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4898742278718063515
 CanvasRenderer:
@@ -151,6 +151,7 @@ MonoBehaviour:
   destroyDelay: 1.2
   movingVector: {x: 0, y: 1, z: 0}
   fadeAwaySpeed: 0.2
+  fadeInSpeeed: 1000
   CanvasGroup: {fileID: 4898742278718063512}
 --- !u!225 &4898742278718063512
 CanvasGroup:

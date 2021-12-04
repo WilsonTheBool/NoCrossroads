@@ -4,6 +4,8 @@ using System.Collections;
 
 public class WorldObject : MonoBehaviour
 {
+    public string typeName;
+
     public bool canMove;
 
     public Vector3Int worldPosition;
@@ -14,6 +16,19 @@ public class WorldObject : MonoBehaviour
 
     public bool blockMovement;
 
+    public bool pathableForPlayer;
+    public bool pathableForEnemy;
+
+    public UnityEvent OnSetUpComplete;
+
+    private void Start()
+    {
+        if (GameWorldMapManager.instance != null && GameWorldMapManager.instance.isSetUpComplete)
+        {
+            SetUp();
+        }
+    }
+
     public void SetUp()
     {
         if (mapManager == null)
@@ -22,7 +37,11 @@ public class WorldObject : MonoBehaviour
         }
 
         worldPosition = mapManager.GetTilePosition(this.transform.position);
+        OnSetUpComplete.Invoke();
+
         mapManager.AddWorldObject(this);
+
+        
     }
 
     public void ChangePosition(Vector3Int newPos)

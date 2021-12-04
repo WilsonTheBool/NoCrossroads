@@ -104,6 +104,12 @@ GameObject:
   - component: {fileID: 4135467767806403581}
   - component: {fileID: -1718492943725292454}
   - component: {fileID: -6850933027216987044}
+  - component: {fileID: -7200607616738448756}
+  - component: {fileID: -1665176666739708863}
+  - component: {fileID: 3953102472814310204}
+  - component: {fileID: -3614102989322119981}
+  - component: {fileID: 8201286720687458356}
+  - component: {fileID: -3251053425542592372}
   m_Layer: 0
   m_Name: orc_prefab
   m_TagString: Untagged
@@ -208,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28f8af21ae09c4cacca2188d34c40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeName: Orc
   canMove: 1
   worldPosition: {x: 0, y: 0, z: 0}
   OnPositionChnaged:
@@ -215,6 +222,11 @@ MonoBehaviour:
       m_Calls: []
   mapManager: {fileID: 0}
   blockMovement: 1
+  pathableForPlayer: 0
+  pathableForEnemy: 1
+  OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2761760127051881941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,7 +243,13 @@ MonoBehaviour:
   OnNewTurn:
     m_PersistentCalls:
       m_Calls: []
+  OnNewTurn_Late:
+    m_PersistentCalls:
+      m_Calls: []
   OnTurnEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTurnEnd_Late:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &3981488723267073607
@@ -256,6 +274,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isPlayerSide: 0
+  canAutoSelect: 0
+  WorldObject: {fileID: 0}
 --- !u!65 &7358631395537454674
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -281,8 +301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ec2bc4973ea0a4b983cb6c0ace94b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10
-  hp: 10
+  maxHp: 25
+  hp: 25
   OnDeath:
     m_PersistentCalls:
       m_Calls:
@@ -301,6 +321,42 @@ MonoBehaviour:
       - m_Target: {fileID: -1718492943725292454}
         m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
         m_MethodName: DeleteHealthBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3953102472814310204}
+        m_TargetAssemblyTypeName: CharacterAudioController, Assembly-CSharp
+        m_MethodName: PlayAudio_Death
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -3251053425542592372}
+        m_TargetAssemblyTypeName: CharacterUI_SpawnMovingImage, Assembly-CSharp
+        m_MethodName: Spawn_MovingImage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8201286720687458356}
+        m_TargetAssemblyTypeName: DropResourcesObject, Assembly-CSharp
+        m_MethodName: DropResources
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -337,6 +393,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3953102472814310204}
+        m_TargetAssemblyTypeName: CharacterAudioController, Assembly-CSharp
+        m_MethodName: PlayAudio_Hit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHealSelf:
     m_PersistentCalls:
       m_Calls: []
@@ -355,6 +423,7 @@ MonoBehaviour:
   targetRules:
   - {fileID: 11400000, guid: 2640fa16cbcb7a94a9a52675f1967436, type: 2}
   damage: 15
+  isRanged: 0
   GameWorldMapManager: {fileID: 0}
   OnAttackStart:
     m_PersistentCalls:
@@ -374,8 +443,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e3e189062375e40af17e8d0d62421b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePoints: 2
-  maxMovePoints: 2
+  onMove:
+    m_PersistentCalls:
+      m_Calls: []
+  movePoints: 3
+  maxMovePoints: 3
 --- !u!114 &-7280877034485768788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,8 +486,10 @@ MonoBehaviour:
   behaviourNodes:
   - {fileID: 11400000, guid: 561c5822df441994e9188ad871853d4e, type: 2}
   - {fileID: 11400000, guid: 43a6e07032a37f64faed09264f194b12, type: 2}
+  - {fileID: 11400000, guid: 96e156eb4fb0a2a42aff6583af736f6b, type: 2}
   - {fileID: 11400000, guid: f8385799818b2fd4a9f9c3121c2f96ad, type: 2}
   nest: {fileID: 0}
+  isPlayer: 0
 --- !u!114 &-1718492943725292454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,6 +505,9 @@ MonoBehaviour:
   GameWorldUIController: {fileID: 11400000, guid: d85f334486f0adc4da57f232b8a1076d, type: 2}
   HpBar_prefab: {fileID: 1795801909851451307, guid: 34b369a0eb91ffe418984643e8c2cb8d, type: 3}
   damageText_prefab: {fileID: 4898742278718063514, guid: c58ea78c0b3bd264dba402a66f2457be, type: 3}
+  exp_text_prefab: {fileID: 0}
+  levelUpText: {fileID: 0}
+  heal_text_prefab: {fileID: 0}
   owner: {fileID: 2761760127051881943}
 --- !u!114 &-6850933027216987044
 MonoBehaviour:
@@ -446,3 +523,148 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokePrefab: {fileID: 6864265418000636999, guid: ad350efe4b5bfc24b96464247cc0d46f, type: 3}
   destroySmokeDelay: 0.7
+--- !u!114 &-7200607616738448756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761760127051881939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1187ffe9a2231949835123d90ec2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spritesToHide:
+  - {fileID: 2761760127051881938}
+  - {fileID: 2761760125273801324}
+--- !u!114 &-1665176666739708863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761760127051881939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf1da239ca8efd848a15057ad1d7cacc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldObject: {fileID: 0}
+  OnFadeStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -7200607616738448756}
+        m_TargetAssemblyTypeName: HiddenObject, Assembly-CSharp
+        m_MethodName: Hide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -1718492943725292454}
+        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
+        m_MethodName: DeleteHealthBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnFadeEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -7200607616738448756}
+        m_TargetAssemblyTypeName: HiddenObject, Assembly-CSharp
+        m_MethodName: UnHide
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -1718492943725292454}
+        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
+        m_MethodName: Spawn_HPBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3953102472814310204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761760127051881939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd5e4d38a331944fa58da2484d1f9ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio_name_onHit: unit_hit
+  audio_name_onDeath: unit_death
+  audio_name_onMove: unit_move
+--- !u!114 &-3614102989322119981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761760127051881939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17323628f930ae143a67279174bd8bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldObject: {fileID: 2761760127051881940}
+  expDropAmmount: 10
+  expDropRange: 4
+  KillableCharacter: {fileID: 2761760127051881943}
+--- !u!114 &8201286720687458356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761760127051881939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5607774779ef1c5498ddc107976b7b0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourcesToDrop:
+  - data: {fileID: 11400000, guid: 529894480f8e0694095180fae7f7bf91, type: 2}
+    value: 5
+  GameResourceManager: {fileID: 0}
+--- !u!114 &-3251053425542592372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761760127051881939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e168b8a865e20774e88c3c76c3df06a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameWorldUIController: {fileID: 11400000, guid: d85f334486f0adc4da57f232b8a1076d, type: 2}
+  movingImagePrefab: {fileID: 5489366785557879863, guid: c04128a29a99dcf4395dcef71cfb5b79, type: 3}
+  spriteToAdd: {fileID: -5460880100892725343, guid: 1cd105610218e1c4d8b6012a2083374c, type: 3}
+  textToAdd: 5

@@ -24,12 +24,15 @@ public class SelectModule_Accept_Move : SelectModule
             selectEventArgs.GameWorldMapManager.pathTilemap.pathTilemap.ClearAllTiles();
             selectEventArgs.GameWorldMapManager.pathTilemap.SetPathTiles(selectEventArgs.MovingCharacter.UnitMovementData.GetPath(inputData.tileMousePosition));
         }
+       
+        
         
     }
 
     public override void OnSelect_End(GameInputData inputData, SelectEventArgs selectEventArgs)
     {
         selectEventArgs.GameWorldMapManager.pathTilemap.pathTilemap.ClearAllTiles();
+        
     }
 }
 

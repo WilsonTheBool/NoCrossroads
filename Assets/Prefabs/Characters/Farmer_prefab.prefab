@@ -104,6 +104,8 @@ GameObject:
   - component: {fileID: -2453799197162432393}
   - component: {fileID: -4683050725211541128}
   - component: {fileID: 9042654480199107126}
+  - component: {fileID: -4237369072586822326}
+  - component: {fileID: -1202545265449228309}
   m_Layer: 0
   m_Name: Farmer_prefab
   m_TagString: Untagged
@@ -209,6 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28f8af21ae09c4cacca2188d34c40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeName: Farmer
   canMove: 0
   worldPosition: {x: 0, y: 0, z: 0}
   OnPositionChnaged:
@@ -216,6 +219,11 @@ MonoBehaviour:
       m_Calls: []
   mapManager: {fileID: 0}
   blockMovement: 1
+  pathableForPlayer: 0
+  pathableForEnemy: 0
+  OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5796761391248012420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,19 +239,10 @@ MonoBehaviour:
   controller: {fileID: 11400000, guid: 464bb92e4beac884db33557143f3ed91, type: 2}
   OnNewTurn:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -2453799197162432393}
-        m_TargetAssemblyTypeName: Spending_Structure, Assembly-CSharp
-        m_MethodName: TryEat
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  OnNewTurn_Late:
+    m_PersistentCalls:
+      m_Calls: []
   OnTurnEnd:
     m_PersistentCalls:
       m_Calls:
@@ -259,6 +258,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -1202545265449228309}
+        m_TargetAssemblyTypeName: CharacterUI_SpawnMovingImage, Assembly-CSharp
+        m_MethodName: Spawn_MovingImage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTurnEnd_Late:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5796761391248012423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,6 +324,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isPlayerSide: 1
+  canAutoSelect: 0
+  WorldObject: {fileID: 0}
 --- !u!65 &1170541943328255747
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -357,7 +373,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5796761391248012418}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f44b4ccf89cec8243a881d8a9e6b3791, type: 3}
   m_Name: 
@@ -398,6 +414,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldObject: {fileID: 5796761391248012421}
   noizeLevel: 5
+--- !u!114 &-4237369072586822326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5796761391248012418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcc69f115d1894542bfacd46369b0481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovingCharacter: {fileID: 0}
+  GameWorld_ExplorationController: {fileID: 0}
+  ExploreRange: 2
+--- !u!114 &-1202545265449228309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5796761391248012418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e168b8a865e20774e88c3c76c3df06a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameWorldUIController: {fileID: 11400000, guid: d85f334486f0adc4da57f232b8a1076d, type: 2}
+  movingImagePrefab: {fileID: 5489366785557879863, guid: c04128a29a99dcf4395dcef71cfb5b79, type: 3}
+  spriteToAdd: {fileID: 6602159139422096902, guid: 1cd105610218e1c4d8b6012a2083374c, type: 3}
+  textToAdd: 
 --- !u!1 &6027658248704976550
 GameObject:
   m_ObjectHideFlags: 0

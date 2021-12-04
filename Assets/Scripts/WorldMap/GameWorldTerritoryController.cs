@@ -1,21 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-public class GameWorldTerritoryController : MonoBehaviour
+public class GameWorldTerritoryController : GameWorldMap_Dependable
 {
     GameWorldMapManager GameWorldMapManager;
 
     public List<TerritoryCreator> territoryCreators;
 
 
-
-    private void Start()
+    public override void SetUp()
     {
         GameWorldMapManager = GameWorldMapManager.instance;
         GameWorldMapManager.OnUnitCreate += GameWorldMapManager_OnUnitCreate;
         GameWorldMapManager.OnUnitDeath += GameWorldMapManager_OnUnitDeath;
+    }
 
-        territoryCreators.AddRange(FindObjectsOfType<TerritoryCreator>());
+    private void Start()
+    {
+        
+
+       
     }
 
     public void ReclaimTerritory(Vector3Int[] territory)

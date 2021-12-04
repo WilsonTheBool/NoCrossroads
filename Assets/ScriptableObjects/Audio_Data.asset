@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0db872de9940bf4a89064af2f9893c2, type: 3}
+  m_Name: Audio_Data
+  m_EditorClassIdentifier: 
+  audioHolders:
+  - AudioClip: {fileID: 8300000, guid: f48bf987efe7cbf40964af90feb195a4, type: 3}
+    name: unit_buy
+  - AudioClip: {fileID: 8300000, guid: 04ded0ef53db87448aa59f971b70d3eb, type: 3}
+    name: unit_hit
+  - AudioClip: {fileID: 8300000, guid: e0e97a2f091b09c4fbcc235671eee29f, type: 3}
+    name: unit_move
+  - AudioClip: {fileID: 8300000, guid: e47677d99ca0f614b806ce4ed6014f20, type: 3}
+    name: unit_death
+  - AudioClip: {fileID: 8300000, guid: e47677d99ca0f614b806ce4ed6014f20, type: 3}
+    name: buy_error

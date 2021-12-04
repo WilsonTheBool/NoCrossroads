@@ -10,9 +10,12 @@ public class UnitSelectWindowController : MonoBehaviour
 
     public TMPro.TMP_Text attackText;
 
-    public TMPro.TMP_Text moveText;
-
     public TMPro.TMP_Text nameText;
+
+    public TMPro.TMP_Text expText;
+    public TMPro.TMP_Text lvlText;
+
+
 
     public void SetUpWindow(SelectableObject unit)
     {
@@ -26,8 +29,34 @@ public class UnitSelectWindowController : MonoBehaviour
         {
             hpText.text = killableCharacter.hp.ToString() + "/" + killableCharacter.maxHp.ToString();
         }
+        else
+        {
+            hpText.text = "0";
+        }
 
+        AttackingCharacter attackingCharacter = unit.GetComponent<AttackingCharacter>();
 
+        if (attackingCharacter != null)
+        {
+            attackText.text = attackingCharacter.damage.ToString();
+        }
+        else
+        {
+            attackText.text = "0";
+        }
+
+        LevelingCharacter levelingCharacter = unit.GetComponent<LevelingCharacter>();
+
+        if(levelingCharacter != null)
+        {
+            expText.text = "exp: " + Mathf.RoundToInt(levelingCharacter.curentExp).ToString() + "/" + Mathf.RoundToInt(levelingCharacter.newLevelExp).ToString();
+            lvlText.text = "lvl " + levelingCharacter.curentLevel;
+        }
+        else
+        {
+            expText.text = "";
+            lvlText.text = "";
+        }
     }
 
 }

@@ -18,11 +18,15 @@ GameObject:
   - component: {fileID: 1346813427184095976}
   - component: {fileID: 3468627774947244687}
   - component: {fileID: 7024771231874943642}
-  - component: {fileID: 1373348890611692419}
   - component: {fileID: -8275723968767761155}
   - component: {fileID: -4314727651721478199}
   - component: {fileID: -1325378971586401911}
   - component: {fileID: -8634114805996030363}
+  - component: {fileID: 1290670381296194417}
+  - component: {fileID: 4416340393219205976}
+  - component: {fileID: 7617493161861414390}
+  - component: {fileID: 5598240143822690301}
+  - component: {fileID: 3696493029508092334}
   m_Layer: 0
   m_Name: worker_prefab
   m_TagString: Untagged
@@ -128,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28f8af21ae09c4cacca2188d34c40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeName: Worker
   canMove: 0
   worldPosition: {x: 0, y: 0, z: 0}
   OnPositionChnaged:
@@ -135,6 +140,11 @@ MonoBehaviour:
       m_Calls: []
   mapManager: {fileID: 0}
   blockMovement: 1
+  pathableForPlayer: 0
+  pathableForEnemy: 0
+  OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2391871275883942173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,19 +160,10 @@ MonoBehaviour:
   controller: {fileID: 11400000, guid: 464bb92e4beac884db33557143f3ed91, type: 2}
   OnNewTurn:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1373348890611692419}
-        m_TargetAssemblyTypeName: Spending_Structure, Assembly-CSharp
-        m_MethodName: TryEat
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  OnNewTurn_Late:
+    m_PersistentCalls:
+      m_Calls: []
   OnTurnEnd:
     m_PersistentCalls:
       m_Calls:
@@ -178,6 +179,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4416340393219205976}
+        m_TargetAssemblyTypeName: CharacterUI_SpawnMovingImage, Assembly-CSharp
+        m_MethodName: Spawn_MovingImage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTurnEnd_Late:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2391871275883942174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +259,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isPlayerSide: 1
+  canAutoSelect: 0
+  WorldObject: {fileID: 0}
 --- !u!65 &7024771231874943642
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -256,24 +274,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6613064, y: 0.68493164, z: 0.2}
   m_Center: {x: -0.15590644, y: -0.10753435, z: 0}
---- !u!114 &1373348890611692419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2391871275883942171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f44b4ccf89cec8243a881d8a9e6b3791, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resourcesSpendPerTurn:
-  - data: {fileID: 11400000, guid: 8af0702f014885c4387f483801aef08d, type: 2}
-    value: 1
-  OnCantEat:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &-8275723968767761155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,9 +315,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7617493161861414390}
+        m_TargetAssemblyTypeName: CharacterAudioController, Assembly-CSharp
+        m_MethodName: PlayAudio_Death
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnTakeDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7617493161861414390}
+        m_TargetAssemblyTypeName: CharacterAudioController, Assembly-CSharp
+        m_MethodName: PlayAudio_Hit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHealSelf:
     m_PersistentCalls:
       m_Calls: []
@@ -367,6 +391,85 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldObject: {fileID: 2391871275883942172}
   noizeLevel: 5
+--- !u!114 &1290670381296194417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391871275883942171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcc69f115d1894542bfacd46369b0481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovingCharacter: {fileID: 0}
+  GameWorld_ExplorationController: {fileID: 0}
+  worldObject: {fileID: 0}
+  ExploreRange: 3
+--- !u!114 &4416340393219205976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391871275883942171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e168b8a865e20774e88c3c76c3df06a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameWorldUIController: {fileID: 11400000, guid: d85f334486f0adc4da57f232b8a1076d, type: 2}
+  movingImagePrefab: {fileID: 5489366785557879863, guid: c04128a29a99dcf4395dcef71cfb5b79, type: 3}
+  spriteToAdd: {fileID: -1231431030048557775, guid: 1cd105610218e1c4d8b6012a2083374c, type: 3}
+  textToAdd: 
+--- !u!114 &7617493161861414390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391871275883942171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd5e4d38a331944fa58da2484d1f9ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio_name_onHit: unit_hit
+  audio_name_onDeath: unit_death
+  audio_name_onMove: unit_move
+--- !u!114 &5598240143822690301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391871275883942171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2bc622a680ee2469ffa2bc7512df88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Miner_Structure: {fileID: 2391871275883942175}
+  CharacterUI_SpawnMovingImage: {fileID: 4416340393219205976}
+--- !u!114 &3696493029508092334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391871275883942171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df459f45fca8752428f9b6a412e3c991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldObject: {fileID: 0}
+  AttackingCharacter: {fileID: 0}
+  KillableCharacter: {fileID: 0}
+  MovingCharacter: {fileID: 0}
+  TerritoryCreator: {fileID: 0}
+  Structure: {fileID: 2391871275883942175}
 --- !u!1 &2391871276522049190
 GameObject:
   m_ObjectHideFlags: 0

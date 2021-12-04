@@ -13,19 +13,31 @@ public class CharacterUIController : MonoBehaviour
     TMPro.TMP_Text damageText_prefab;
 
     [SerializeField]
+    TMPro.TMP_Text exp_text_prefab;
+
+    [SerializeField]
+    TMPro.TMP_Text levelUpText;
+
+
+    [SerializeField]
+    TMPro.TMP_Text heal_text_prefab;
+
+    [SerializeField]
     KillableCharacter owner;
 
     GameWorldUI_HealthBar healthBar;
 
     private void Start()
     {
-        Spawn_HPBar();
+       
     }
 
     public void DeleteHealthBar()
     {
         if (healthBar != null)
         Destroy(healthBar.gameObject);
+
+        healthBar = null;
     }
 
     public void Spawn_HPBar()
@@ -37,5 +49,20 @@ public class CharacterUIController : MonoBehaviour
     public void Spawn_DamageText(KillableCharacter.DamageEventArgs args)
     {
         Instantiate(damageText_prefab, this.transform.position, Quaternion.Euler(0, 0, 0), GameWorldUIController.GetWorldCanvas().transform).text = args.damage.ToString();
+    }
+
+    public void Spawn_ExpText(int value)
+    {
+        Instantiate(exp_text_prefab, this.transform.position, Quaternion.Euler(0, 0, 0), GameWorldUIController.GetWorldCanvas().transform).text = value.ToString() + " exp";
+    }
+
+    public void Spawn_HealText(KillableCharacter.DamageEventArgs args)
+    {
+        Instantiate(heal_text_prefab, this.transform.position, Quaternion.Euler(0, 0, 0), GameWorldUIController.GetWorldCanvas().transform).text = args.damage.ToString();
+    }
+
+    public void Spawn_LevelUp()
+    {
+        Instantiate(levelUpText, this.transform.position, Quaternion.Euler(0, 0, 0), GameWorldUIController.GetWorldCanvas().transform);
     }
 }

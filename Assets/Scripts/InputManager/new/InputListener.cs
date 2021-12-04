@@ -57,6 +57,7 @@ public class InputListener : MonoBehaviour
 
     public void UpdateInputEvents()
     {
+        curentInputData.mouseMositionScreen = Input.mousePosition;
         curentInputData.worldMousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
         curentInputData.worldMousePosition -= new Vector3(0, 0, curentInputData.worldMousePosition.z);
 

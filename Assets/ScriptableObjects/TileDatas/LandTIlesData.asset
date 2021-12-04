@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   landTiles:
   - {fileID: 11400000, guid: caaf183b48c66ca4f8a7f2adeb2b12f5, type: 2}
+  - {fileID: 11400000, guid: 097e436feb4d374428ccbbc4c6bd84ae, type: 2}
   waterTiles:
   - {fileID: 11400000, guid: dd6e416390758c24e8e43e5b3e0be960, type: 2}
+  - {fileID: 11400000, guid: 66a4ca27bd46ab144b258985effb2d04, type: 2}

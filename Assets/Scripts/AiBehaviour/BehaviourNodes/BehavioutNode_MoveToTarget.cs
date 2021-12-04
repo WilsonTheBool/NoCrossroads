@@ -6,11 +6,12 @@ public class BehavioutNode_MoveToTarget : BehaviourNode
 {
     public override void Activate(AiBehaviourController controller, AiAgent owner)
     {
-        owner.MovingCharacter.UnitMovementData.SetUp(controller.NewGameMovementController, owner.WorldObject.worldPosition, owner.MovingCharacter.movePoints);
+        owner.MovingCharacter.UnitMovementData.SetUp(controller.NewGameMovementController, owner.WorldObject.worldPosition, UnitMovementData.UnitsVisionRange);
 
-        Vector3Int[] movingArea = owner.MovingCharacter.UnitMovementData.GetMovementArea();
+        Vector3Int[] visionArea = owner.MovingCharacter.UnitMovementData.GetMovementArea();
+       
 
-        GetMovePosition(owner.curentTarget.targetPos, movingArea, out Vector3Int movePos);
+        GetMovePosition_Move(owner.curentTarget.targetPos, visionArea, owner.MovingCharacter, out Vector3Int movePos);
 
         owner.MovingCharacter.Move(movePos, 0);
     }
@@ -25,7 +26,7 @@ public class BehavioutNode_MoveToTarget : BehaviourNode
         {
             if (owner.nest != null && owner.nest.curentTarget != null && owner.nest.curentTarget.CanAddAgent())
             {
-                Debug.Log("Add agent:" + owner.name);
+               
                 owner.curentTarget = owner.nest.curentTarget;
                 owner.curentTarget.AddAgent();
                 return true;

@@ -13,6 +13,16 @@ public class SelectableObject : MonoBehaviour
 
     public bool isPlayerSide;
 
+    public bool canAutoSelect;
+
+    [HideInInspector]
+    public WorldObject WorldObject;
+
+    private void Awake()
+    {
+        WorldObject = GetComponent<WorldObject>();
+    }
+
     public void Select_Start(GameInputData data, SelectModule.SelectEventArgs selectEventArgs)
     {
         foreach(SelectModule module in selectModules)

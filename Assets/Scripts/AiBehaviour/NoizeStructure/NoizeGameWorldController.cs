@@ -1,13 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class NoizeGameWorldController : MonoBehaviour
+public class NoizeGameWorldController : GameWorldMap_Dependable
 {
     GameWorldMapManager GameWorldMapManager;
 
     private List<NoizeStructure> noizeStructures = new List<NoizeStructure>();
 
     private void Start()
+    {
+        
+    }
+
+    public override void SetUp()
     {
         GameWorldMapManager = GameWorldMapManager.instance;
         GameWorldMapManager.OnUnitCreate += GameWorldMapManager_OnUnitCreate;

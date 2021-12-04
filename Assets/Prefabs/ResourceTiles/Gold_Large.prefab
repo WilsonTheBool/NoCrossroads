@@ -134,6 +134,8 @@ MonoBehaviour:
       m_Calls: []
   mapManager: {fileID: 0}
   blockMovement: 1
+  pathableForPlayer: 0
+  pathableForEnemy: 0
 --- !u!114 &291227937815370027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +194,8 @@ GameObject:
   - component: {fileID: 6061842614176469605}
   - component: {fileID: 5718984562651713081}
   - component: {fileID: 2852697256728150793}
+  - component: {fileID: -8132748649891118643}
+  - component: {fileID: -942557937601675137}
   m_Layer: 0
   m_Name: Gold_Large
   m_TagString: Untagged
@@ -286,6 +290,8 @@ MonoBehaviour:
       m_Calls: []
   mapManager: {fileID: 0}
   blockMovement: 1
+  pathableForPlayer: 0
+  pathableForEnemy: 0
 --- !u!114 &5718984562651713081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +337,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IconObject: {fileID: 1035820543802738848}
+--- !u!114 &-8132748649891118643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5718984562651713076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85eb0a46647510245926499b4cbe065c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FadingColor: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 0.88235295}
+  NormalColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &-942557937601675137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5718984562651713076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf1da239ca8efd848a15057ad1d7cacc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnFadeStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8132748649891118643}
+        m_TargetAssemblyTypeName: FadingObject, Assembly-CSharp
+        m_MethodName: Fade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnFadeEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8132748649891118643}
+        m_TargetAssemblyTypeName: FadingObject, Assembly-CSharp
+        m_MethodName: UnFade
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6049756160188243447
 GameObject:
   m_ObjectHideFlags: 0

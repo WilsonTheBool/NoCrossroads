@@ -24,6 +24,12 @@ public class CharacterDeathController : MonoBehaviour
     {
         WorldObject.RemoveFromWorld();
 
+        BoxCollider boxCollider = GetComponent<BoxCollider>();
+        if(boxCollider != null)
+        {
+            boxCollider.enabled = false;
+        }
+
         StartCoroutine(DeathCo());
     }
 

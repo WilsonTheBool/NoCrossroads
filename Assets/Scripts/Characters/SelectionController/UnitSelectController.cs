@@ -11,7 +11,6 @@ public class UnitSelectController : MonoBehaviour
 
     public SelectableObject curentSelect;
 
-    public GameUnitMovementController GameUnitMovementController;
     public NewGameMovementController NewGameMovementController;
     public SpecialTilemapManager specialTilemapManager;
     public GameWorldMapManager GameWorldMapManager;
@@ -19,7 +18,7 @@ public class UnitSelectController : MonoBehaviour
     private SelectModule.SelectEventArgs curentSelectEventArgs;
     private void Start()
     {
-        NewGameMovementController = FindObjectOfType<NewGameMovementController>();
+        
         GameWorldMapManager = GameWorldMapManager.instance;
     }
     /// <summary>
@@ -28,45 +27,85 @@ public class UnitSelectController : MonoBehaviour
     /// <param name="inputData"></param>
     public void OnTrySelect(GameInputData inputData)
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (!inputData.isOverUI)
+        {
+
+       
+        Ray ray = Camera.main.ScreenPointToRay(inputData.mouseMositionScreen);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 100))
-        {
-            SelectableObject selectableObject = hit.collider.GetComponent<SelectableObject>();
-
-            if (selectableObject != null && selectableObject != curentSelect)
+            if (Physics.Raycast(ray, out hit, 100))
             {
-                if (curentSelect != null)
-                    OnRemoveSelect.Invoke(curentSelect);
+                SelectableObject selectableObject = hit.collider.GetComponent<SelectableObject>();
 
-                specialTilemapManager.ClearTilemap();
-                curentSelect = selectableObject;
-
-                curentSelectEventArgs = new SelectModule.SelectEventArgs
+                if (selectableObject != null && selectableObject != curentSelect)
                 {
-                    SelectableObject = curentSelect,
-                    //GameUnitMovementController = GameUnitMovementController,
-                    GameWorldMapManager = this.GameWorldMapManager,
-                    NewGameMovementController = this.NewGameMovementController,
-                    SpecialTilemapManager = this.specialTilemapManager,
-                    MovingCharacter = curentSelect.GetComponent<MovingCharacter>(),
-                    AttackingCharacter = curentSelect.GetComponent<AttackingCharacter>()
-                };
+                    if (curentSelect != null)
+                        OnRemoveSelect.Invoke(curentSelect);
 
-                curentSelect.Select_Start(inputData, curentSelectEventArgs);
+                    specialTilemapManager.ClearTilemap();
+                    specialTilemapManager.aboveSpecialTilemap.ClearAllTiles();
+                    curentSelect = selectableObject;
 
-                //MovingCharacter movingCharacter = hit.collider.GetComponent<MovingCharacter>();
+                    curentSelectEventArgs = new SelectModule.SelectEventArgs
+                    {
+                        SelectableObject = curentSelect,
+                        //GameUnitMovementController = GameUnitMovementController,
+                        GameWorldMapManager = this.GameWorldMapManager,
+                        NewGameMovementController = this.NewGameMovementController,
+                        SpecialTilemapManager = this.specialTilemapManager,
+                        MovingCharacter = curentSelect.GetComponent<MovingCharacter>(),
+                        AttackingCharacter = curentSelect.GetComponent<AttackingCharacter>()
+                    };
 
-                //if (movingCharacter != null)
-                //{
-                //    DrawMoveRange(inputData.tileMousePosition, movingCharacter.movePoints);
-                //}
+                    curentSelect.Select_Start(inputData, curentSelectEventArgs);
 
-                OnNewSelect.Invoke(curentSelect);
+                    //MovingCharacter movingCharacter = hit.collider.GetComponent<MovingCharacter>();
+
+                    //if (movingCharacter != null)
+                    //{
+                    //    DrawMoveRange(inputData.tileMousePosition, movingCharacter.movePoints);
+                    //}
+
+                    OnNewSelect.Invoke(curentSelect);
+                }
+
             }
+        }
+    }
 
-           
+    public void OnTrySelect(SelectableObject selectableObject)
+    {
+        if (selectableObject != null && selectableObject != curentSelect)
+        {
+            if (curentSelect != null)
+                OnRemoveSelect.Invoke(curentSelect);
+
+            specialTilemapManager.ClearTilemap();
+            specialTilemapManager.aboveSpecialTilemap.ClearAllTiles();
+            curentSelect = selectableObject;
+
+            GameInputData curentInputData = new GameInputData
+            {
+                tileMousePosition = selectableObject.WorldObject.worldPosition
+
+            };
+
+
+            curentSelectEventArgs = new SelectModule.SelectEventArgs
+            {
+                SelectableObject = curentSelect,
+                
+                GameWorldMapManager = this.GameWorldMapManager,
+                NewGameMovementController = this.NewGameMovementController,
+                SpecialTilemapManager = this.specialTilemapManager,
+                MovingCharacter = curentSelect.GetComponent<MovingCharacter>(),
+                AttackingCharacter = curentSelect.GetComponent<AttackingCharacter>()
+            };
+
+            curentSelect.Select_Start(curentInputData, curentSelectEventArgs);
+
+            OnNewSelect.Invoke(curentSelect);
         }
     }
 
@@ -75,20 +114,21 @@ public class UnitSelectController : MonoBehaviour
         if(curentSelect != null)
         {
             curentSelect.Seleect_Accept(data, curentSelectEventArgs);
-            RemoveSelected(data);
+
+            MovingCharacter movingCharacter = curentSelect.GetComponent<MovingCharacter>();
+            if (movingCharacter != null && movingCharacter.movePoints > 0)
+            {
+                var select = curentSelect;
+                RemoveSelected(data);
+                OnTrySelect(select);
+            }
+            else
+            {
+                RemoveSelected(data);
+            }
+            
 
         }
-    }
-
-    public void DrawMoveRange(Vector3Int startPos, int chSpeed)
-    {
-       Vector3Int[] moveRange = GameUnitMovementController.GetMovementCircle(startPos, chSpeed);
-
-        foreach(Vector3Int vec in moveRange)
-        {
-            specialTilemapManager.DrawTile_CanPlaceTile(vec);
-        }
-        
     }
 
     public void SetSelectUI(SelectableObject selectableObject)

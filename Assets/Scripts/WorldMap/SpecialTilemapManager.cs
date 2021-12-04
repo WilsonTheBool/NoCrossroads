@@ -6,6 +6,8 @@ public class SpecialTilemapManager : MonoBehaviour
 {
     public Tilemap specialTilemap;
 
+    public Tilemap aboveSpecialTilemap;
+
     [SerializeField]
     SpecialTilesData_SO SpecialTilesData_SO;
 

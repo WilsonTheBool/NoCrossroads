@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class GameResourceManager : MonoBehaviour
+public class GameResourceManager : GameWorldMap_Dependable
 {
     public static GameResourceManager instance;
 
@@ -29,6 +29,11 @@ public class GameResourceManager : MonoBehaviour
 
     private void Start()
     {
+       
+    }
+
+    public override void SetUp()
+    {
         GameWorldMapManager = GameWorldMapManager.instance;
         GameWorldMapManager.OnUnitCreate += GameWorldMapManager_OnUnitCreate;
         GameWorldMapManager.OnUnitDeath += GameWorldMapManager_OnUnitDeath;
@@ -43,9 +48,9 @@ public class GameResourceManager : MonoBehaviour
             {
                 foreach (ResourceHolder holder in spending_Structure.resourcesSpendPerTurn)
                 {
-                    ResourceHolder found = TryFindHolder_PerTurn(holder.data);
+                    //ResourceHolder found = TryFindHolder_PerTurn(holder.data);
 
-                    found.value += holder.value;
+                    AddResourcePerTurn(holder.data, holder.value);
                 }
             }
 
@@ -53,9 +58,8 @@ public class GameResourceManager : MonoBehaviour
             if (miner_Structure != null)
             {
                 ResourceHolder holder = miner_Structure.GetMineAmmount();
-                ResourceHolder found = TryFindHolder_PerTurn(holder.data);
-
-                found.value -= holder.value;
+               // ResourceHolder found = TryFindHolder_PerTurn(holder.data);
+                AddResourcePerTurn(holder.data, -holder.value);
             }
         }
     }
@@ -80,6 +84,11 @@ public class GameResourceManager : MonoBehaviour
                 AddResourcePerTurn(holder.data, holder.value);
             }
         }
+    }
+
+    public void UpdateResourcePerTurn(ResourceHolder oldValue, ResourceHolder newValue)
+    {
+
     }
 
     public float GetResourceCount(ResourceData_SO res)

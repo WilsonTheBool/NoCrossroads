@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 public class UnitMovementData
 {
+    public static int UnitsVisionRange = 14;
+
     List<UnitMovementCell> moveAreaPositions;
 
     List<Vector3Int> unitsInMovingArea = new List<Vector3Int>();
-
-    GameUnitMovementController gameUnitMovementController;
 
     private UnitMovementCell GetCell(Vector3Int globalPos)
     {
@@ -40,6 +40,24 @@ public class UnitMovementData
         return path.ToArray();
     }
 
+    public Vector3Int GetPathMaxRange(Vector3Int globalEndPos, int maxRange)
+    {
+        List<Vector3Int> path = new List<Vector3Int>();
+        UnitMovementCell parent = GetCell(globalEndPos);
+        while (parent != null)
+        {
+            if(parent.moveLength <= maxRange)
+            {
+                
+                return parent.position;
+            }
+
+            parent = parent.parent;
+        }
+
+        return new Vector3Int(0, 0, 0);
+    }
+
     public int GetPathCost(Vector3Int globalPos)
     {
         return GetCell(globalPos).moveLength;
@@ -51,6 +69,20 @@ public class UnitMovementData
 
         foreach(UnitMovementCell cell in moveAreaPositions)
         {
+            if (cell.canStand)
+            area.Add(cell.position);
+        }
+
+        return area.ToArray();
+    }
+
+    public Vector3Int[] GetMovementArea(int Speed)
+    {
+        List<Vector3Int> area = new List<Vector3Int>(moveAreaPositions.Count);
+
+        foreach (UnitMovementCell cell in moveAreaPositions)
+        {
+            if(cell.moveLength <= Speed && cell.canStand)
             area.Add(cell.position);
         }
 
@@ -72,6 +104,7 @@ public class UnitMovementData
         List<UnitMovementCell> tempAdd = new List<UnitMovementCell>();
         unitsInMovingArea.Clear();
         var startCell = new UnitMovementCell(0, originPos);
+        startCell.canStand = true;
         allNodes.Add(startCell);
         nodsToLook.Add(startCell);
 
@@ -86,7 +119,7 @@ public class UnitMovementData
                         UnitMovementCell foundCell = GetCell(vec);
                         if(foundCell == null)
                         {
-                            var nCell = new UnitMovementCell(cell.moveLength + 1, vec, cell);
+                            var nCell = new UnitMovementCell(cell.moveLength + 1, vec, cell, !controller.IsPathable(vec));
                             tempAdd.Add(nCell);
                             allNodes.Add(nCell);
                         }
@@ -102,6 +135,7 @@ public class UnitMovementData
                         }
                     }
 
+                    if(!controller.IsPathable(cell.position) || cell.position == startCell.position)
                     foreach(Vector3Int vec in controller.GetBlockingNeigbours(cell.position))
                     {
                         if (!unitsInMovingArea.Contains(vec))
@@ -146,6 +180,8 @@ public class UnitMovementData
 
         public UnitMovementCell parent;
 
+        public bool canStand;
+
         public UnitMovementCell(int moveLength, Vector3Int position)
         {
             this.moveLength = moveLength;
@@ -153,11 +189,12 @@ public class UnitMovementData
             this.parent = null;
         }
 
-        public UnitMovementCell(int moveLength, Vector3Int position, UnitMovementCell parent)
+        public UnitMovementCell(int moveLength, Vector3Int position, UnitMovementCell parent, bool canStand)
         {
             this.moveLength = moveLength;
             this.position = position;
             this.parent = parent;
+            this.canStand = canStand;
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class AiBehaviourController : MonoBehaviour
+public class AiBehaviourController : GameWorldMap_Dependable
 {
     public static AiBehaviourController instance;
 
@@ -26,6 +26,8 @@ public class AiBehaviourController : MonoBehaviour
 
     public List<AiTargetData> AllTargetsOnMap = new List<AiTargetData>();
 
+    public Player_AIBehaviourController Player_AIBehaviourController;
+
     private void Awake()
     {
         if (instance != null)
@@ -38,7 +40,13 @@ public class AiBehaviourController : MonoBehaviour
             instance = this;
         }
 
-        GameWorldMapManager = GetComponentInParent<GameWorldMapManager>();
+       
+    }
+
+    public override void SetUp()
+    {
+        GameWorldMapManager = GameWorldMapManager.instance;
+        Player_AIBehaviourController = Player_AIBehaviourController.instance;
         GameWorldMapManager.OnUnitCreate += GameWorldMapManager_OnUnitCreate;
         GameWorldMapManager.OnUnitDeath += GameWorldMapManager_OnUnitDeath;
         turnOrderController.OnTurnEnded += TurnOrderController_OnTurnEnded;
@@ -46,9 +54,7 @@ public class AiBehaviourController : MonoBehaviour
 
     private void Start()
     {
-
-
-       
+        
     }
 
     private void TurnOrderController_OnTurnEnded(object sender, System.EventArgs e)
@@ -61,7 +67,7 @@ public class AiBehaviourController : MonoBehaviour
     {
         AiAgent agent = e.worldObject.GetComponent<AiAgent>();
 
-        if (agent != null)
+        if (agent != null && !agent.isPlayer)
         {
             agentsToDelete.Add(agent);
         }
@@ -81,7 +87,7 @@ public class AiBehaviourController : MonoBehaviour
     {
         AiAgent agent = e.worldObject.GetComponent<AiAgent>();
 
-        if(agent != null)
+        if(agent != null && !agent.isPlayer)
         {
             aiAgents.Add(agent);
         }
@@ -109,7 +115,10 @@ public class AiBehaviourController : MonoBehaviour
     private void EndAITurn()
     {
         OnAiTurnEnd.Invoke();
-        turnOrderController.StartPlayerTurn();
+
+        Player_AIBehaviourController.StartAITurn();
+
+        //turnOrderController.StartPlayerTurn();
     }
 
     private IEnumerator AiTurnCo()

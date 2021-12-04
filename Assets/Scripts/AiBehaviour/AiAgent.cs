@@ -20,6 +20,8 @@ public class AiAgent : MonoBehaviour
 
     public AiAgentNest.NestTarget curentTarget;
 
+    public bool isPlayer;
+
     public float GetActionDelay()
     {
         foreach (BehaviourNode node in behaviourNodes)

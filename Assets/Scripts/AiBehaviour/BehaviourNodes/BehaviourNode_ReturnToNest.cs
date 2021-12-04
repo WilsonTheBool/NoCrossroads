@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[CreateAssetMenu(menuName = "Ai system/BehaviourNodes/Return To nest")]
 public class BehaviourNode_ReturnToNest : BehaviourNode
 {
     public float maxDistanceFromNest;
@@ -11,7 +12,7 @@ public class BehaviourNode_ReturnToNest : BehaviourNode
 
         Vector3Int[] movingArea = owner.MovingCharacter.UnitMovementData.GetMovementArea();
 
-        GetMovePosition(owner.nest.WorldObject.worldPosition, movingArea, out Vector3Int movePos);
+        GetMovePosition(owner.nest.WorldObject.worldPosition, movingArea, owner.MovingCharacter,  out Vector3Int movePos);
 
         owner.MovingCharacter.Move(movePos, 0);
 

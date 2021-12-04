@@ -9,6 +9,13 @@ namespace Assets.Scripts.Debug
 
         public TurnOrderController TurnOrderController;
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                SwapTurn();
+            }
+        }
         private void Start()
         {
             TurnOrderController.OnTurnStarted += TurnOrderController_OnTurnStarted;

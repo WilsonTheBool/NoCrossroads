@@ -17,13 +17,23 @@ public class ShopElement : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     public ShopItem_DescriptionManager descriptionManager;
     public ShopItemPlacerController ShopItemPlacerController;
 
+    public PrefabSpawner prefabSpawner;
+
     [SerializeField]
     public GameObject itemPrefab;
+
+    public bool isGameWorldItem;
+
+
+
+    public UnityEngine.Events.UnityEvent OnBuyItem;
+    public UnityEngine.Events.UnityEvent OnCantBuyItem;
 
     private void Start()
     {
         GameWorldMapManager = GameWorldMapManager.instance;
         GameResourceManager = GameResourceManager.instance;
+        prefabSpawner = PrefabSpawner.instance;
     }
 
     public void ShowDescription()
@@ -40,11 +50,19 @@ public class ShopElement : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     {
         if (CanBuyItem())
         {
-            ShopItemPlacerController.StartPlacment(this);
+            if (isGameWorldItem)
+            {
+                ShopItemPlacerController.StartPlacment(this);
+            }
+            else
+            {
+                ConfirmBuy();
+            }
+            
             return true;
         }
 
-
+        OnCantBuyItem?.Invoke();
         return false;
     }
 
@@ -68,12 +86,18 @@ public class ShopElement : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             
             GameResourceManager.RemoveResource(holder.data, holder.value);
+
         }
+
+        OnBuyItem?.Invoke();
     }
 
     public void SpawnItem(Vector3Int position)
     {
-        Instantiate(itemPrefab, GameWorldMapManager.GetTileCenterInWorld(position), Quaternion.Euler(0, 0, 0));
+        string typeName = itemPrefab.GetComponent<WorldObject>().typeName;
+        prefabSpawner.InstansiatePPrefab(typeName, GameWorldMapManager.GetTileCenterInWorld(position));
+        
+        //Instantiate(itemPrefab, GameWorldMapManager.GetTileCenterInWorld(position), Quaternion.Euler(0, 0, 0));
     }
 
     public void OnPointerClick(PointerEventData eventData)
