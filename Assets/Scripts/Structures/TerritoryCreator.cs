@@ -12,11 +12,11 @@ public class TerritoryCreator : MonoBehaviour
 
     public bool isEnemy;
 
-    List<Vector3Int> territory;
+    public List<Vector3Int> territory;
 
 
 
-    private void Start()
+    private void Awake()
     {
         WorldObject = GetComponent<WorldObject>();
     }
@@ -60,12 +60,15 @@ public class TerritoryCreator : MonoBehaviour
     {
         Vector3Int[] positions = MathAdd.GetAllPositionInCircle(startPos, createRadius);
 
+        
+
         List<Vector3Int> truePosition = new List<Vector3Int>();
 
         foreach (Vector3Int pos in positions)
         {
             if (TileSpawnRule_SO.TrueForAllRules(pos, GameWorldMapManager, territorySpawnRules))
             {
+                
                 truePosition.Add(pos);
             }
         }

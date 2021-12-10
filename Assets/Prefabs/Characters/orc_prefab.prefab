@@ -301,8 +301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ec2bc4973ea0a4b983cb6c0ace94b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 25
-  hp: 25
+  maxHp: 50
+  hp: 50
   OnDeath:
     m_PersistentCalls:
       m_Calls:
@@ -424,6 +424,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2640fa16cbcb7a94a9a52675f1967436, type: 2}
   damage: 15
   isRanged: 0
+  canRetaliate: 1
   GameWorldMapManager: {fileID: 0}
   OnAttackStart:
     m_PersistentCalls:
@@ -490,6 +491,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f8385799818b2fd4a9f9c3121c2f96ad, type: 2}
   nest: {fileID: 0}
   isPlayer: 0
+  isDefender: 0
 --- !u!114 &-1718492943725292454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,7 +635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WorldObject: {fileID: 2761760127051881940}
-  expDropAmmount: 10
+  expDropAmmount: 15
   expDropRange: 4
   KillableCharacter: {fileID: 2761760127051881943}
 --- !u!114 &8201286720687458356
@@ -666,5 +668,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameWorldUIController: {fileID: 11400000, guid: d85f334486f0adc4da57f232b8a1076d, type: 2}
   movingImagePrefab: {fileID: 5489366785557879863, guid: c04128a29a99dcf4395dcef71cfb5b79, type: 3}
-  spriteToAdd: {fileID: -5460880100892725343, guid: 1cd105610218e1c4d8b6012a2083374c, type: 3}
+  spriteToAdd: {fileID: 5434347003425808849, guid: 1cd105610218e1c4d8b6012a2083374c, type: 3}
   textToAdd: 5

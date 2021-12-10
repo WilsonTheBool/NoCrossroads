@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Tilemaps;
 using System.Collections;
 
 public class GameMap : MonoBehaviour
@@ -22,6 +23,17 @@ public class GameMap : MonoBehaviour
 
     private void SetUp()
     {
+        if(LandTilemapManager.landTIlemap == null)
+        {
+            foreach (Tilemap tilemap in FindObjectsOfType<Tilemap>())
+            {
+                if (tilemap.CompareTag("LandTilemap"))
+                {
+                    LandTilemapManager.landTIlemap = tilemap;
+                }
+            }
+        }
+
         var map = LandTilemapManager.landTIlemap;
 
         MapSize = map.cellBounds.size;

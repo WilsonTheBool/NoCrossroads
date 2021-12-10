@@ -80,6 +80,22 @@ public class ShopElement : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         return true;
     }
 
+    public void IncreacePrice(int value)
+    {
+        foreach(GameResourceManager.ResourceHolder resource in itemPrice)
+        {
+            resource.value += value;
+        }
+    }
+
+    public void DicreacePrice(int value)
+    {
+        foreach (GameResourceManager.ResourceHolder resource in itemPrice)
+        {
+            resource.value -= value;
+        }
+    }
+
     public void ConfirmBuy()
     {
         foreach(GameResourceManager.ResourceHolder holder in itemPrice)

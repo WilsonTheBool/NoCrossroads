@@ -22,6 +22,8 @@ public class AiAgent : MonoBehaviour
 
     public bool isPlayer;
 
+    public bool isDefender;
+
     public float GetActionDelay()
     {
         foreach (BehaviourNode node in behaviourNodes)

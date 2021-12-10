@@ -99,13 +99,13 @@ GameObject:
   - component: {fileID: 7202186163950745457}
   - component: {fileID: 4710926907313757974}
   - component: {fileID: 1170541943328255747}
-  - component: {fileID: -8234991332892636704}
   - component: {fileID: -5489174562744317573}
-  - component: {fileID: -2453799197162432393}
   - component: {fileID: -4683050725211541128}
   - component: {fileID: 9042654480199107126}
   - component: {fileID: -4237369072586822326}
   - component: {fileID: -1202545265449228309}
+  - component: {fileID: 8527368917494966250}
+  - component: {fileID: 7289190747899932954}
   m_Layer: 0
   m_Name: Farmer_prefab
   m_TagString: Untagged
@@ -246,7 +246,7 @@ MonoBehaviour:
   OnTurnEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -8234991332892636704}
+      - m_Target: {fileID: 7289190747899932954}
         m_TargetAssemblyTypeName: Miner_Structure, Assembly-CSharp
         m_MethodName: Mine
         m_Mode: 1
@@ -339,20 +339,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6613064, y: 0.68493164, z: 0.2}
   m_Center: {x: -0.15590644, y: -0.10753435, z: 0}
---- !u!114 &-8234991332892636704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5796761391248012418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c96e339a5747f734d85209d3fa3e20d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WorldObject: {fileID: 5796761391248012421}
-  resourceTile: {fileID: 0}
 --- !u!114 &-5489174562744317573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,26 +352,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ResourcePrefab: {fileID: 59502023862194236, guid: a828a58ffc020ac4a854dbe57a3aa70c, type: 3}
---- !u!114 &-2453799197162432393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5796761391248012418}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f44b4ccf89cec8243a881d8a9e6b3791, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resourcesSpendPerTurn:
-  - data: {fileID: 11400000, guid: 8af0702f014885c4387f483801aef08d, type: 2}
-    value: 2
-  - data: {fileID: 11400000, guid: 9edf893276b400f42bc87cc649b13042, type: 2}
-    value: 2
-  OnCantEat:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &-4683050725211541128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,6 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovingCharacter: {fileID: 0}
   GameWorld_ExplorationController: {fileID: 0}
+  worldObject: {fileID: 0}
   ExploreRange: 2
 --- !u!114 &-1202545265449228309
 MonoBehaviour:
@@ -445,6 +412,38 @@ MonoBehaviour:
   movingImagePrefab: {fileID: 5489366785557879863, guid: c04128a29a99dcf4395dcef71cfb5b79, type: 3}
   spriteToAdd: {fileID: 6602159139422096902, guid: 1cd105610218e1c4d8b6012a2083374c, type: 3}
   textToAdd: 
+--- !u!114 &8527368917494966250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5796761391248012418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e5576de9aad1643867a56478d51a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldObject: {fileID: 0}
+  territorySpawnRules: []
+  createRadius: 0
+  isEnemy: 0
+  territory: []
+--- !u!114 &7289190747899932954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5796761391248012418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c96e339a5747f734d85209d3fa3e20d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldObject: {fileID: 5796761391248012421}
+  resourceTile: {fileID: 0}
+  ResourceSpawner: {fileID: -5489174562744317573}
 --- !u!1 &6027658248704976550
 GameObject:
   m_ObjectHideFlags: 0

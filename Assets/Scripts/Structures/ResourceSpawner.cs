@@ -5,8 +5,8 @@ public class ResourceSpawner : MonoBehaviour
 {
     public ResourceTile ResourcePrefab;
 
-    private void Awake()
+    public ResourceTile Spawn()
     {
-        Instantiate(ResourcePrefab, this.transform.position, Quaternion.Euler(0, 0, 0)).GetComponent<WorldObject>().SetUp();
+        return Instantiate(ResourcePrefab, this.transform.position, Quaternion.Euler(0, 0, 0));
     }
 }

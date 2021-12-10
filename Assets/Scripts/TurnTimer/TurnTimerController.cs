@@ -50,7 +50,7 @@ public class TurnTimerController : MonoBehaviour
         {
             this.maxCount = count;
             curentCount = 0;
-            turnTimer.OnTick += TurnTimer_OnTick;
+            //turnTimer.OnTick += TurnTimer_OnTick;
         }
 
         public void Reset()
@@ -58,7 +58,7 @@ public class TurnTimerController : MonoBehaviour
             curentCount = 0;
         }
 
-        private void TurnTimer_OnTick()
+        public void TurnTimer_OnTick()
         {
             if(curentCount == maxCount)
             {
@@ -74,6 +74,14 @@ public class TurnTimerController : MonoBehaviour
 
                 curentCount++;
             }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if(instance == this)
+        {
+            instance = null;
         }
     }
 }

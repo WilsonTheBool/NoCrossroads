@@ -13,6 +13,7 @@ public class BehavioutNode_MoveToTarget : BehaviourNode
 
         GetMovePosition_Move(owner.curentTarget.targetPos, visionArea, owner.MovingCharacter, out Vector3Int movePos);
 
+    
         owner.MovingCharacter.Move(movePos, 0);
     }
 
@@ -24,7 +25,7 @@ public class BehavioutNode_MoveToTarget : BehaviourNode
         }
         else
         {
-            if (owner.nest != null && owner.nest.curentTarget != null && owner.nest.curentTarget.CanAddAgent())
+            if (owner.nest != null && owner.nest.curentTarget != null && owner.nest.curentTarget.CanAddAgent(owner))
             {
                
                 owner.curentTarget = owner.nest.curentTarget;

@@ -139,7 +139,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   mapManager: {fileID: 0}
-  blockMovement: 1
+  blockMovement: 0
   pathableForPlayer: 0
   pathableForEnemy: 0
   OnSetUpComplete:
@@ -221,6 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldObject: {fileID: 2391871275883942172}
   resourceTile: {fileID: 0}
+  ResourceSpawner: {fileID: 0}
 --- !u!114 &1346813427184095976
 MonoBehaviour:
   m_ObjectHideFlags: 0

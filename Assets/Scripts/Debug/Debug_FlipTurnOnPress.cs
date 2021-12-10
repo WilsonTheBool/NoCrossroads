@@ -9,7 +9,7 @@ namespace Assets.Scripts.Debug
 
         public TurnOrderController TurnOrderController;
 
-        private void Update()
+        public void UpdateInputEvents(GameInputData gameInput)
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -35,6 +35,11 @@ namespace Assets.Scripts.Debug
                 isPlayerTurn = !isPlayerTurn;
             }
 
+        }
+
+        private void OnDestroy()
+        {
+            TurnOrderController.OnTurnStarted -= TurnOrderController_OnTurnStarted;
         }
     }
 }

@@ -17,10 +17,14 @@ public class AiAgentNest : MonoBehaviour
 
     GameWorldMapManager GameWorldMapManager;
 
+    private NestBehaviourNode[] behaviourNodes;
 
 
     [SerializeField]
     int nestRange;
+
+    
+    public float nestAgroRange;
 
 
     public UnityEvent OnNestAttacked;
@@ -32,9 +36,11 @@ public class AiAgentNest : MonoBehaviour
 
     private void Awake()
     {
-        
+        territoryCreator.createRadius = nestRange;
         WorldObject.OnSetUpComplete.AddListener(OnWorldObjectSetUpComplete);
-        
+        behaviourNodes = GetComponents<NestBehaviourNode>();
+
+
     }
 
     private void OnWorldObjectSetUpComplete()
@@ -47,13 +53,17 @@ public class AiAgentNest : MonoBehaviour
 
     public void DoAction()
     {
-        
+        foreach(NestBehaviourNode node in behaviourNodes)
+        {
+            node.TickAction();
+        }
     }
 
     public void CreateTerrittory()
     {
         territoryCreator.createRadius = nestRange;
         territoryCreator.CreateTerritory(WorldObject.worldPosition, GameWorldMapManager, out nestTerritory);
+
     }
 
 
@@ -67,8 +77,20 @@ public class AiAgentNest : MonoBehaviour
 
         int curentAgents;
 
+        public bool canDefendersJoin = false;
+
         public bool CanAddAgent()
         {
+            return curentAgents < maxAgents;
+        }
+
+        public bool CanAddAgent(AiAgent aiAgent)
+        {
+            if(!canDefendersJoin && aiAgent.isDefender)
+            {
+                return false;
+            }
+
             return curentAgents < maxAgents;
         }
 

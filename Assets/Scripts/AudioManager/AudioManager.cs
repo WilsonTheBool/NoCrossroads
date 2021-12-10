@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 
 public class AudioManager : MonoBehaviour
@@ -15,6 +15,8 @@ public class AudioManager : MonoBehaviour
     public AudioData audioData;
 
     public UnityEngine.Events.UnityEvent SettingsChanged;
+
+    public float sameAudioClipPLayDelay = 0.1f;
 
     public float masterAudioVolume;
     public float musicVolume = 1;
@@ -39,18 +41,32 @@ public class AudioManager : MonoBehaviour
 
     public void Play_Audio_Effect(string name)
     {
-        if (audioData.TryGetAudioClipByName(name, out AudioClip clip))
-        {
-            if (TryGetFreeChanel(effectChanels, out AudioSource free))
+        if (CanPlayClip(name))
+            if (audioData.TryGetAudioClipByName(name, out AudioClip clip))
             {
-                free.PlayOneShot(clip);
+                if (TryGetFreeChanel(effectChanels, out AudioSource free))
+                {
+                    SetLastPlayer(name);
+                    free.PlayOneShot(clip);
+                }
+                else
+                {
+                    Debug.LogError("Cant Find Free Chanel");
+                }
             }
-            else
-            {
-                Debug.LogError("Cant Find Free Chanel");
-            }
-        }
     }
+
+    private bool CanPlayClip(string clipName)
+    {
+        if (GetTimeLastPlayed(clipName) >= sameAudioClipPLayDelay)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+   
 
     private bool TryGetFreeChanel(AudioSource[] audioSources, out AudioSource freeChanel)
     {
@@ -116,5 +132,60 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        float t = Time.deltaTime;
 
+        foreach(AudioClipData data in audioClipDatas)
+        {
+            data.timeLastPlayed += t;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
+        }
+    }
+
+    List<AudioClipData> audioClipDatas = new List<AudioClipData>();
+
+    float GetTimeLastPlayed(string clipName)
+    {
+        foreach(AudioClipData data in audioClipDatas)
+        {
+            if(data.clipName == clipName)
+            {
+                return data.timeLastPlayed;
+            }
+        }
+
+        return float.MaxValue;
+    }
+
+    void SetLastPlayer(string clipName)
+    {
+        foreach (AudioClipData data in audioClipDatas)
+        {
+            if (data.clipName == clipName)
+            {
+                data.timeLastPlayed = 0;
+                return;
+            }
+        }
+
+        audioClipDatas.Add(new AudioClipData() { clipName = clipName, timeLastPlayed = 0 });
+    }
+
+
+
+    private class AudioClipData
+    {
+        public string clipName;
+        public float timeLastPlayed;
+
+
+    }
 }

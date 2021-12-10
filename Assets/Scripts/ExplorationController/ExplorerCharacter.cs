@@ -30,9 +30,6 @@ public class ExplorerCharacter : MonoBehaviour
 
     private void Start()
     {
-        
-
-       
     }
 
     public void SetUp()

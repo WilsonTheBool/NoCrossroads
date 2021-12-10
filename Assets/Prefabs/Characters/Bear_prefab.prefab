@@ -390,6 +390,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f8385799818b2fd4a9f9c3121c2f96ad, type: 2}
   nest: {fileID: 0}
   isPlayer: 0
+  isDefender: 0
 --- !u!114 &2620739785105821702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,8 +507,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetRules:
   - {fileID: 11400000, guid: 2640fa16cbcb7a94a9a52675f1967436, type: 2}
-  damage: 7
+  damage: 10
   isRanged: 0
+  canRetaliate: 1
   GameWorldMapManager: {fileID: 0}
   OnAttackStart:
     m_PersistentCalls:

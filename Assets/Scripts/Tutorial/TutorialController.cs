@@ -14,9 +14,16 @@ public class TutorialController : MonoBehaviour
         {
             if (!node.isCompleted)
             {
-                curentNode?.OnEnd();
+                if(curentNode != null)
+                {
+                    curentNode?.OnEnd();
+                }
+                
+                
                 curentNode = node;
                 curentNode?.OnStart();
+
+                return;
             }
 
         }

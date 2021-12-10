@@ -32,7 +32,8 @@ public class BehaviourNode_AttackNearest : BehaviourNode
         }
         else
         {
-            owner.MovingCharacter.Move(movePos, 0);
+            
+                owner.MovingCharacter.Move(movePos, 0);
         }
         
         

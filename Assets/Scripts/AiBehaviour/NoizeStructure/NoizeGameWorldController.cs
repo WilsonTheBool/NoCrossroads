@@ -51,7 +51,7 @@ public class NoizeGameWorldController : GameWorldMap_Dependable
         if (e.worldObject.TryGetComponent(out NoizeStructure noizeStructure))
         {
             noizeStructures.Add(noizeStructure);
-            print("noize structure add: " + noizeStructure.name);
+            
         }
     }
 }

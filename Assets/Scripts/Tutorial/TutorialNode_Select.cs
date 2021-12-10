@@ -8,7 +8,11 @@ public class TutorialNode_Select : TutorialNode
 
     public override void OnStart()
     {
+        curentObjective.text = curentObjectiveString;
+
         knight.GetComponent<SelectableObject>().OnSelect.AddListener(Knight_OnSelect);
+
+        groups.SetActiveWindows(new UI_CanvasGroupsController.CanvasGroupFlags() { setDefault = true }, false);
 
         infoWindow.SetActive(true);
     }
@@ -23,6 +27,7 @@ public class TutorialNode_Select : TutorialNode
 
     private void Knight_OnSelect()
     {
+        isCompleted = true;
         tutorialController.StartNextNode();
     }
 }

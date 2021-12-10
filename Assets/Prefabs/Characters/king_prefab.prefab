@@ -264,6 +264,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 25979451bd235084b9e7ec0340f8f033, type: 2}
   createRadius: 4
   isEnemy: 0
+  territory: []
 --- !u!114 &7143649531764309018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,6 +476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovingCharacter: {fileID: 0}
   GameWorld_ExplorationController: {fileID: 0}
+  worldObject: {fileID: 0}
   ExploreRange: 6
 --- !u!114 &-601888076293078112
 MonoBehaviour:
@@ -551,3 +553,4 @@ MonoBehaviour:
   KillableCharacter: {fileID: 557976812542566352}
   MovingCharacter: {fileID: 0}
   TerritoryCreator: {fileID: 7143649531764309019}
+  Structure: {fileID: 0}

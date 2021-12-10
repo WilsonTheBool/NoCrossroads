@@ -332,8 +332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ec2bc4973ea0a4b983cb6c0ace94b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 20
-  hp: 20
+  maxHp: 45
+  hp: 45
   OnDeath:
     m_PersistentCalls:
       m_Calls:
@@ -654,6 +654,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8782812116646191688}
+        m_TargetAssemblyTypeName: KillableCharacter, Assembly-CSharp
+        m_MethodName: HealToFull
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -1182013230977389142}
+        m_TargetAssemblyTypeName: CharacterAudioController, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: level_up
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &-6838341215775404584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -671,6 +695,7 @@ MonoBehaviour:
   KillableCharacter: {fileID: 8782812116646191688}
   MovingCharacter: {fileID: 8782812116646191687}
   TerritoryCreator: {fileID: 0}
+  Structure: {fileID: 0}
 --- !u!114 &5949481377153015769
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -26,7 +26,13 @@ public class GameWorld_ExplorationController : GameWorldMap_Dependable
 
     public bool isAllExploredOnStart;
 
-
+    private void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
+        }
+    }
     // Use this for initialization
     void Awake()
     {

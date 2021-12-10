@@ -16,12 +16,7 @@ public class SelectFreeUnitController: GameWorldMap_Dependable
     List<MovingCharacter> movingCharacters = new List<MovingCharacter>();
     int curentIndex;
 
-    SelectableObject curetnSelect;
-
-    private void Awake()
-    {
-       
-    }
+    MovingCharacter curetnSelect;
 
     public override void SetUp()
     {
@@ -29,10 +24,23 @@ public class SelectFreeUnitController: GameWorldMap_Dependable
         GameWorldMapManager.OnUnitCreate += GameWorldMapManager_OnUnitCreate;
         GameWorldMapManager.OnUnitDeath += GameWorldMapManager_OnUnitDeath;
 
+        UnitSelectController.OnNewSelect.AddListener(ChangeCurentSelect);
+        //UnitSelectController.OnRemoveSelect.AddListener(RemoveCurentSelect);
+
         Camera = Camera.main;
     }
 
-    private void Update()
+    public void ChangeCurentSelect(SelectableObject selectableObject)
+    {
+        curetnSelect = selectableObject?.GetComponent<MovingCharacter>();
+    }
+
+    public void RemoveCurentSelect(SelectableObject selectableObject)
+    {
+        curetnSelect = null;
+    }
+
+    public void OnInputUpdate(GameInputData gameInput)
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -83,6 +91,8 @@ public class SelectFreeUnitController: GameWorldMap_Dependable
         if (movingCharacters.Count > 0)
         {
 
+            curentIndex = GetIndex(curetnSelect);
+
             ClampCurentIndexInRange();
 
             int index = curentIndex;
@@ -107,8 +117,13 @@ public class SelectFreeUnitController: GameWorldMap_Dependable
 
     public void SelectNextUnit()
     {
+        
+
         if (movingCharacters.Count > 0)
         {
+
+            curentIndex = GetIndex(curetnSelect);
+
             ClampCurentIndexInRange();
 
             int index = TickIndex(curentIndex);
@@ -121,6 +136,7 @@ public class SelectFreeUnitController: GameWorldMap_Dependable
 
                     SelectUnit(movingCharacters[index]);
                     curentIndex = index;
+                    
                     break;
                 }
                 else
@@ -132,6 +148,15 @@ public class SelectFreeUnitController: GameWorldMap_Dependable
 
            
         }
+    }
+
+    int GetIndex(MovingCharacter movingCharacter)
+    {
+        if (movingCharacter != null)
+            return movingCharacters.IndexOf(movingCharacter);
+
+        else
+            return -1;
     }
 
     void SelectUnit(MovingCharacter unit)

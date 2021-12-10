@@ -194,6 +194,10 @@ PrefabInstance:
       propertyPath: nestRange
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 394336629056981148, guid: 0d7e4c8d5744e2a4b832d6eb80b896c7, type: 3}
+      propertyPath: nestAgroRange
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 394336629056981150, guid: 0d7e4c8d5744e2a4b832d6eb80b896c7, type: 3}
       propertyPath: hp
       value: 99
@@ -201,6 +205,14 @@ PrefabInstance:
     - target: {fileID: 394336629056981150, guid: 0d7e4c8d5744e2a4b832d6eb80b896c7, type: 3}
       propertyPath: maxHp
       value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 394336629646543131, guid: 0d7e4c8d5744e2a4b832d6eb80b896c7, type: 3}
+      propertyPath: nestAgroRange
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 394336629753025886, guid: 0d7e4c8d5744e2a4b832d6eb80b896c7, type: 3}
+      propertyPath: nestAgroRange
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2084615621139799108, guid: 0d7e4c8d5744e2a4b832d6eb80b896c7, type: 3}
       propertyPath: CreateTurnDelay

@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 2559165655095760153}
   - component: {fileID: 6302133175799518164}
   - component: {fileID: -2866049912859297596}
+  - component: {fileID: -5113889980457923458}
   m_Layer: 0
   m_Name: ogre_prefab
   m_TagString: Untagged
@@ -216,8 +217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ec2bc4973ea0a4b983cb6c0ace94b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 50
-  hp: 50
+  maxHp: 150
+  hp: 150
   OnDeath:
     m_PersistentCalls:
       m_Calls:
@@ -313,8 +314,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetRules:
   - {fileID: 11400000, guid: 2640fa16cbcb7a94a9a52675f1967436, type: 2}
-  damage: 20
+  damage: 30
   isRanged: 0
+  canRetaliate: 1
   GameWorldMapManager: {fileID: 0}
   OnAttackStart:
     m_PersistentCalls:
@@ -376,10 +378,12 @@ MonoBehaviour:
   AiBehaviourController: {fileID: 0}
   behaviourNodes:
   - {fileID: 11400000, guid: 561c5822df441994e9188ad871853d4e, type: 2}
+  - {fileID: 11400000, guid: 43a6e07032a37f64faed09264f194b12, type: 2}
   - {fileID: 11400000, guid: 96e156eb4fb0a2a42aff6583af736f6b, type: 2}
   - {fileID: 11400000, guid: f8385799818b2fd4a9f9c3121c2f96ad, type: 2}
   nest: {fileID: 0}
   isPlayer: 0
+  isDefender: 1
 --- !u!114 &6320549028684950479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,6 +514,22 @@ MonoBehaviour:
   audio_name_onHit: unit_hit
   audio_name_onDeath: unit_death
   audio_name_onMove: unit_move
+--- !u!114 &-5113889980457923458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856054984383799878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17323628f930ae143a67279174bd8bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldObject: {fileID: 1856054984383799873}
+  expDropAmmount: 220
+  expDropRange: 4
+  KillableCharacter: {fileID: 1856054984383799874}
 --- !u!1 &1856054984752332283
 GameObject:
   m_ObjectHideFlags: 0

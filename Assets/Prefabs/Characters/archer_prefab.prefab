@@ -431,6 +431,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 40cf43f4a129ed941ad9dd57c3917567, type: 2}
   damage: 10
   isRanged: 1
+  canRetaliate: 0
   GameWorldMapManager: {fileID: 0}
   OnAttackStart:
     m_PersistentCalls:
@@ -465,8 +466,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  movePoints: 2
-  maxMovePoints: 2
+  movePoints: 3
+  maxMovePoints: 3
 --- !u!114 &8653319137797770098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,6 +533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovingCharacter: {fileID: 9026151946910172512}
   GameWorld_ExplorationController: {fileID: 0}
+  worldObject: {fileID: 0}
   ExploreRange: 4
 --- !u!114 &3645596169804146528
 MonoBehaviour:
@@ -640,6 +642,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 9026151946910172527}
+        m_TargetAssemblyTypeName: KillableCharacter, Assembly-CSharp
+        m_MethodName: HealToFull
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &-4481547353198951886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,6 +671,7 @@ MonoBehaviour:
   KillableCharacter: {fileID: 9026151946910172527}
   MovingCharacter: {fileID: 9026151946910172512}
   TerritoryCreator: {fileID: 0}
+  Structure: {fileID: 0}
 --- !u!114 &1434157264805069725
 MonoBehaviour:
   m_ObjectHideFlags: 0

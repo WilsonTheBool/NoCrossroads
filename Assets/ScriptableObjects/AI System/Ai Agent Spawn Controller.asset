@@ -15,6 +15,8 @@ MonoBehaviour:
   agentPrefabs:
   - aiAgent: {fileID: 4135467767806403581, guid: af6791dd28bef1a4dbd66c72ecd73942, type: 3}
     weight: 1
+  - aiAgent: {fileID: 4135467767806403581, guid: af6791dd28bef1a4dbd66c72ecd73942, type: 3}
+    weight: 1
   defenderPrefabs:
   - aiAgent: {fileID: 501469770296876136, guid: 1679042e9f7f6354ba9341557fe11dc9, type: 3}
     weight: 1

@@ -79,7 +79,10 @@ public class AiBehaviourController : GameWorldMap_Dependable
             {
                 nests.Remove(nest);
             }
-
+            else
+            {
+                TryRemoveFreomTargets(e.worldObject);
+            }
         }
     }
 
@@ -134,24 +137,24 @@ public class AiBehaviourController : GameWorldMap_Dependable
         }
 
 
-
         GetAllTargetsOnMap();
 
         yield return null;
-
-       
-
-        foreach(AiAgent aiAgent in aiAgents)
-        {
-            aiAgent.DoAction();
-            yield return new WaitForSeconds (aiAgent.GetActionDelay());
-        }
 
         foreach (AiAgentNest nest in nests)
         {
             nest.DoAction();
             yield return null;
         }
+
+
+        foreach (AiAgent aiAgent in aiAgents)
+        {
+            aiAgent.DoAction();
+            yield return new WaitForSeconds (aiAgent.GetActionDelay());
+        }
+
+     
 
         if (agentsToDelete.Count > 0)
         {
@@ -228,13 +231,36 @@ public class AiBehaviourController : GameWorldMap_Dependable
         return temp.ToArray();
     }
 
-    
+    private void OnDestroy()
+    {
+        turnOrderController.OnTurnEnded -= TurnOrderController_OnTurnEnded;
+        if (instance == this)
+        {
+            instance = null;
+        }
+    }
+
+    private void TryRemoveFreomTargets(WorldObject worldObject)
+    {
+        AiTargetData data = new AiTargetData() { WorldObject = worldObject };
+        if (AllTargetsOnMap.Contains(data))
+        {
+            AllTargetsOnMap.Remove(data);
+            print("obj target removed: " + worldObject.gameObject.name);
+        }
+    }
 }
 
-public class AiTargetData
+
+
+public class AiTargetData: System.IEquatable<AiTargetData>
 {
     public WorldObject WorldObject;
     public KillableCharacter KillableCharacter;
 
+    public bool Equals(AiTargetData other)
+    {
+        return WorldObject.Equals(other.WorldObject);
+    }
 }
 

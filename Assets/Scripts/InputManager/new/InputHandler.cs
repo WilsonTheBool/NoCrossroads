@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.Events;
 public class InputHandler : MonoBehaviour
 {
+    public int priority = 0;
+
     public InputManager_SO InputManager_SO;
 
     public GameInputEvent OnHandleInputData;

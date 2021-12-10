@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NestBehaviour_CreateTarget: MonoBehaviour
+public class NestBehaviour_CreateTarget: NestBehaviourNode
 {
     public int CreateTurnDelay;
 
@@ -20,7 +20,7 @@ public class NestBehaviour_CreateTarget: MonoBehaviour
 
     public AiAgentNest nest;
 
-    
+    public bool CanDefenderJoin;
 
     private void Start()
     {
@@ -43,9 +43,15 @@ public class NestBehaviour_CreateTarget: MonoBehaviour
         DestroyTimer.Reset();
     }
 
+    public override void TickAction()
+    {
+        CreateTimer.TurnTimer_OnTick();
+        DestroyTimer.TurnTimer_OnTick();
+    }
+
     private void AddNewTarget(Vector3Int pos)
     {
-        nest.curentTarget = new AiAgentNest.NestTarget() { targetPos = pos, maxAgents = TargetMaxAgentCount };
+        nest.curentTarget = new AiAgentNest.NestTarget() { targetPos = pos, maxAgents = TargetMaxAgentCount , canDefendersJoin = CanDefenderJoin };
     }
 
     private void RemoveTarget()
@@ -63,6 +69,12 @@ public class NestBehaviour_CreateTarget: MonoBehaviour
         var target = NoizeGameWorldController.GetNearestNoizeStructure(nest.WorldObject.worldPosition);
         
         if(target != null)
-        AddNewTarget(target.WorldObject.worldPosition);
+        {
+            if (Vector3.Distance(target.gameObject.transform.position, nest.gameObject.transform.position) <= nest.nestAgroRange)
+            {
+                AddNewTarget(target.WorldObject.worldPosition);
+            }
+        }
+        
     }
 }

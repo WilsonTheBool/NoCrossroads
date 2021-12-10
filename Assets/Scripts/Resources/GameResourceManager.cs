@@ -14,7 +14,13 @@ public class GameResourceManager : GameWorldMap_Dependable
 
     private GameWorldMapManager GameWorldMapManager;
 
-
+    private void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
+        }
+    }
     private void Awake()
     {
         if(instance != null)

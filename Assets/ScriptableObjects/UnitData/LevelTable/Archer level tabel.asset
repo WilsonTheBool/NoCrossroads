@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0561750c1a1498c4091662a4ae8a7c72, type: 3}
-  m_Name: Archer table data
+  m_Name: Archer level tabel
   m_EditorClassIdentifier: 
   LevelDatas:
   - level: 1
@@ -18,19 +18,39 @@ MonoBehaviour:
     AttackIncreace: 2
     HPIncreace: 3
   - level: 2
-    ExpToLevel: 90
+    ExpToLevel: 70
     AttackIncreace: 3
-    HPIncreace: 5
+    HPIncreace: 4
   - level: 3
-    ExpToLevel: 180
+    ExpToLevel: 140
+    AttackIncreace: 4
+    HPIncreace: 5
+  - level: 4
+    ExpToLevel: 240
+    AttackIncreace: 5
+    HPIncreace: 6
+  - level: 5
+    ExpToLevel: 370
+    AttackIncreace: 5
+    HPIncreace: 6
+  - level: 6
+    ExpToLevel: 530
     AttackIncreace: 5
     HPIncreace: 7
-  - level: 4
-    ExpToLevel: 300
+  - level: 7
+    ExpToLevel: 720
     AttackIncreace: 5
+    HPIncreace: 8
+  - level: 8
+    ExpToLevel: 940
+    AttackIncreace: 4
+    HPIncreace: 9
+  - level: 9
+    ExpToLevel: 1190
+    AttackIncreace: 3
     HPIncreace: 10
-  - level: 0
-    ExpToLevel: 0
-    AttackIncreace: 0
-    HPIncreace: 0
-  maxLevel: 4
+  - level: 10
+    ExpToLevel: 1470
+    AttackIncreace: 3
+    HPIncreace: 12
+  maxLevel: 10

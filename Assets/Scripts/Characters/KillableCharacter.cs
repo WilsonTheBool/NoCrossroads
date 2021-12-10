@@ -24,11 +24,13 @@ public class KillableCharacter : MonoBehaviour
         animator.SetTrigger("Death");
 
         OnDeath?.Invoke();
+        
     }
 
-    public void DestroyThis()
+    public void HealToFull()
     {
-        Destroy(this);
+        OnHealSelf.Invoke(new DamageEventArgs() { damage = maxHp - hp });
+        hp = maxHp;
     }
 
     public void TakeDamage(float ammount, AttackingCharacter attacker)

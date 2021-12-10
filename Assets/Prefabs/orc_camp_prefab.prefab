@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5087028557272258855}
   - component: {fileID: 5087028557272258848}
-  - component: {fileID: 5087028557272258849}
   - component: {fileID: 5087028557272258850}
+  - component: {fileID: 5087028557272258849}
   - component: {fileID: 5087028557272258851}
   - component: {fileID: 5087028557272258844}
   - component: {fileID: 5087028557272258845}
@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: -2373893661933810183}
   - component: {fileID: 6909882384695194701}
   - component: {fileID: 2918516419686652442}
+  - component: {fileID: 2564022509262944920}
   m_Layer: 0
   m_Name: orc_camp_prefab
   m_TagString: Untagged
@@ -99,6 +100,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5087028557272258850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5087028557272258846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc28f8af21ae09c4cacca2188d34c40f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeName: 
+  canMove: 0
+  worldPosition: {x: 0, y: 0, z: 0}
+  OnPositionChnaged:
+    m_PersistentCalls:
+      m_Calls: []
+  mapManager: {fileID: 0}
+  blockMovement: 1
+  pathableForPlayer: 0
+  pathableForEnemy: 0
+  OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5087028557272258849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,31 +150,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnNestDestroy:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &5087028557272258850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5087028557272258846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc28f8af21ae09c4cacca2188d34c40f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  typeName: 
-  canMove: 0
-  worldPosition: {x: 0, y: 0, z: 0}
-  OnPositionChnaged:
-    m_PersistentCalls:
-      m_Calls: []
-  mapManager: {fileID: 0}
-  blockMovement: 1
-  pathableForPlayer: 0
-  pathableForEnemy: 0
-  OnSetUpComplete:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &5087028557272258851
@@ -228,6 +229,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 50cff27e3e14a8f4d843b2a215c39b7e, type: 2}
   createRadius: 0
   isEnemy: 1
+  territory: []
 --- !u!114 &5087028557272258845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,6 +360,7 @@ MonoBehaviour:
   NoizeGameWorldController: {fileID: 0}
   controller: {fileID: 0}
   nest: {fileID: 5087028557272258849}
+  CanDefenderJoin: 1
 --- !u!114 &6551953273281007342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,6 +456,7 @@ MonoBehaviour:
   NoizeGameWorldController: {fileID: 0}
   controller: {fileID: 0}
   nest: {fileID: 5087028557272258849}
+  CanDefenderJoin: 0
 --- !u!114 &6909882384695194701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -485,4 +489,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   regenAmmount: 5
+  KillableCharacter: {fileID: 5087028557272258851}
+--- !u!114 &2564022509262944920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5087028557272258846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17323628f930ae143a67279174bd8bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldObject: {fileID: 5087028557272258850}
+  expDropAmmount: 350
+  expDropRange: 4
   KillableCharacter: {fileID: 5087028557272258851}

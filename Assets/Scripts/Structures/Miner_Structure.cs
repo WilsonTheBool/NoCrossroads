@@ -6,9 +6,6 @@ public  class Miner_Structure: MonoBehaviour
 {
     public WorldObject WorldObject;
 
-    TurnBaseObject TurnBaseObject;
-
-    Structure Structure;
 
     GameResourceManager resourceManager;
 
@@ -17,6 +14,8 @@ public  class Miner_Structure: MonoBehaviour
     GameWorldMapManager gameWorldMapManager;
 
     private float workEffectiveness = 1;
+
+    public ResourceSpawner ResourceSpawner;
 
     public void Free_Resource()
     {
@@ -56,8 +55,7 @@ public  class Miner_Structure: MonoBehaviour
     private void Awake()
     {
         WorldObject = GetComponent<WorldObject>();
-        TurnBaseObject = GetComponent<TurnBaseObject>();
-        Structure = GetComponent<Structure>();
+
 
         WorldObject.OnSetUpComplete.AddListener(SetUp);
         
@@ -70,6 +68,11 @@ public  class Miner_Structure: MonoBehaviour
     {
         gameWorldMapManager = GameWorldMapManager.instance;
         resourceManager = GameResourceManager.instance;
+        if(ResourceSpawner != null)
+        {
+            resourceTile = ResourceSpawner.Spawn();
+        }
+        else
         if (!gameWorldMapManager.TryGetResourceTIle(WorldObject.worldPosition, out resourceTile))
         {
             Debug.LogError("Mine structure created not on resource tile");

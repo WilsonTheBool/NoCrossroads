@@ -16,6 +16,8 @@ public class UnitSelectController : MonoBehaviour
     public GameWorldMapManager GameWorldMapManager;
 
     private SelectModule.SelectEventArgs curentSelectEventArgs;
+
+    public SelectFreeUnitController SelectFreeUnitController;
     private void Start()
     {
         
@@ -30,7 +32,6 @@ public class UnitSelectController : MonoBehaviour
         if (!inputData.isOverUI)
         {
 
-       
         Ray ray = Camera.main.ScreenPointToRay(inputData.mouseMositionScreen);
         RaycastHit hit;
 

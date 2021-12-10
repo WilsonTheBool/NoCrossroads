@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28f8af21ae09c4cacca2188d34c40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeName: 
   canMove: 0
   worldPosition: {x: 0, y: 0, z: 0}
   OnPositionChnaged:
@@ -136,6 +137,9 @@ MonoBehaviour:
   blockMovement: 1
   pathableForPlayer: 0
   pathableForEnemy: 0
+  OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &291227937815370027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,6 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28f8af21ae09c4cacca2188d34c40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeName: 
   canMove: 0
   worldPosition: {x: 0, y: 0, z: 0}
   OnPositionChnaged:
@@ -292,6 +297,9 @@ MonoBehaviour:
   blockMovement: 1
   pathableForPlayer: 0
   pathableForEnemy: 0
+  OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5718984562651713081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4835bdb7e4e6245938a2d1123fd890, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldObject: {fileID: 0}
+  worldObject: {fileID: 6061842614176469605}
   resource: {fileID: 11400000, guid: 529894480f8e0694095180fae7f7bf91, type: 2}
   ResourceIconController: {fileID: 0}
   baseMineAmmount: 10
@@ -363,6 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf1da239ca8efd848a15057ad1d7cacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WorldObject: {fileID: 0}
   OnFadeStart:
     m_PersistentCalls:
       m_Calls:

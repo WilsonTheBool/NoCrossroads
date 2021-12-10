@@ -28,6 +28,22 @@ public class InputManager_SO : ScriptableObject
         
     }
 
+    private InputHandler FindCurent()
+    {
+        InputHandler best = null;
+        int bestValue = int.MinValue;
+        foreach(InputHandler inputHandler in inputHandlers)
+        {
+            if(inputHandler.priority > bestValue)
+            {
+                best = inputHandler;
+                bestValue = inputHandler.priority;
+            }
+        }
+
+        return best;
+    }
+
     public void RemoveInputHandler(InputHandler handler)
     {
         if (handler.isDefault)
@@ -55,7 +71,10 @@ public class InputManager_SO : ScriptableObject
         if(inputHandlers.Count > 0)
         {
             curentHandler?.LooseFocus();
-            curentHandler = inputHandlers[0];
+
+            curentHandler = FindCurent();
+
+            //curentHandler = inputHandlers[0];
             curentHandler.Focus();
         }
         else

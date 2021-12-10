@@ -55,7 +55,7 @@ public class GameWorldMapManager : MonoBehaviour
         }
     }
 
-    public bool isSetUpComplete;
+    public bool isSetUpComplete = false;
 
     private void Start()
     {
@@ -137,7 +137,7 @@ public class GameWorldMapManager : MonoBehaviour
     {
         foreach(WorldObject obj in allObjectsOnMap)
         {
-            if(obj.worldPosition == position)
+            if(obj != null && obj.worldPosition == position)
             {
                 ResourceTile resource = obj.GetComponent<ResourceTile>();
                 if (resource != null)
@@ -259,6 +259,14 @@ public class GameWorldMapManager : MonoBehaviour
         public UnitEventArgs(WorldObject worldObject)
         {
             this.worldObject = worldObject;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if(instance == this)
+        {
+            instance = null;
         }
     }
 }

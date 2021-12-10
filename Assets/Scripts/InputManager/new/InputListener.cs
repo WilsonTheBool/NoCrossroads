@@ -16,7 +16,13 @@ public class InputListener : MonoBehaviour
     private GameWorldMapManager map;
 
     public static InputListener instance;
-    
+    private void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
+        }
+    }
     private void Awake()
     {
         if(instance == null)

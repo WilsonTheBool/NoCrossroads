@@ -8,7 +8,13 @@ public class GameWorld_ExpGainController : GameWorldMap_Dependable
     public List<LevelingCharacter> levelingCharacters;
 
     public static GameWorld_ExpGainController instance;
-
+    private void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
+        }
+    }
     private void Awake()
     {
         if(instance != null)

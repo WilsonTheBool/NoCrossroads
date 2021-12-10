@@ -237,8 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ec2bc4973ea0a4b983cb6c0ace94b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 20
-  hp: 20
+  maxHp: 5
+  hp: 5
   OnDeath:
     m_PersistentCalls:
       m_Calls:
@@ -375,6 +375,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f8385799818b2fd4a9f9c3121c2f96ad, type: 2}
   nest: {fileID: 0}
   isPlayer: 0
+  isDefender: 0
 --- !u!114 &6080095173298745234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,6 +505,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WorldObject: {fileID: 6080095173298745235}
-  expDropAmmount: 10
+  expDropAmmount: 15
   expDropRange: 4
   KillableCharacter: {fileID: 6080095173298745239}

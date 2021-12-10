@@ -21,9 +21,11 @@ public class WorldObject : MonoBehaviour
 
     public UnityEvent OnSetUpComplete;
 
+    private bool isSetUpComplete = false;
+
     private void Start()
     {
-        if (GameWorldMapManager.instance != null && GameWorldMapManager.instance.isSetUpComplete)
+        if (GameWorldMapManager.instance != null && !isSetUpComplete && GameWorldMapManager.instance.isSetUpComplete)
         {
             SetUp();
         }
@@ -41,7 +43,7 @@ public class WorldObject : MonoBehaviour
 
         mapManager.AddWorldObject(this);
 
-        
+        isSetUpComplete = true;
     }
 
     public void ChangePosition(Vector3Int newPos)
@@ -55,6 +57,7 @@ public class WorldObject : MonoBehaviour
 
     public void RemoveFromWorld()
     {
+        if(mapManager != null)
         mapManager.RemoveWorldObject(this);
     }
 

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-public class NestBehaviour_SpawnAgents : MonoBehaviour
+public class NestBehaviour_SpawnAgents : NestBehaviourNode
 {
 
     public int maxAgentNumber;
@@ -35,9 +35,15 @@ public class NestBehaviour_SpawnAgents : MonoBehaviour
         CreateTimer.OnEnd += CreateTimer_OnEnd;
     }
 
+    public override void TickAction()
+    {
+        CreateTimer.TurnTimer_OnTick();
+    }
+
     private void CreateTimer_OnEnd()
     {
         SpawnAgent();
+       
         CreateTimer.Reset();
     }
 
@@ -45,14 +51,23 @@ public class NestBehaviour_SpawnAgents : MonoBehaviour
     {
         if (IsSpawnAvailable() && TryGetRandomTerritory(out Vector3Int pos))
         {
-            if(defendersCount < maxDefendersNumber)
-            {
-                SpawnDefender(pos);
-            }
-            else
+            if(agentCount < maxAgentNumber - maxDefendersNumber)
             {
                 SpawnAgent(pos);
             }
+            else
+            {
+                SpawnDefender(pos);
+            }
+
+            //if(defendersCount < maxDefendersNumber)
+            //{
+            //    SpawnDefender(pos);
+            //}
+            //else
+            //{
+            //    SpawnAgent(pos);
+            //}
 
             
         }

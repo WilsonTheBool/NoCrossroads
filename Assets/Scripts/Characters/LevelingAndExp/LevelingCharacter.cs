@@ -33,14 +33,19 @@ public class LevelingCharacter : MonoBehaviour
 
         OnExpGain.Invoke(Mathf.RoundToInt(value));
 
-        if (curentExp >= newLevelExp)
+        while(curentExp >= newLevelExp)
         {
-            OnNewLevelTreshholdReached();
+            if (curentExp >= newLevelExp)
+            {
+                OnNewLevelTreshholdReached();
 
 
 
-            OnNewLevel.Invoke(curentLevel);
+                OnNewLevel.Invoke(curentLevel);
+            }
         }
+
+
 
     }
 

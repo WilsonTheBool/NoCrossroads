@@ -21,7 +21,13 @@ public class PrefabSpawner : MonoBehaviour
 
         return null;
     }
-
+    private void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
+        }
+    }
     private void Awake()
     {
         if(instance != null)
