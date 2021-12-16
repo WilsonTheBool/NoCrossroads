@@ -206,12 +206,6 @@ MonoBehaviour:
   controller: {fileID: 11400000, guid: 464bb92e4beac884db33557143f3ed91, type: 2}
   OnNewTurn:
     m_PersistentCalls:
-      m_Calls: []
-  OnNewTurn_Late:
-    m_PersistentCalls:
-      m_Calls: []
-  OnTurnEnd:
-    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5949481377153015769}
         m_TargetAssemblyTypeName: RegenCharacter, Assembly-CSharp
@@ -225,6 +219,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnNewTurn_Late:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTurnEnd:
+    m_PersistentCalls:
+      m_Calls: []
   OnTurnEnd_Late:
     m_PersistentCalls:
       m_Calls:
@@ -332,26 +332,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ec2bc4973ea0a4b983cb6c0ace94b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 45
-  hp: 45
+  maxHp: 25
+  hp: 25
   OnDeath:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8986730338952670293}
         m_TargetAssemblyTypeName: CharacterDeathController, Assembly-CSharp
         m_MethodName: OnDeath_Destroy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: -5994980081211833689}
-        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
-        m_MethodName: DeleteHealthBar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -517,6 +505,7 @@ MonoBehaviour:
   levelUpText: {fileID: 6024816972111273595, guid: 78201593e30fad545af54ba943c6f6db, type: 3}
   heal_text_prefab: {fileID: 3089663678013084167, guid: 5e036b009c30f4f4f9f888cd2285fa39, type: 3}
   owner: {fileID: 8782812116646191688}
+  GameWorldUI_ResourceBar: {fileID: 0}
 --- !u!114 &-7784051520588340534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,7 +535,7 @@ MonoBehaviour:
   MovingCharacter: {fileID: 8782812116646191687}
   GameWorld_ExplorationController: {fileID: 0}
   worldObject: {fileID: 0}
-  ExploreRange: 4
+  ExploreRange: 5
 --- !u!114 &3906386894573404231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -678,6 +667,7 @@ MonoBehaviour:
           m_StringArgument: level_up
           m_BoolArgument: 0
         m_CallState: 2
+  canLevelUp: 1
 --- !u!114 &-6838341215775404584
 MonoBehaviour:
   m_ObjectHideFlags: 0

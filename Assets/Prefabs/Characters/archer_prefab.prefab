@@ -206,16 +206,10 @@ MonoBehaviour:
   controller: {fileID: 11400000, guid: 464bb92e4beac884db33557143f3ed91, type: 2}
   OnNewTurn:
     m_PersistentCalls:
-      m_Calls: []
-  OnNewTurn_Late:
-    m_PersistentCalls:
-      m_Calls: []
-  OnTurnEnd:
-    m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9026151946910172512}
-        m_TargetAssemblyTypeName: MovingCharacter, Assembly-CSharp
-        m_MethodName: RegenMovePoints
+      - m_Target: {fileID: 1434157264805069725}
+        m_TargetAssemblyTypeName: RegenCharacter, Assembly-CSharp
+        m_MethodName: Regen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -225,9 +219,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1434157264805069725}
-        m_TargetAssemblyTypeName: RegenCharacter, Assembly-CSharp
-        m_MethodName: Regen
+  OnNewTurn_Late:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTurnEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9026151946910172512}
+        m_TargetAssemblyTypeName: MovingCharacter, Assembly-CSharp
+        m_MethodName: RegenMovePoints
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -340,18 +340,6 @@ MonoBehaviour:
       - m_Target: {fileID: 8653319137797770098}
         m_TargetAssemblyTypeName: CharacterDeathController, Assembly-CSharp
         m_MethodName: OnDeath_Destroy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2912713132011611520}
-        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
-        m_MethodName: DeleteHealthBar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -505,6 +493,7 @@ MonoBehaviour:
   levelUpText: {fileID: 6024816972111273595, guid: 78201593e30fad545af54ba943c6f6db, type: 3}
   heal_text_prefab: {fileID: 3089663678013084167, guid: 5e036b009c30f4f4f9f888cd2285fa39, type: 3}
   owner: {fileID: 9026151946910172527}
+  GameWorldUI_ResourceBar: {fileID: 0}
 --- !u!114 &1682369525695596013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -654,6 +643,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  canLevelUp: 1
 --- !u!114 &-4481547353198951886
 MonoBehaviour:
   m_ObjectHideFlags: 0

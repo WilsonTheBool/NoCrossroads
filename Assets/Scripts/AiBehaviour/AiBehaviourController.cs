@@ -246,7 +246,6 @@ public class AiBehaviourController : GameWorldMap_Dependable
         if (AllTargetsOnMap.Contains(data))
         {
             AllTargetsOnMap.Remove(data);
-            print("obj target removed: " + worldObject.gameObject.name);
         }
     }
 }

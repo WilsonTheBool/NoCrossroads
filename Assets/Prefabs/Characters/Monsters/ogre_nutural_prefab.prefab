@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 8245008665649378310}
   - component: {fileID: 9016265566499577622}
   - component: {fileID: 5530463066076102044}
+  - component: {fileID: 9153383283074335215}
+  - component: {fileID: 1484568114000076087}
   m_Layer: 0
   m_Name: ogre_nutural_prefab
   m_TagString: Untagged
@@ -45,6 +47,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4385242861297277482}
+  - {fileID: 3376721930763165344}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -316,6 +319,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2640fa16cbcb7a94a9a52675f1967436, type: 2}
   damage: 20
   isRanged: 0
+  canRetaliate: 0
   GameWorldMapManager: {fileID: 0}
   OnAttackStart:
     m_PersistentCalls:
@@ -381,6 +385,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f8385799818b2fd4a9f9c3121c2f96ad, type: 2}
   nest: {fileID: 0}
   isPlayer: 0
+  isDefender: 0
 --- !u!114 &8263703803900234781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,7 +528,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a42ec59efee12446a1047aa52fe82cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiAgent: {fileID: 0}
+--- !u!114 &9153383283074335215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4385242859586602388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bebd8cf1f1024d45b9795697b76614c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelingTable: {fileID: 11400000, guid: 81af338789c2217489f363e011c10bf0, type: 2}
+  upgradableCharacter: {fileID: 0}
+  WorldObject: {fileID: 4385242859586602387}
+  curentLevel: 0
+  maxLevel: 0
+  curentExp: 0
+  newLevelExp: 0
+  OnExpGain:
+    m_PersistentCalls:
+      m_Calls: []
+  OnNewLevel:
+    m_PersistentCalls:
+      m_Calls: []
+  canLevelUp: 0
+--- !u!114 &1484568114000076087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4385242859586602388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17323628f930ae143a67279174bd8bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldObject: {fileID: 4385242859586602387}
+  expDropAmmount: 0
+  expDropRange: 4
+  KillableCharacter: {fileID: 4385242859586602384}
 --- !u!1 &4385242861297277481
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,3 +652,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &4842697692546626192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3376721930763165344}
+  - component: {fileID: 3733952814767128705}
+  m_Layer: 0
+  m_Name: AutoStatsController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3376721930763165344
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4842697692546626192}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4385242859586602390}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3733952814767128705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4842697692546626192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 554b35a869523ca499b74cc1f93288e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Level: 5
+  killableCharacter: {fileID: 4385242859586602384}
+  AttackingCharacter: {fileID: 4385242859586602385}
+  LevelingCharacter: {fileID: 9153383283074335215}
+  DropExpOnDeath: {fileID: 1484568114000076087}
+  LevelingTable_SO: {fileID: 11400000, guid: 81af338789c2217489f363e011c10bf0, type: 2}

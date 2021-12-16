@@ -14,6 +14,8 @@ public class TutorialNode_OrcAttack : TutorialNode
 
     public string killOrcsObjectivetext;
 
+    public TurnOrderController TurnOrderController;
+
     public override void OnStart()
     {
         base.OnStart();
@@ -25,7 +27,7 @@ public class TutorialNode_OrcAttack : TutorialNode
         
         knight.OnMove += Knight_OnMove;
 
-        infoWindow.SetActive(true);
+        //infoWindow?.SetActive(true);
     }
 
     private void Knight_OnMove(object sender, MovingCharacter.MoveEventArg e)
@@ -35,6 +37,8 @@ public class TutorialNode_OrcAttack : TutorialNode
             if (tile.worldPosition == e.newPos)
             {
                 SpawnOrcs();
+
+                TurnOrderController.EndPlayerTurn();
 
                 curentObjective.text = killOrcsObjectivetext;
 

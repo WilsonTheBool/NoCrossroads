@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2566057066299456736}
   - component: {fileID: 1371818179283753310}
   - component: {fileID: -2234043331303011568}
+  - component: {fileID: 8702565960666417974}
   m_Layer: 0
   m_Name: stone_Small
   m_TagString: Untagged
@@ -100,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28f8af21ae09c4cacca2188d34c40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeName: 
   canMove: 0
   worldPosition: {x: 0, y: 0, z: 0}
   OnPositionChnaged:
@@ -109,6 +111,9 @@ MonoBehaviour:
   blockMovement: 1
   pathableForPlayer: 0
   pathableForEnemy: 0
+  OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5428891906013131216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +129,7 @@ MonoBehaviour:
   worldObject: {fileID: 0}
   resource: {fileID: 11400000, guid: c6eb2057a2a362049b603efc852c4739, type: 2}
   ResourceIconController: {fileID: 0}
-  baseMineAmmount: 10
+  baseMineAmmount: 8
   isFree: 0
   OnFreeStateChanged:
     m_PersistentCalls:
@@ -141,6 +146,26 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  maxResourceAmmount: 300
+  curentResourceCount: 300
+  OnEmpty:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8702565960666417974}
+        m_TargetAssemblyTypeName: CharacterDeathController, Assembly-CSharp
+        m_MethodName: OnDeath_Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnMine:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2566057066299456736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf1da239ca8efd848a15057ad1d7cacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WorldObject: {fileID: 0}
   OnFadeStart:
     m_PersistentCalls:
       m_Calls:
@@ -210,6 +236,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8702565960666417974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5428891906013131229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f74baa6b4bf5547b0f30b769e3e74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smokePrefab: {fileID: 6864265418000636999, guid: ad350efe4b5bfc24b96464247cc0d46f, type: 3}
+  WorldObject: {fileID: 5770619625225842060}
+  sprite: {fileID: 5428891906013131230}
+  WeaponSprite: {fileID: 0}
+  destroyDelay: 0
+  smokeDelay: 0
 --- !u!1 &6340975266494145054
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,8 +322,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 583377521
-  m_SortingLayer: 1
+  m_SortingLayerID: 886975797
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 4493037983976530779, guid: 43956eb5cb546a44ea72a0e5da0aac03, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

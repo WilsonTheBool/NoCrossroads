@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28f8af21ae09c4cacca2188d34c40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeName: 
   canMove: 0
   worldPosition: {x: 0, y: 0, z: 0}
   OnPositionChnaged:
@@ -105,6 +106,11 @@ MonoBehaviour:
       m_Calls: []
   mapManager: {fileID: 0}
   blockMovement: 1
+  pathableForPlayer: 0
+  pathableForEnemy: 0
+  OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &59502023862194236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +143,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  maxResourceAmmount: 999999
+  curentResourceCount: 999999
+  OnEmpty:
+    m_PersistentCalls:
+      m_Calls: []
+  OnMine:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7500850612921572620
 MonoBehaviour:
   m_ObjectHideFlags: 0

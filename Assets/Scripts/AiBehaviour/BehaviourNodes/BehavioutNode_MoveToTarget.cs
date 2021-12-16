@@ -30,6 +30,7 @@ public class BehavioutNode_MoveToTarget : BehaviourNode
                
                 owner.curentTarget = owner.nest.curentTarget;
                 owner.curentTarget.AddAgent();
+                owner.nest.spawnAgents.RemoveAgentFromNest(owner);
                 return true;
             }
         }

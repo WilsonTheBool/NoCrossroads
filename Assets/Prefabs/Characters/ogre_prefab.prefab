@@ -234,18 +234,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 6320549028684950479}
-        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
-        m_MethodName: DeleteHealthBar
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: -2866049912859297596}
         m_TargetAssemblyTypeName: CharacterAudioController, Assembly-CSharp
         m_MethodName: PlayAudio_Death
@@ -527,7 +515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WorldObject: {fileID: 1856054984383799873}
-  expDropAmmount: 220
+  expDropAmmount: 150
   expDropRange: 4
   KillableCharacter: {fileID: 1856054984383799874}
 --- !u!1 &1856054984752332283

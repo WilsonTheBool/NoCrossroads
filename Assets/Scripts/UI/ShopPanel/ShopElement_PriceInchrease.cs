@@ -9,24 +9,23 @@ public class ShopElement_PriceInchrease : GameWorldMap_Dependable
     ShopElement ShopElement;
 
     [SerializeField]
-    int priceIncreaceValue;
-
-    [SerializeField]
     string unitTypeName;
 
-
+    
     public override void SetUp()
     {
         GameWorldMapManager = GameWorldMapManager.instance;
         GameWorldMapManager.OnUnitCreate += GameWorldMapManager_OnUnitCreate;
         GameWorldMapManager.OnUnitDeath += GameWorldMapManager_OnUnitDeath;
+
+
     }
 
     private void GameWorldMapManager_OnUnitDeath(object sender, GameWorldMapManager.UnitEventArgs e)
     {
         if(e.worldObject.typeName == unitTypeName)
         {
-            ShopElement?.DicreacePrice(priceIncreaceValue);
+            ShopElement?.DicreacePrice();
         }
     }
 
@@ -34,7 +33,7 @@ public class ShopElement_PriceInchrease : GameWorldMap_Dependable
     {
         if (e.worldObject.typeName == unitTypeName)
         {
-            ShopElement?.IncreacePrice(priceIncreaceValue);
+            ShopElement?.IncreacePrice();
         }
     }
 }

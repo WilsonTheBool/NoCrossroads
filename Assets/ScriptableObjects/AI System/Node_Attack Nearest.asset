@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Node_Attack Nearest
   m_EditorClassIdentifier: 
   actionTimeDelay: 0.1
-  visionRnage: 4
+  visionRnage: 3
   TargetSelectModule: {fileID: 11400000, guid: 34bcfec3b4d4ecc4b96aab37abe2a27a, type: 2}

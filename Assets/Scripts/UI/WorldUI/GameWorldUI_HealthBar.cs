@@ -9,6 +9,8 @@ public class GameWorldUI_HealthBar : MonoBehaviour
 
     private KillableCharacter KillableCharacter;
 
+    private LevelingCharacter LevelingCharacter;
+
     [SerializeField]
     float colorChangePercent;
 
@@ -21,31 +23,53 @@ public class GameWorldUI_HealthBar : MonoBehaviour
     [SerializeField]
     GameWorldUI_MatchPosition matchPosition;
 
+    [SerializeField]
+    TMPro.TMP_Text levelText;
+
+    [SerializeField]
+    GameObject levelHolder;
+
     public void SetUp(KillableCharacter killable)
     {
         killable.OnTakeDamage.AddListener(UpdateBar);
         killable.OnHealSelf.AddListener(UpdateBar);
+        killable.OnDeath.AddListener(DeleteBar);
 
         this.KillableCharacter = killable;
 
         matchPosition.SetOwner(killable.transform);
+
+        if(killable.TryGetComponent<LevelingCharacter>(out LevelingCharacter))
+        {
+            LevelingCharacter.OnNewLevel.AddListener(UpdateLevel);
+
+            levelHolder.gameObject.SetActive(true);
+
+            levelText.text = LevelingCharacter.curentLevel.ToString();
+        }
+        else
+        {
+            levelHolder.SetActive(false);
+        }
     }
 
-    
+    private void DeleteBar()
+    {
+        Destroy(this.gameObject);
+    }
+
+    public void UpdateLevel(int level)
+    {
+        if (LevelingCharacter != null)
+        {
+            levelText.text = level.ToString();
+        }
+    }
 
     public void UpdateBar(KillableCharacter.DamageEventArgs damage)
     {
         if(KillableCharacter != null)
         {
-            if(KillableCharacter.hp == KillableCharacter.maxHp)
-            {
-                healthBarImage.enabled = false;
-            }
-            else
-            {
-                healthBarImage.enabled = true;
-            }
-
             healthBarImage.fillAmount = KillableCharacter.hp / KillableCharacter.maxHp;
             healthBarImage.fillAmount = Mathf.Clamp01(healthBarImage.fillAmount);
 
@@ -58,6 +82,8 @@ public class GameWorldUI_HealthBar : MonoBehaviour
                 healthBarImage.color = redColor;
             }
         }
+
+        
 
     }
 }

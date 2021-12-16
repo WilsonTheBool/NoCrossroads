@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: -3614102989322119981}
   - component: {fileID: 8201286720687458356}
   - component: {fileID: -3251053425542592372}
+  - component: {fileID: 2666210378653388114}
   m_Layer: 0
   m_Name: orc_prefab
   m_TagString: Untagged
@@ -301,26 +302,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ec2bc4973ea0a4b983cb6c0ace94b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 50
-  hp: 50
+  maxHp: 45
+  hp: 45
   OnDeath:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: -7280877034485768788}
         m_TargetAssemblyTypeName: CharacterDeathController, Assembly-CSharp
         m_MethodName: OnDeath_Destroy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: -1718492943725292454}
-        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
-        m_MethodName: DeleteHealthBar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -422,7 +411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetRules:
   - {fileID: 11400000, guid: 2640fa16cbcb7a94a9a52675f1967436, type: 2}
-  damage: 15
+  damage: 10
   isRanged: 0
   canRetaliate: 1
   GameWorldMapManager: {fileID: 0}
@@ -670,3 +659,29 @@ MonoBehaviour:
   movingImagePrefab: {fileID: 5489366785557879863, guid: c04128a29a99dcf4395dcef71cfb5b79, type: 3}
   spriteToAdd: {fileID: 5434347003425808849, guid: 1cd105610218e1c4d8b6012a2083374c, type: 3}
   textToAdd: 5
+--- !u!114 &2666210378653388114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2761760127051881939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bebd8cf1f1024d45b9795697b76614c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelingTable: {fileID: 11400000, guid: 881a3a83cbab82c4eae039f36fa3d673, type: 2}
+  upgradableCharacter: {fileID: 0}
+  WorldObject: {fileID: 2761760127051881940}
+  curentLevel: 2
+  maxLevel: 2
+  curentExp: 0
+  newLevelExp: 0
+  OnExpGain:
+    m_PersistentCalls:
+      m_Calls: []
+  OnNewLevel:
+    m_PersistentCalls:
+      m_Calls: []
+  canLevelUp: 0

@@ -42,8 +42,16 @@ public class CharacterUIController : MonoBehaviour
 
     public void Spawn_HPBar()
     {
-        healthBar = Instantiate(HpBar_prefab, this.transform.position, Quaternion.Euler(0,0,0), GameWorldUIController.GetWorldCanvas().transform);
+        healthBar = Instantiate(HpBar_prefab, this.transform.position, Quaternion.Euler(0, 0, 0), GameWorldUIController.GetWorldCanvas().transform);
         healthBar.SetUp(owner);
+    }
+
+    public GameWorldUI_ResourceBar GameWorldUI_ResourceBar;
+
+    public void Spawn_resourceBar()
+    {
+         Instantiate(GameWorldUI_ResourceBar, this.transform.position, Quaternion.Euler(0, 0, 0),
+             GameWorldUIController.GetWorldCanvas().transform).SetUp(owner.GetComponent<Miner_Structure>(), owner);
     }
 
     public void Spawn_DamageText(KillableCharacter.DamageEventArgs args)

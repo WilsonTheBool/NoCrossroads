@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5133661688910766300}
   - component: {fileID: 244439730539309912}
   - component: {fileID: 1953285343992137163}
+  - component: {fileID: 1027861216427123582}
   m_Layer: 0
   m_Name: trees_large
   m_TagString: Untagged
@@ -128,7 +129,7 @@ MonoBehaviour:
   worldObject: {fileID: 0}
   resource: {fileID: 11400000, guid: 9edf893276b400f42bc87cc649b13042, type: 2}
   ResourceIconController: {fileID: 0}
-  baseMineAmmount: 25
+  baseMineAmmount: 8
   isFree: 0
   OnFreeStateChanged:
     m_PersistentCalls:
@@ -145,6 +146,26 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  maxResourceAmmount: 500
+  curentResourceCount: 500
+  OnEmpty:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1027861216427123582}
+        m_TargetAssemblyTypeName: CharacterDeathController, Assembly-CSharp
+        m_MethodName: OnDeath_Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnMine:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5133661688910766300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,6 +236,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1027861216427123582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3455761996660731361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f74baa6b4bf5547b0f30b769e3e74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smokePrefab: {fileID: 6864265418000636999, guid: ad350efe4b5bfc24b96464247cc0d46f, type: 3}
+  WorldObject: {fileID: 3798578120129114544}
+  sprite: {fileID: 3455761996660731362}
+  WeaponSprite: {fileID: 0}
+  destroyDelay: 0
+  smokeDelay: 0
 --- !u!1 &3701310446017314338
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,8 +322,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 583377521
-  m_SortingLayer: 1
+  m_SortingLayerID: 886975797
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 4493037983976530779, guid: 43956eb5cb546a44ea72a0e5da0aac03, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

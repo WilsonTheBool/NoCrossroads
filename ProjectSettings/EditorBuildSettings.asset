@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WinterLevel.unity
     guid: de68a8ef04bd1c2409cace09c1a90726
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 2d41d04bfa9055e4fa4c47539d072698
   m_configObjects: {}

@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 7617493161861414390}
   - component: {fileID: 5598240143822690301}
   - component: {fileID: 3696493029508092334}
+  - component: {fileID: 114062095731936413}
   m_Layer: 0
   m_Name: worker_prefab
   m_TagString: Untagged
@@ -144,7 +145,19 @@ MonoBehaviour:
   pathableForEnemy: 0
   OnSetUpComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114062095731936413}
+        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
+        m_MethodName: Spawn_resourceBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2391871275883942173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +235,24 @@ MonoBehaviour:
   WorldObject: {fileID: 2391871275883942172}
   resourceTile: {fileID: 0}
   ResourceSpawner: {fileID: 0}
+  OnResourceTileEmpty:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8275723968767761155}
+        m_TargetAssemblyTypeName: KillableCharacter, Assembly-CSharp
+        m_MethodName: Die
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnMine:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1346813427184095976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,6 +502,26 @@ MonoBehaviour:
   MovingCharacter: {fileID: 0}
   TerritoryCreator: {fileID: 0}
   Structure: {fileID: 2391871275883942175}
+--- !u!114 &114062095731936413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391871275883942171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2451ca44fe3ce534884bcbdafb101f7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameWorldUIController: {fileID: 11400000, guid: d85f334486f0adc4da57f232b8a1076d, type: 2}
+  HpBar_prefab: {fileID: 0}
+  damageText_prefab: {fileID: 0}
+  exp_text_prefab: {fileID: 0}
+  levelUpText: {fileID: 0}
+  heal_text_prefab: {fileID: 0}
+  owner: {fileID: -8275723968767761155}
+  GameWorldUI_ResourceBar: {fileID: 4898352746451358540, guid: 8423929383dd8cd45b975492a4dcb25d, type: 3}
 --- !u!1 &2391871276522049190
 GameObject:
   m_ObjectHideFlags: 0

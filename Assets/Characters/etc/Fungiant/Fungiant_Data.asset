@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06bc058af05bf014ba510daf4d322601, type: 3}
+  m_Name: Fungiant_Data
+  m_EditorClassIdentifier: 
+  unitName: Fungiant
+  unitDiscription: Bigger and better
+  unitIcon: {fileID: 2637839004398508758, guid: 543f0a10831db854b9c3f719b2653b9e, type: 3}

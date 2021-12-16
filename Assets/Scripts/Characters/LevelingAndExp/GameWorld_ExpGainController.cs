@@ -47,7 +47,8 @@ public class GameWorld_ExpGainController : GameWorldMap_Dependable
     {
         if (e.worldObject.TryGetComponent<LevelingCharacter>(out LevelingCharacter levelingCharacter))
         {
-            levelingCharacters.Remove(levelingCharacter);
+            if(levelingCharacter.canLevelUp)
+                levelingCharacters.Remove(levelingCharacter);
         }
     }
 
@@ -55,7 +56,8 @@ public class GameWorld_ExpGainController : GameWorldMap_Dependable
     {
         if (e.worldObject.TryGetComponent<LevelingCharacter>(out LevelingCharacter levelingCharacter))
         {
-            levelingCharacters.Add(levelingCharacter);
+            if (levelingCharacter.canLevelUp)
+                levelingCharacters.Add(levelingCharacter);
         }
     }
 

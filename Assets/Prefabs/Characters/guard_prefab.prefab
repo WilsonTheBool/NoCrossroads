@@ -343,26 +343,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ec2bc4973ea0a4b983cb6c0ace94b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 40
-  hp: 40
+  maxHp: 50
+  hp: 50
   OnDeath:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3081408452696549673}
         m_TargetAssemblyTypeName: CharacterDeathController, Assembly-CSharp
         m_MethodName: OnDeath_Destroy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8843264719699658715}
-        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
-        m_MethodName: DeleteHealthBar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -454,6 +442,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 40cf43f4a129ed941ad9dd57c3917567, type: 2}
   damage: 10
   isRanged: 0
+  canRetaliate: 1
   GameWorldMapManager: {fileID: 0}
   OnAttackStart:
     m_PersistentCalls:
@@ -543,6 +532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovingCharacter: {fileID: 3429150398535149371}
   GameWorld_ExplorationController: {fileID: 0}
+  worldObject: {fileID: 0}
   ExploreRange: 4
 --- !u!114 &6936208799429084475
 MonoBehaviour:
@@ -620,11 +610,13 @@ MonoBehaviour:
   killable: {fileID: 3429150398535149364}
   AiBehaviourController: {fileID: 0}
   behaviourNodes:
+  - {fileID: 11400000, guid: 3655dd3008577704590f45b919c32518, type: 2}
   - {fileID: 11400000, guid: f569b3b7818de664ea503738424310d0, type: 2}
   - {fileID: 11400000, guid: a0bde37a5b5c740419f91a216ee2c5d0, type: 2}
   - {fileID: 11400000, guid: f8385799818b2fd4a9f9c3121c2f96ad, type: 2}
   nest: {fileID: 0}
   isPlayer: 1
+  isDefender: 0
 --- !u!114 &3429150398535149369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -637,7 +629,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a42ec59efee12446a1047aa52fe82cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiAgent: {fileID: 3429150398535149368}
 --- !u!114 &6228640045719206093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,9 +641,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df459f45fca8752428f9b6a412e3c991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WorldObject: {fileID: 0}
   AttackingCharacter: {fileID: 3429150398535149365}
   KillableCharacter: {fileID: 3429150398535149364}
   MovingCharacter: {fileID: 3429150398535149371}
+  TerritoryCreator: {fileID: 0}
+  Structure: {fileID: 0}
 --- !u!114 &9005096979488967494
 MonoBehaviour:
   m_ObjectHideFlags: 0

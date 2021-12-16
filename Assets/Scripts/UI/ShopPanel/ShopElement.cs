@@ -9,6 +9,9 @@ public class ShopElement : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     [TextArea]
     public string itemDescription;
 
+    public ShopPriceData priceData; 
+
+    [HideInInspector]
     public GameResourceManager.ResourceHolder[] itemPrice;
 
     private GameResourceManager GameResourceManager;
@@ -29,11 +32,23 @@ public class ShopElement : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     public UnityEngine.Events.UnityEvent OnBuyItem;
     public UnityEngine.Events.UnityEvent OnCantBuyItem;
 
+    private void Awake()
+    {
+        itemPrice = new GameResourceManager.ResourceHolder[priceData.ItemPrice.Length];
+
+        for(int i = 0; i < itemPrice.Length; i++)
+        {
+            itemPrice[i] = new GameResourceManager.ResourceHolder() { data = priceData.ItemPrice[i].data, value = priceData.ItemPrice[i].value };
+        }
+    }
+
     private void Start()
     {
         GameWorldMapManager = GameWorldMapManager.instance;
         GameResourceManager = GameResourceManager.instance;
         prefabSpawner = PrefabSpawner.instance;
+
+        
     }
 
     public void ShowDescription()
@@ -80,19 +95,33 @@ public class ShopElement : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         return true;
     }
 
-    public void IncreacePrice(int value)
+    public void IncreacePrice()
     {
-        foreach(GameResourceManager.ResourceHolder resource in itemPrice)
+        foreach (GameResourceManager.ResourceHolder change in priceData.ItemPriceIncrease)
         {
-            resource.value += value;
+            foreach (GameResourceManager.ResourceHolder resource in itemPrice)
+            {
+
+                if (resource.data == change.data)
+                {
+                    resource.value += change.value;
+                }
+            }
         }
     }
 
-    public void DicreacePrice(int value)
+    public void DicreacePrice()
     {
-        foreach (GameResourceManager.ResourceHolder resource in itemPrice)
+        foreach (GameResourceManager.ResourceHolder change in priceData.ItemPriceIncrease)
         {
-            resource.value -= value;
+            foreach (GameResourceManager.ResourceHolder resource in itemPrice)
+            {
+
+                if (resource.data == change.data)
+                {
+                    resource.value -= change.value;
+                }
+            }
         }
     }
 
@@ -120,7 +149,7 @@ public class ShopElement : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     {
         if (!TryStartBuySelect())
         {
-            print("Cant buy item");
+            
         }
     }
 

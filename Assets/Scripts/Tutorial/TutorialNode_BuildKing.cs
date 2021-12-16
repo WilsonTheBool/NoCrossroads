@@ -13,10 +13,12 @@ public class TutorialNode_BuildKing : TutorialNode
 
     public UnitSelectController UnitSelectController;
 
+    public UI_UnlockableItem kingItem;
+
     public override void OnStart()
     {
         base.OnStart();
-
+        kingItem.UnlockItem();
         //UnitSelectController.RemoveSelected(new GameInputData() { tileMousePosition = new Vector3Int(0,0,0)});
 
         GameWorldMapManager.OnUnitCreate += GameWorldMapManager_OnUnitCreate;
@@ -42,7 +44,7 @@ public class TutorialNode_BuildKing : TutorialNode
     public override void OnEnd()
     {
         base.OnEnd();
-
+        kingItem.LockItem();
         GameWorldMapManager.OnUnitCreate -= GameWorldMapManager_OnUnitCreate;
     }
 }

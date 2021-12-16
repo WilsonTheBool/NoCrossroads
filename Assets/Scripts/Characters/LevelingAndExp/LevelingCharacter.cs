@@ -20,6 +20,8 @@ public class LevelingCharacter : MonoBehaviour
     public UnityEvent<int> OnExpGain;
     public UnityEvent<int> OnNewLevel;
 
+    public bool canLevelUp = false;
+
     private void Start()
     {
         var data = levelingTable.GetLevelData(curentLevel + 1);
@@ -73,8 +75,9 @@ public class LevelingCharacter : MonoBehaviour
         {
             curentLevel++;
             var data = levelingTable.GetLevelData(curentLevel);
+            var data_up = levelingTable.GetLevelData(curentLevel + 1);
             TryUpgrade(data);
-            newLevelExp = data.ExpToLevel;
+            newLevelExp = data_up.ExpToLevel;
         }
     }
 

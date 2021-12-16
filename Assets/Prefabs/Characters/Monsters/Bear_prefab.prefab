@@ -582,6 +582,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WorldObject: {fileID: 2620739785105821703}
-  expDropAmmount: 30
+  expDropAmmount: 20
   expDropRange: 4
   KillableCharacter: {fileID: 2620739785105821699}

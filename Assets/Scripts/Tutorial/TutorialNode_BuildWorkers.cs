@@ -12,9 +12,12 @@ public class TutorialNode_BuildWorkers : TutorialNode
     public int maxWorkerNum;
     private int workerNum;
 
+    public UI_UnlockableItem workerItem;
+
     public override void OnStart()
     {
         base.OnStart();
+        workerItem.UnlockItem();
         GameWorldMapManager.OnUnitCreate += GameWorldMapManager_OnUnitCreate;
         infoWindow.SetActive(true);
     }
@@ -36,6 +39,7 @@ public class TutorialNode_BuildWorkers : TutorialNode
     public override void OnEnd()
     {
         base.OnEnd();
+        workerItem.LockItem();
         GameWorldMapManager.OnUnitCreate -= GameWorldMapManager_OnUnitCreate;
     }
 }

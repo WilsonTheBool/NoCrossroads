@@ -29,8 +29,14 @@ public class KillableCharacter : MonoBehaviour
 
     public void HealToFull()
     {
-        OnHealSelf.Invoke(new DamageEventArgs() { damage = maxHp - hp });
-        hp = maxHp;
+        if(hp != maxHp)
+        {
+            float value = maxHp - hp;
+            hp = maxHp;
+            OnHealSelf.Invoke(new DamageEventArgs() { damage = value });
+            
+        }
+
     }
 
     public void TakeDamage(float ammount, AttackingCharacter attacker)

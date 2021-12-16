@@ -6,6 +6,8 @@ public class NestBehaviour_SpawnAgents : NestBehaviourNode
     public int maxAgentNumber;
 
     public int maxDefendersNumber;
+
+    [SerializeField]
     private int defendersCount;
 
     public int AgentSpawnDelay;
@@ -13,7 +15,7 @@ public class NestBehaviour_SpawnAgents : NestBehaviourNode
     public TileSpawnRule_SO[] spawnRules;
 
     public AiAgentNest nest;
-
+    [SerializeField]
     int agentCount;
 
     GameWorldMapManager GameWorldMapManager;
@@ -47,6 +49,23 @@ public class NestBehaviour_SpawnAgents : NestBehaviourNode
         CreateTimer.Reset();
     }
 
+    public void RemoveAgentFromNest(AiAgent aiAgent)
+    {
+        KillableCharacter killableCharacter = aiAgent.GetComponent<KillableCharacter>();
+
+        if (!aiAgent.isDefender)
+        {
+            OnAgentDeath();
+            killableCharacter.OnDeath.RemoveListener(OnAgentDeath);
+        }
+        else
+        { 
+            OnDefenderDeath();
+            killableCharacter.OnDeath.RemoveListener(OnDefenderDeath);
+        }
+        
+    }
+
     public void SpawnAgent()
     {
         if (IsSpawnAvailable() && TryGetRandomTerritory(out Vector3Int pos))
@@ -57,7 +76,10 @@ public class NestBehaviour_SpawnAgents : NestBehaviourNode
             }
             else
             {
-                SpawnDefender(pos);
+                if (defendersCount < maxDefendersNumber)
+                    SpawnDefender(pos);
+                else
+                    SpawnAgent(pos);
             }
 
             //if(defendersCount < maxDefendersNumber)

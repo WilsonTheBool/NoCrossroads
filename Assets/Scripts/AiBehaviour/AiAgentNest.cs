@@ -19,6 +19,7 @@ public class AiAgentNest : MonoBehaviour
 
     private NestBehaviourNode[] behaviourNodes;
 
+    public NestBehaviour_SpawnAgents spawnAgents;
 
     [SerializeField]
     int nestRange;
@@ -40,7 +41,7 @@ public class AiAgentNest : MonoBehaviour
         WorldObject.OnSetUpComplete.AddListener(OnWorldObjectSetUpComplete);
         behaviourNodes = GetComponents<NestBehaviourNode>();
 
-
+        spawnAgents = GetComponent<NestBehaviour_SpawnAgents>();
     }
 
     private void OnWorldObjectSetUpComplete()

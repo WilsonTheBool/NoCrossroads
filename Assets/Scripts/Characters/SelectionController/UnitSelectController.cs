@@ -42,7 +42,11 @@ public class UnitSelectController : MonoBehaviour
                 if (selectableObject != null && selectableObject != curentSelect)
                 {
                     if (curentSelect != null)
+                    {
+                        RemoveSelected(inputData);
                         OnRemoveSelect.Invoke(curentSelect);
+                    }
+                        
 
                     specialTilemapManager.ClearTilemap();
                     specialTilemapManager.aboveSpecialTilemap.ClearAllTiles();
@@ -80,7 +84,11 @@ public class UnitSelectController : MonoBehaviour
         if (selectableObject != null && selectableObject != curentSelect)
         {
             if (curentSelect != null)
-                OnRemoveSelect.Invoke(curentSelect);
+            {
+                
+                    OnRemoveSelect.Invoke(curentSelect);
+            }
+                
 
             specialTilemapManager.ClearTilemap();
             specialTilemapManager.aboveSpecialTilemap.ClearAllTiles();

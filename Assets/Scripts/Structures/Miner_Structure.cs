@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(WorldObject), typeof(TurnBaseObject), typeof(Structure))]
 public  class Miner_Structure: MonoBehaviour
@@ -17,6 +18,9 @@ public  class Miner_Structure: MonoBehaviour
 
     public ResourceSpawner ResourceSpawner;
 
+    public UnityEvent OnResourceTileEmpty;
+    public UnityEvent OnMine;
+
     public void Free_Resource()
     {
         resourceTile.SetIsFree(true);
@@ -24,7 +28,9 @@ public  class Miner_Structure: MonoBehaviour
 
     public void Mine()
     {
-        resourceManager.AddResource(resourceTile.resource, resourceTile.GetMineAmmount(workEffectiveness));
+        float value = resourceTile.Mine(resourceTile.GetMineAmmount(workEffectiveness));
+        resourceManager.AddResource(resourceTile.resource, value);
+        OnMine.Invoke();
     }
 
     public GameResourceManager.ResourceHolder GetMineAmmount()
@@ -80,6 +86,12 @@ public  class Miner_Structure: MonoBehaviour
 
         resourceTile.SetIsFree(false);
         resourceTile.ResourceIconController.ShowIcon(false);
+        resourceTile.OnEmpty.AddListener(OnEmpty);
+    }
+
+    void OnEmpty()
+    {
+        OnResourceTileEmpty.Invoke();
     }
 
     private void OnDestroy()
