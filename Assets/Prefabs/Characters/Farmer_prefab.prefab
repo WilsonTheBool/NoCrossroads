@@ -106,6 +106,9 @@ GameObject:
   - component: {fileID: -1202545265449228309}
   - component: {fileID: 8527368917494966250}
   - component: {fileID: 7289190747899932954}
+  - component: {fileID: 6229011633348424379}
+  - component: {fileID: 2838726397391411162}
+  - component: {fileID: 6520890860439384199}
   m_Layer: 0
   m_Name: Farmer_prefab
   m_TagString: Untagged
@@ -222,6 +225,9 @@ MonoBehaviour:
   pathableForPlayer: 0
   pathableForEnemy: 0
   OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRemoveFromWorld:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &5796761391248012420
@@ -352,6 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ResourcePrefab: {fileID: 59502023862194236, guid: a828a58ffc020ac4a854dbe57a3aa70c, type: 3}
+  WorldObject: {fileID: 5796761391248012421}
 --- !u!114 &-4683050725211541128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,6 +451,80 @@ MonoBehaviour:
   WorldObject: {fileID: 5796761391248012421}
   resourceTile: {fileID: 0}
   ResourceSpawner: {fileID: -5489174562744317573}
+  OnResourceTileEmpty:
+    m_PersistentCalls:
+      m_Calls: []
+  OnMine:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6229011633348424379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5796761391248012418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ec2bc4973ea0a4b983cb6c0ace94b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 5
+  hp: 5
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6520890860439384199}
+        m_TargetAssemblyTypeName: CharacterDeathController, Assembly-CSharp
+        m_MethodName: OnDeath_Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealSelf:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2838726397391411162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5796761391248012418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a2ede53c533e44ab1901a6b2ee3444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldObject: {fileID: 5796761391248012421}
+  KillableCharacter: {fileID: 6229011633348424379}
+  isPlayer: 1
+--- !u!114 &6520890860439384199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5796761391248012418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f74baa6b4bf5547b0f30b769e3e74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smokePrefab: {fileID: 6864265418000636999, guid: ad350efe4b5bfc24b96464247cc0d46f, type: 3}
+  WorldObject: {fileID: 5796761391248012421}
+  sprite: {fileID: 5796761391248012419}
+  WeaponSprite: {fileID: 5796761390878436157}
+  destroyDelay: 1.5
+  smokeDelay: 0.7
 --- !u!1 &6027658248704976550
 GameObject:
   m_ObjectHideFlags: 0

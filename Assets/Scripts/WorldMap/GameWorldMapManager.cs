@@ -11,6 +11,8 @@ public class GameWorldMapManager : MonoBehaviour
     public SpecialTilemapManager SpecialTilemapManager;
     public PathTilemapManager pathTilemap;
 
+    public GameSaveLoadController GameSaveLoadController;
+
     public Tilemap mainTilemap;
     //public List<ResourceTile> resourceTiles;
     //public List<Miner_Structure> miners;
@@ -59,9 +61,7 @@ public class GameWorldMapManager : MonoBehaviour
 
     private void Start()
     {
-        
-
-
+        GameSaveLoadController = GameSaveLoadController.instance;
         GameWorldMap_Dependable[] dependables = FindObjectsOfType<GameWorldMap_Dependable>();
 
         foreach(GameWorldMap_Dependable dependable in dependables)
@@ -73,12 +73,20 @@ public class GameWorldMapManager : MonoBehaviour
 
         foreach (WorldObject worldObject in FindObjectsOfType<WorldObject>(false))
         {
-
             worldObject.SetUp();
         }
 
+        //Load all objects on map;
+        if (GameSaveLoadController != null)
+            GameSaveLoadController.LoadAllWorldObjects();
+
         isSetUpComplete = true;
+
+        if (GameSaveLoadController != null)
+            GameSaveLoadController.CreateNewObjectsFromLoad();
     }
+
+
 
     public void AddWorldObject(WorldObject worldObject)
     {

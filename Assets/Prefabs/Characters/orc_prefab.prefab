@@ -108,8 +108,6 @@ GameObject:
   - component: {fileID: -1665176666739708863}
   - component: {fileID: 3953102472814310204}
   - component: {fileID: -3614102989322119981}
-  - component: {fileID: 8201286720687458356}
-  - component: {fileID: -3251053425542592372}
   - component: {fileID: 2666210378653388114}
   m_Layer: 0
   m_Name: orc_prefab
@@ -228,6 +226,9 @@ MonoBehaviour:
   OnSetUpComplete:
     m_PersistentCalls:
       m_Calls: []
+  OnRemoveFromWorld:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2761760127051881941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,30 +323,6 @@ MonoBehaviour:
       - m_Target: {fileID: 3953102472814310204}
         m_TargetAssemblyTypeName: CharacterAudioController, Assembly-CSharp
         m_MethodName: PlayAudio_Death
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: -3251053425542592372}
-        m_TargetAssemblyTypeName: CharacterUI_SpawnMovingImage, Assembly-CSharp
-        m_MethodName: Spawn_MovingImage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8201286720687458356}
-        m_TargetAssemblyTypeName: DropResourcesObject, Assembly-CSharp
-        m_MethodName: DropResources
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -500,6 +477,7 @@ MonoBehaviour:
   levelUpText: {fileID: 0}
   heal_text_prefab: {fileID: 0}
   owner: {fileID: 2761760127051881943}
+  GameWorldUI_ResourceBar: {fileID: 0}
 --- !u!114 &-6850933027216987044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,38 +605,6 @@ MonoBehaviour:
   expDropAmmount: 15
   expDropRange: 4
   KillableCharacter: {fileID: 2761760127051881943}
---- !u!114 &8201286720687458356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2761760127051881939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5607774779ef1c5498ddc107976b7b0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resourcesToDrop:
-  - data: {fileID: 11400000, guid: 529894480f8e0694095180fae7f7bf91, type: 2}
-    value: 5
-  GameResourceManager: {fileID: 0}
---- !u!114 &-3251053425542592372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2761760127051881939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e168b8a865e20774e88c3c76c3df06a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GameWorldUIController: {fileID: 11400000, guid: d85f334486f0adc4da57f232b8a1076d, type: 2}
-  movingImagePrefab: {fileID: 5489366785557879863, guid: c04128a29a99dcf4395dcef71cfb5b79, type: 3}
-  spriteToAdd: {fileID: 5434347003425808849, guid: 1cd105610218e1c4d8b6012a2083374c, type: 3}
-  textToAdd: 5
 --- !u!114 &2666210378653388114
 MonoBehaviour:
   m_ObjectHideFlags: 0

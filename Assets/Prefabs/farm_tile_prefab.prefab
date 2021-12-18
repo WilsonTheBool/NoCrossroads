@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1986495714475445344}
   - component: {fileID: 59502023862194236}
   - component: {fileID: 7500850612921572620}
+  - component: {fileID: 5002833666398164862}
   m_Layer: 0
   m_Name: farm_tile_prefab
   m_TagString: Untagged
@@ -111,6 +112,9 @@ MonoBehaviour:
   OnSetUpComplete:
     m_PersistentCalls:
       m_Calls: []
+  OnRemoveFromWorld:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &59502023862194236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +151,19 @@ MonoBehaviour:
   curentResourceCount: 999999
   OnEmpty:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5002833666398164862}
+        m_TargetAssemblyTypeName: CharacterDeathController, Assembly-CSharp
+        m_MethodName: OnDeath_Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnMine:
     m_PersistentCalls:
       m_Calls: []
@@ -164,6 +180,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IconObject: {fileID: 4742703436022109861}
+--- !u!114 &5002833666398164862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59502023862194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f74baa6b4bf5547b0f30b769e3e74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smokePrefab: {fileID: 6864265418000636999, guid: ad350efe4b5bfc24b96464247cc0d46f, type: 3}
+  WorldObject: {fileID: 1986495714475445344}
+  sprite: {fileID: 59502023862194226}
+  WeaponSprite: {fileID: 0}
+  destroyDelay: 0.1
+  smokeDelay: 0
 --- !u!1 &2052378928717562866
 GameObject:
   m_ObjectHideFlags: 0

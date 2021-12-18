@@ -46,15 +46,22 @@ public class ResourceTile : MonoBehaviour
             float returnValue = value + (curentResourceCount - value);
 
             curentResourceCount -= value;
+            OnMine.Invoke();
 
             if (curentResourceCount <= 0)
             {
                 OnEmpty.Invoke();
             }
-            OnMine.Invoke();
+            
             return returnValue;
         }
 
+    }
+
+    public void EmptyTile()
+    {
+        curentResourceCount = 0;
+        OnEmpty.Invoke();
     }
 
     private void Start()

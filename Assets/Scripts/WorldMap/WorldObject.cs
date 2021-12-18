@@ -20,6 +20,7 @@ public class WorldObject : MonoBehaviour
     public bool pathableForEnemy;
 
     public UnityEvent OnSetUpComplete;
+    public UnityEvent OnRemoveFromWorld;
 
     private bool isSetUpComplete = false;
 
@@ -58,7 +59,11 @@ public class WorldObject : MonoBehaviour
     public void RemoveFromWorld()
     {
         if(mapManager != null)
-        mapManager.RemoveWorldObject(this);
+        {
+            mapManager.RemoveWorldObject(this);
+            OnRemoveFromWorld.Invoke();
+        }
+        
     }
 
     private void OnDestroy()

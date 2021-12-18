@@ -42,11 +42,10 @@ public class UnitMovementData
 
     public Vector3Int GetPathMaxRange(Vector3Int globalEndPos, int maxRange)
     {
-        List<Vector3Int> path = new List<Vector3Int>();
         UnitMovementCell parent = GetCell(globalEndPos);
         while (parent != null)
         {
-            if(parent.moveLength <= maxRange)
+            if(parent.moveLength <= maxRange && parent.canStand)
             {
                 
                 return parent.position;
@@ -171,6 +170,7 @@ public class UnitMovementData
             return null;
         }
     }
+
 
     private class UnitMovementCell
     {

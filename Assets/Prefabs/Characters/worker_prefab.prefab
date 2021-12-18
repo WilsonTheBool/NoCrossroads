@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 5598240143822690301}
   - component: {fileID: 3696493029508092334}
   - component: {fileID: 114062095731936413}
+  - component: {fileID: 8442092805776625430}
   m_Layer: 0
   m_Name: worker_prefab
   m_TagString: Untagged
@@ -158,6 +159,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnRemoveFromWorld:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2391871275883942173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,6 +526,21 @@ MonoBehaviour:
   heal_text_prefab: {fileID: 0}
   owner: {fileID: -8275723968767761155}
   GameWorldUI_ResourceBar: {fileID: 4898352746451358540, guid: 8423929383dd8cd45b975492a4dcb25d, type: 3}
+--- !u!114 &8442092805776625430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391871275883942171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a2ede53c533e44ab1901a6b2ee3444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldObject: {fileID: 2391871275883942172}
+  KillableCharacter: {fileID: -8275723968767761155}
+  isPlayer: 1
 --- !u!1 &2391871276522049190
 GameObject:
   m_ObjectHideFlags: 0

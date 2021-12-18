@@ -7,6 +7,25 @@ public class GameWorldTerritoryController : GameWorldMap_Dependable
 
     public List<TerritoryCreator> territoryCreators;
 
+    public static GameWorldTerritoryController instance;
+
+    private void Awake()
+    {
+        if(instance != null)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if(instance = this)
+        instance = null;
+    }
 
     public override void SetUp()
     {
@@ -15,12 +34,6 @@ public class GameWorldTerritoryController : GameWorldMap_Dependable
         GameWorldMapManager.OnUnitDeath += GameWorldMapManager_OnUnitDeath;
     }
 
-    private void Start()
-    {
-        
-
-       
-    }
 
     public void ReclaimTerritory(Vector3Int[] territory)
     {
@@ -63,6 +76,28 @@ public class GameWorldTerritoryController : GameWorldMap_Dependable
                 minDistance = value;
                 minCreator = creator;
             }
+        }
+
+        return minCreator;
+    }
+
+    public TerritoryCreator GetClosestTerritoryCreatorInRange(Vector3Int pos, bool isPlayer)
+    {
+        float minDistance = 0;
+        TerritoryCreator minCreator = null;
+        foreach (TerritoryCreator creator in territoryCreators)
+        {
+            if (!creator.isEnemy == isPlayer)
+            {
+                float value = Vector3Int.Distance(creator.WorldObject.worldPosition, pos) - creator.createRadius;
+
+                if (value <= minDistance)
+                {
+                    minDistance = value;
+                    minCreator = creator;
+                }
+            }
+           
         }
 
         return minCreator;
