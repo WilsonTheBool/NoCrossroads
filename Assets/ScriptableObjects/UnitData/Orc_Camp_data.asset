@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06bc058af05bf014ba510daf4d322601, type: 3}
   m_Name: Orc_Camp_data
   m_EditorClassIdentifier: 
-  unitName: Orc camp
+  unitName: Orc leader
   unitDiscription: structure that spawns orcs
   unitIcon: {fileID: -298092319164930752, guid: ec0101e032e76254fa272906cd650f4a, type: 3}

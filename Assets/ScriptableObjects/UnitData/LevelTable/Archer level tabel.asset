@@ -42,15 +42,15 @@ MonoBehaviour:
     AttackIncreace: 5
     HPIncreace: 8
   - level: 8
-    ExpToLevel: 940
+    ExpToLevel: 1200
     AttackIncreace: 4
     HPIncreace: 9
   - level: 9
-    ExpToLevel: 1190
+    ExpToLevel: 1500
     AttackIncreace: 3
     HPIncreace: 10
   - level: 10
-    ExpToLevel: 1470
+    ExpToLevel: 2000
     AttackIncreace: 3
     HPIncreace: 12
   maxLevel: 10

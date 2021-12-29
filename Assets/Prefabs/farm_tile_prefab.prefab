@@ -130,7 +130,7 @@ MonoBehaviour:
   worldObject: {fileID: 1986495714475445344}
   resource: {fileID: 11400000, guid: 8af0702f014885c4387f483801aef08d, type: 2}
   ResourceIconController: {fileID: 0}
-  baseMineAmmount: 10
+  baseMineAmmount: 7
   isFree: 0
   OnFreeStateChanged:
     m_PersistentCalls:

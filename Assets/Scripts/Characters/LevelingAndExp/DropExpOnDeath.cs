@@ -13,6 +13,8 @@ public class DropExpOnDeath : MonoBehaviour
 
     public KillableCharacter KillableCharacter;
 
+    public float expMultPerCharacter = 0.15f;
+
     private void Start()
     {
         GameWorld_ExpGainController = GameWorld_ExpGainController.instance;
@@ -25,7 +27,7 @@ public class DropExpOnDeath : MonoBehaviour
 
         if (levelingCharacters.Length > 0)
         {
-            float expToEach = expDropAmmount / levelingCharacters.Length;
+            float expToEach = expDropAmmount * (1 + expMultPerCharacter * (levelingCharacters.Length - 1)) / levelingCharacters.Length;
 
             foreach (LevelingCharacter levelingCharacter in levelingCharacters)
             {

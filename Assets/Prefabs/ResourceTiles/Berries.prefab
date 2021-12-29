@@ -82,6 +82,54 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &8345464957608143039
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6979386639181887459}
+  - component: {fileID: 1627927223651437629}
+  m_Layer: 0
+  m_Name: SaveLoad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6979386639181887459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8345464957608143039}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8770898410312502104}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1627927223651437629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8345464957608143039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c470226b55f1e48a9c59a278d3e4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priority: 50
+  removeOnStartIfNoData: 1
+  owner: {fileID: 7132129744772601611}
+  component_Converters:
+  - {fileID: 11400000, guid: 00c73894e84465048ac4da4447b5bad4, type: 2}
 --- !u!1 &8770898410312502106
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,6 +165,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6550889918150475264}
+  - {fileID: 6979386639181887459}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -183,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28f8af21ae09c4cacca2188d34c40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeName: 
+  typeName: Berries
   canMove: 0
   worldPosition: {x: 0, y: 0, z: 0}
   OnPositionChnaged:
@@ -194,6 +243,9 @@ MonoBehaviour:
   pathableForPlayer: 0
   pathableForEnemy: 0
   OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRemoveFromWorld:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &8770898410312502103
@@ -211,7 +263,7 @@ MonoBehaviour:
   worldObject: {fileID: 0}
   resource: {fileID: 11400000, guid: 8af0702f014885c4387f483801aef08d, type: 2}
   ResourceIconController: {fileID: 0}
-  baseMineAmmount: 8
+  baseMineAmmount: 15
   isFree: 0
   OnFreeStateChanged:
     m_PersistentCalls:

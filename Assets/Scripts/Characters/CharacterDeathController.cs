@@ -33,6 +33,13 @@ public class CharacterDeathController : MonoBehaviour
         StartCoroutine(DeathCo());
     }
 
+    public void OnDeath_Destroy_Instant()
+    {
+        WorldObject.RemoveFromWorld();
+
+        Destroy(this.gameObject);
+    }
+
     IEnumerator DeathCo()
     {
         

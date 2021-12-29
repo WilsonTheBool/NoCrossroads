@@ -3,6 +3,9 @@ using System.Collections;
 
 public class WorldObject_SaveLoadController : MonoBehaviour
 {
+
+    public int priority;
+
     public bool removeOnStartIfNoData;
 
     public WorldObject owner;
@@ -15,6 +18,7 @@ public class WorldObject_SaveLoadController : MonoBehaviour
         data.worldPosition = owner.worldPosition;
         data.component_SaveDatas = new Component_SaveData[component_Converters.Length];
         data.worldObjectType = owner.typeName;
+        data.priority = priority;
         for(int i = 0; i < component_Converters.Length; i++)
         {
             data.component_SaveDatas[i] = new Component_SaveData()

@@ -16,3 +16,4 @@ MonoBehaviour:
   enemyTerritoryTile: {fileID: 11400000, guid: 8963a604e9ed3a84e8bca86d053bbd53, type: 2}
   CanPlaceTile: {fileID: 11400000, guid: 69cbc10cc8c8cef46b3e6f9bd7ea945a, type: 2}
   NotPlaceTIle: {fileID: 11400000, guid: 8963a604e9ed3a84e8bca86d053bbd53, type: 2}
+  AttackTargetTile: {fileID: 11400000, guid: 7c671448243b08845a7e718ba672b46f, type: 2}

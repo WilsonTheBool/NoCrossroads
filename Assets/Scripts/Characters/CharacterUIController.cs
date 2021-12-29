@@ -25,11 +25,20 @@ public class CharacterUIController : MonoBehaviour
     [SerializeField]
     KillableCharacter owner;
 
+    [SerializeField]
+    WorldObject WorldObject;
+
     GameWorldUI_HealthBar healthBar;
 
-    private void Start()
+    private void Awake()
     {
+       if(WorldObject == null)
+        {
+            WorldObject = owner.GetComponent<WorldObject>();
+        }
+
        
+        WorldObject.OnRemoveFromWorld.AddListener(DeleteHealthBar);
     }
 
     public void DeleteHealthBar()

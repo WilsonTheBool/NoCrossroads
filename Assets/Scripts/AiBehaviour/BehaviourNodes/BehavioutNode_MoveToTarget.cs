@@ -19,13 +19,13 @@ public class BehavioutNode_MoveToTarget : BehaviourNode
 
     public override bool CanActivate(AiBehaviourController controller, AiAgent owner)
     {
-        if (owner.curentTarget != null)
+        if (owner.curentTarget != null && owner.curentTarget.isCreated)
         {
             return true;
         }
         else
         {
-            if (owner.nest != null && owner.nest.curentTarget != null && owner.nest.curentTarget.CanAddAgent(owner))
+            if (owner.nest != null && owner.nest.curentTarget != null && owner.nest.curentTarget.isCreated && owner.nest.curentTarget.CanAddAgent(owner))
             {
                
                 owner.curentTarget = owner.nest.curentTarget;

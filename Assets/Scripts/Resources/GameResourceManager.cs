@@ -14,6 +14,8 @@ public class GameResourceManager : GameWorldMap_Dependable
 
     private GameWorldMapManager GameWorldMapManager;
 
+    public GameResourceManager_SaveLoadController save;
+
     private void OnDestroy()
     {
         if (instance == this)
@@ -30,7 +32,13 @@ public class GameResourceManager : GameWorldMap_Dependable
         else
         {
             instance = this;
+            LoadSelf();
         }
+    }
+
+    private void LoadSelf()
+    {
+        save.Load();
     }
 
     private void Start()

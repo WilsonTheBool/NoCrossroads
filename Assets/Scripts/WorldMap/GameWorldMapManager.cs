@@ -12,6 +12,7 @@ public class GameWorldMapManager : MonoBehaviour
     public PathTilemapManager pathTilemap;
 
     public GameSaveLoadController GameSaveLoadController;
+    public GameWorld_EnemyPositionController GameWorld_EnemyPositionController;
 
     public Tilemap mainTilemap;
     //public List<ResourceTile> resourceTiles;
@@ -77,12 +78,12 @@ public class GameWorldMapManager : MonoBehaviour
         }
 
         //Load all objects on map;
-        if (GameSaveLoadController != null)
+        if (GameSaveLoadController != null && GameSaveLoadController.isCurentlyLoading)
             GameSaveLoadController.LoadAllWorldObjects();
 
         isSetUpComplete = true;
 
-        if (GameSaveLoadController != null)
+        if (GameSaveLoadController != null && GameSaveLoadController.isCurentlyLoading)
             GameSaveLoadController.CreateNewObjectsFromLoad();
     }
 

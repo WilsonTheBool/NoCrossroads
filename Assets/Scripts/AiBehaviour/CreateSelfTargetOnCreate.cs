@@ -17,6 +17,6 @@ public class CreateSelfTargetOnCreate : MonoBehaviour
 
     void CreateTarget()
     {
-        aiAgent.curentTarget = new AiAgentNest.NestTarget() { targetPos = aiAgent.WorldObject.worldPosition, maxAgents = 1 };
+        aiAgent.curentTarget = new AiAgentNest.NestTarget() { targetPos = aiAgent.WorldObject.worldPosition, maxAgents = 1, isCreated = true};
     }
 }

@@ -109,6 +109,8 @@ GameObject:
   - component: {fileID: 6229011633348424379}
   - component: {fileID: 2838726397391411162}
   - component: {fileID: 6520890860439384199}
+  - component: {fileID: 1633950420654585677}
+  - component: {fileID: -1619091856557989302}
   m_Layer: 0
   m_Name: Farmer_prefab
   m_TagString: Untagged
@@ -129,6 +131,7 @@ Transform:
   m_Children:
   - {fileID: 5796761390878436156}
   - {fileID: 7950076769664481532}
+  - {fileID: 3208057514378999778}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -450,6 +453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldObject: {fileID: 5796761391248012421}
   resourceTile: {fileID: 0}
+  workEffectiveness: 1
   ResourceSpawner: {fileID: -5489174562744317573}
   OnResourceTileEmpty:
     m_PersistentCalls:
@@ -525,6 +529,39 @@ MonoBehaviour:
   WeaponSprite: {fileID: 5796761390878436157}
   destroyDelay: 1.5
   smokeDelay: 0.7
+--- !u!114 &1633950420654585677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5796761391248012418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df459f45fca8752428f9b6a412e3c991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldObject: {fileID: 5796761391248012421}
+  AttackingCharacter: {fileID: 0}
+  KillableCharacter: {fileID: 0}
+  MovingCharacter: {fileID: 0}
+  TerritoryCreator: {fileID: 0}
+  Structure: {fileID: 7289190747899932954}
+--- !u!114 &-1619091856557989302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5796761391248012418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a2ede53c533e44ab1901a6b2ee3444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldObject: {fileID: 5796761391248012421}
+  KillableCharacter: {fileID: 6229011633348424379}
+  isPlayer: 1
 --- !u!1 &6027658248704976550
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,3 +606,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlacableObject: {fileID: 7202186163950745457}
+--- !u!1 &8725885422429574626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3208057514378999778}
+  - component: {fileID: 6741808497315404695}
+  m_Layer: 0
+  m_Name: SaveLoadController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3208057514378999778
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8725885422429574626}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5796761391248012416}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6741808497315404695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8725885422429574626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c470226b55f1e48a9c59a278d3e4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priority: 0
+  removeOnStartIfNoData: 1
+  owner: {fileID: 5796761391248012421}
+  component_Converters:
+  - {fileID: 11400000, guid: d582469af6ba71c479bfe0273e9588d5, type: 2}

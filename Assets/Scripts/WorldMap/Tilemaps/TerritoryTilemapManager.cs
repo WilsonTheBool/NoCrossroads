@@ -10,7 +10,20 @@ public class TerritoryTilemapManager : MonoBehaviour
     public SpecialTilesData_SO tiles;
 
     GameWorldMapManager map;
-
+    private void Awake()
+    {
+        if (territoryTilemap == null)
+        {
+            foreach (Tilemap tilemap in FindObjectsOfType<Tilemap>())
+            {
+                if (tilemap.CompareTag("TerritoryTilemap"))
+                {
+                    territoryTilemap = tilemap;
+                    return;
+                }
+            }
+        }
+    }
     private void Start()
     {
         map = GameWorldMapManager.instance;

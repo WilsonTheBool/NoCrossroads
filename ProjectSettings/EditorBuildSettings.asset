@@ -9,14 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 6b715882579d5b546b957ce058fe4b46
   - enabled: 1
-    path: Assets/Scenes/LongTrio.unity
+    path: Assets/Scenes/Levels/ColdBreeze.unity
+    guid: 94ff6e08dd32f4c4fa1a8114f9098958
+  - enabled: 1
+    path: Assets/Scenes/Levels/LongTrio.unity
     guid: c3d2c4e179104cd4a8d98f9ee6a18135
-  - enabled: 0
-    path: Assets/Scenes/MainLevel.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/WinterLevel.unity
-    guid: de68a8ef04bd1c2409cace09c1a90726
+  - enabled: 1
+    path: Assets/Scenes/Levels/SnowTribunal.unity
+    guid: e1bf01ac36b39ae4bbc37f98369ae34a
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 2d41d04bfa9055e4fa4c47539d072698

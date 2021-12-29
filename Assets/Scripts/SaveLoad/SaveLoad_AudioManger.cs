@@ -6,8 +6,16 @@ public class SaveLoad_AudioManger : MonoBehaviour
     [SerializeField]
     AudioManager AudioManager;
 
+    public bool LoadFromPrefsOnStart;
+
     private void Awake()
     {
+        if(AudioManager == null)
+        {
+            AudioManager = FindObjectOfType<AudioManager>();
+        }
+
+        if(LoadFromPrefsOnStart)
         LoadFromPrefs();
     }
 

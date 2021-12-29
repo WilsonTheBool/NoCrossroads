@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: TargetSelectModule
   m_EditorClassIdentifier: 
   distanceCost: 1
+  hpCost: 0

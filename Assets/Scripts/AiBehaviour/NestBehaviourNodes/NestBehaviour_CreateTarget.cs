@@ -27,31 +27,38 @@ public class NestBehaviour_CreateTarget: NestBehaviourNode
         NoizeGameWorldController = FindObjectOfType<NoizeGameWorldController>();
         controller = TurnTimerController.instance;
 
-        CreateTimer = controller.GetTimer(CreateTurnDelay);
-        DestroyTimer = controller.GetTimer(CreateTurnDelay + DestroyTurnDelay);
+        //CreateTimer = controller.GetTimer(CreateTurnDelay);
+        //DestroyTimer = controller.GetTimer(CreateTurnDelay + DestroyTurnDelay);
 
-        CreateTimer.OnEnd += CreateTimer_OnEnd;
-        CreateTimer.OnStart += CreateTimer_OnStart;
+        //CreateTimer.OnEnd += CreateTimer_OnEnd;
+        //CreateTimer.OnStart += CreateTimer_OnStart;
 
-        DestroyTimer.OnEnd += DestroyTimer_OnEnd;
+       // DestroyTimer.OnEnd += DestroyTimer_OnEnd;
     }
 
     private void DestroyTimer_OnEnd()
     {
         RemoveTarget();
-        CreateTimer.Reset();
-        DestroyTimer.Reset();
+        DestroyTimer.OnEnd -= DestroyTimer_OnEnd;
+        DestroyTimer = null;
     }
 
-    public override void TickAction()
+    public override void TickAction(int turnCount)
     {
-        CreateTimer.TurnTimer_OnTick();
+        if(turnCount % CreateTurnDelay == 0 && turnCount > 0)
+        {
+            CreateTimer_OnEnd();
+            DestroyTimer = new TurnTimerController.TurnTimer(DestroyTurnDelay, controller);
+            DestroyTimer.OnEnd += DestroyTimer_OnEnd;
+        }
+
+       if(DestroyTimer != null)
         DestroyTimer.TurnTimer_OnTick();
     }
 
     private void AddNewTarget(Vector3Int pos)
     {
-        nest.curentTarget = new AiAgentNest.NestTarget() { targetPos = pos, maxAgents = TargetMaxAgentCount , canDefendersJoin = CanDefenderJoin };
+        nest.curentTarget = new AiAgentNest.NestTarget() { targetPos = pos, maxAgents = TargetMaxAgentCount, canDefendersJoin = CanDefenderJoin, isCreated = true };
     }
 
     private void RemoveTarget()

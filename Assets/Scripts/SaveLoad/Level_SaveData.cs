@@ -9,4 +9,10 @@ public class Level_SaveData
     public string playTime;
 
     public WorldObject_SaveData[] allSavedObjects;
+
+    public GameResourceManager_SaveLoadController.ResourceManagerSaveData resourceManagerSaveData;
+
+    public ShopUpgrades_SaveLoadConverter.ShopUpgradeSaveData upgradeSaveData;
+
+    public ExplorationController_SaveLoadController.ExplorationControllerSaveData ExplorationControllerSaveData;
 }

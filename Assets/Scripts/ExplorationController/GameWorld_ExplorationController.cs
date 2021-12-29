@@ -26,6 +26,8 @@ public class GameWorld_ExplorationController : GameWorldMap_Dependable
 
     public bool isAllExploredOnStart;
 
+    public ExplorationController_SaveLoadController save;
+
     private void OnDestroy()
     {
         if (instance == this)
@@ -43,6 +45,7 @@ public class GameWorld_ExplorationController : GameWorldMap_Dependable
         else
         {
             instance = this;
+            
         }
 
         
@@ -51,7 +54,7 @@ public class GameWorld_ExplorationController : GameWorldMap_Dependable
     private void Start()
     {
 
-
+        
         
 
         
@@ -71,8 +74,28 @@ public class GameWorld_ExplorationController : GameWorldMap_Dependable
     public override void SetUp()
     {
         GameWorldMapManager = GameWorldMapManager.instance;
+        
+        if(fogTilemap == null)
+        {
+            foreach (Tilemap tilemap in FindObjectsOfType<Tilemap>())
+            {
+                if (tilemap.CompareTag("FogTilemap"))
+                {
+                    fogTilemap = tilemap;
+                    
+                }
+
+                if (tilemap.CompareTag("LandTilemap"))
+                {
+                    manTilemap = tilemap;
+
+                }
+            }
+        }
 
         CreateEmptyGrid(GameMap.MapSize, GameMap.MapOffset);
+
+
 
         GameWorldMapManager.OnUnitMove += GameWorldMapManager_OnUnitMove;
         GameWorldMapManager.OnUnitCreate += GameWorldMapManager_OnUnitCreate;
@@ -80,6 +103,16 @@ public class GameWorld_ExplorationController : GameWorldMap_Dependable
         if (isAllExploredOnStart)
         {
             ExploreAll();
+        }
+
+        if(GameSaveLoadController.instance != null && GameSaveLoadController.instance.isCurentlyLoading)
+        {
+            if(save == null)
+            {
+                save = GetComponent<ExplorationController_SaveLoadController>();
+            }
+
+            save.Load();
         }
     }
 
@@ -145,7 +178,7 @@ public class GameWorld_ExplorationController : GameWorldMap_Dependable
         }
     }
 
-    private void Explore(Vector3Int pos)
+    public void Explore(Vector3Int pos)
     {
 
 

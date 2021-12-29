@@ -32,21 +32,42 @@ public class NestBehaviour_SpawnAgents : NestBehaviourNode
     private void Start()
     {
         GameWorldMapManager = GameWorldMapManager.instance;
+
+        GameWorldMapManager.OnUnitCreate += GameWorldMapManager_OnUnitCreate;
+
         controller = TurnTimerController.instance;
-        CreateTimer = new TurnTimerController.TurnTimer(AgentSpawnDelay, controller);
-        CreateTimer.OnEnd += CreateTimer_OnEnd;
+        //CreateTimer = new TurnTimerController.TurnTimer(AgentSpawnDelay, controller);
+        //CreateTimer.OnEnd += CreateTimer_OnEnd;
     }
 
-    public override void TickAction()
+    private void GameWorldMapManager_OnUnitCreate(object sender, GameWorldMapManager.UnitEventArgs e)
     {
-        CreateTimer.TurnTimer_OnTick();
+        AiAgent aiAgent = e.worldObject.GetComponent<AiAgent>();
+
+        if (aiAgent != null && !aiAgent.curentTarget.isCreated)
+            foreach (Vector3Int pos in nest.nestTerritory)
+            {
+                if (pos == e.worldObject.worldPosition)
+                {
+                    OnAgentAdd(aiAgent);
+                }
+            }
+    }
+
+    public override void TickAction(int turnCount)
+    {
+        if (turnCount % AgentSpawnDelay == 0)
+        {
+            CreateTimer_OnEnd();
+           
+        }
     }
 
     private void CreateTimer_OnEnd()
     {
         SpawnAgent();
        
-        CreateTimer.Reset();
+        //CreateTimer.Reset();
     }
 
     public void RemoveAgentFromNest(AiAgent aiAgent)
@@ -149,28 +170,37 @@ public class NestBehaviour_SpawnAgents : NestBehaviourNode
         defendersCount--;
     }
 
+    private void OnAgentAdd(AiAgent agent)
+    {
+        if (agent.isDefender)
+        {
+            agent.killable.OnDeath.AddListener(OnAgentDeath);
+            agent.killable.OnDeath.AddListener(OnDefenderDeath);
+            agent.nest = this.nest;
+            agentCount++;
+            defendersCount++;
+        }
+        else
+        {
+            agent.killable.OnDeath.AddListener(OnAgentDeath);
+            agent.nest = this.nest;
+            agentCount++;
+        }
+        
+    }
+
     private void SpawnAgent(Vector3Int pos)
     {
         AiAgent agent = Instantiate(spawnController.GetRandomAgentPrefab(), GameWorldMapManager.GetTileCenterInWorld(pos), Quaternion.Euler(0, 0, 0));
-        agent.killable.OnDeath.AddListener(OnAgentDeath);
-        agent.nest = this.nest;
-        agentCount++;
     }
 
     private void SpawnDefender(Vector3Int pos)
     {
         AiAgent agent = Instantiate(spawnController.GetRandomDefenderPrefab(), GameWorldMapManager.GetTileCenterInWorld(pos), Quaternion.Euler(0, 0, 0));
-        agent.killable.OnDeath.AddListener(OnAgentDeath);
-        agent.killable.OnDeath.AddListener(OnDefenderDeath);
-        agent.nest = this.nest;
-        agentCount++;
-        defendersCount++;
     }
 
     private void OnDestroy()
     {
-        CreateTimer.OnEnd -= CreateTimer_OnEnd;
-        CreateTimer = null;
 
     }
 }

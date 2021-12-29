@@ -14,7 +14,7 @@ public  class Miner_Structure: MonoBehaviour
 
     GameWorldMapManager gameWorldMapManager;
 
-    private float workEffectiveness = 1;
+    public float workEffectiveness = 1;
 
     public ResourceSpawner ResourceSpawner;
 
@@ -85,7 +85,7 @@ public  class Miner_Structure: MonoBehaviour
         }
 
         resourceTile.SetIsFree(false);
-        resourceTile.ResourceIconController.ShowIcon(false);
+        resourceTile.ResourceIconController.SetIcon(false);
         resourceTile.OnEmpty.AddListener(OnEmpty);
     }
 

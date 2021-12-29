@@ -48,6 +48,7 @@ Transform:
   m_Children:
   - {fileID: 4385242861297277482}
   - {fileID: 3376721930763165344}
+  - {fileID: 3505461940953239884}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -144,6 +145,9 @@ MonoBehaviour:
   pathableForPlayer: 0
   pathableForEnemy: 1
   OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRemoveFromWorld:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &4385242859586602386
@@ -384,6 +388,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 43a6e07032a37f64faed09264f194b12, type: 2}
   - {fileID: 11400000, guid: f8385799818b2fd4a9f9c3121c2f96ad, type: 2}
   nest: {fileID: 0}
+  curentTarget:
+    isCreated: 0
+    targetPos: {x: 0, y: 0, z: 0}
+    maxAgents: 0
+    curentAgents: 0
+    canDefendersJoin: 0
   isPlayer: 0
   isDefender: 0
 --- !u!114 &8263703803900234781
@@ -405,6 +415,7 @@ MonoBehaviour:
   levelUpText: {fileID: 0}
   heal_text_prefab: {fileID: 0}
   owner: {fileID: 4385242859586602384}
+  GameWorldUI_ResourceBar: {fileID: 0}
 --- !u!114 &4207670074724906011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -701,3 +712,51 @@ MonoBehaviour:
   LevelingCharacter: {fileID: 9153383283074335215}
   DropExpOnDeath: {fileID: 1484568114000076087}
   LevelingTable_SO: {fileID: 11400000, guid: 81af338789c2217489f363e011c10bf0, type: 2}
+--- !u!1 &6478066397444373885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3505461940953239884}
+  - component: {fileID: 7501089249695292293}
+  m_Layer: 0
+  m_Name: SaveLoad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3505461940953239884
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6478066397444373885}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.357374, y: -1.9856467, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4385242859586602390}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7501089249695292293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6478066397444373885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c470226b55f1e48a9c59a278d3e4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  removeOnStartIfNoData: 1
+  owner: {fileID: 4385242859586602387}
+  component_Converters:
+  - {fileID: 11400000, guid: d582469af6ba71c479bfe0273e9588d5, type: 2}
+  - {fileID: 11400000, guid: fb5559d9942b3a24f9b1fda13a1680e6, type: 2}

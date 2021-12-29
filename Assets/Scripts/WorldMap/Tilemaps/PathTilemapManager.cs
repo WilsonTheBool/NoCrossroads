@@ -8,6 +8,22 @@ public class PathTilemapManager : MonoBehaviour
 
     public TileBase pathTile;
 
+
+    private void Awake()
+    {
+        if (pathTilemap == null)
+        {
+            foreach (Tilemap tilemap in FindObjectsOfType<Tilemap>())
+            {
+                if (tilemap.CompareTag("PathTilemap"))
+                {
+                    pathTilemap = tilemap;
+                    return;
+                }
+            }
+        }
+    }
+
     public void SetPathTiles(Vector3Int[] path)
     {
         foreach(Vector3Int vec in path)

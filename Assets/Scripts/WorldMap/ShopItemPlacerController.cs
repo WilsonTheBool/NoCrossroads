@@ -39,6 +39,7 @@ public class ShopItemPlacerController : MonoBehaviour
         itemSprite = element.itemPrefab.GetComponent<SpriteRenderer>().sprite;
 
         gameWorldMapManager.TerritoryTilemapManager.territoryTilemap.gameObject.SetActive(false);
+        tilemapColor = gameWorldMapManager.LandTilemapManager.landTIlemap.color;
         gameWorldMapManager.LandTilemapManager.landTIlemap.color = new Color(0.8f, 0.8f, 0.8f);
         //follow mouse object placment
         ShowCursorObject();
@@ -105,11 +106,13 @@ public class ShopItemPlacerController : MonoBehaviour
         
     }
 
+    Color tilemapColor;
+
     private void EndSelectPlace()
     {
 
         gameWorldMapManager.TerritoryTilemapManager.territoryTilemap.gameObject.SetActive(true);
-        gameWorldMapManager.LandTilemapManager.landTIlemap.color = new Color(1, 1, 1);
+        gameWorldMapManager.LandTilemapManager.landTIlemap.color = tilemapColor;
 
         DisableInputModule();
         HideCursorObject();

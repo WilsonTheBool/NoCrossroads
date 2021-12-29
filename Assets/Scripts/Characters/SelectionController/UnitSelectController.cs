@@ -31,51 +31,54 @@ public class UnitSelectController : MonoBehaviour
     {
         if (!inputData.isOverUI)
         {
-
-        Ray ray = Camera.main.ScreenPointToRay(inputData.mouseMositionScreen);
-        RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, 100))
+            if (!specialTilemapManager.TilemapHasTile_AttackTile(inputData.tileMousePosition))
             {
-                SelectableObject selectableObject = hit.collider.GetComponent<SelectableObject>();
+                Ray ray = Camera.main.ScreenPointToRay(inputData.mouseMositionScreen);
+                RaycastHit hit;
 
-                if (selectableObject != null && selectableObject != curentSelect)
+                if (Physics.Raycast(ray, out hit, 100))
                 {
-                    if (curentSelect != null)
+                    SelectableObject selectableObject = hit.collider.GetComponent<SelectableObject>();
+
+                    if (selectableObject != null && selectableObject != curentSelect)
                     {
-                        RemoveSelected(inputData);
-                        OnRemoveSelect.Invoke(curentSelect);
+                        if (curentSelect != null)
+                        {
+                            RemoveSelected(inputData);
+                            OnRemoveSelect.Invoke(curentSelect);
+                        }
+
+
+                        specialTilemapManager.ClearTilemap();
+                        specialTilemapManager.aboveSpecialTilemap.ClearAllTiles();
+                        curentSelect = selectableObject;
+
+                        curentSelectEventArgs = new SelectModule.SelectEventArgs
+                        {
+                            SelectableObject = curentSelect,
+                            //GameUnitMovementController = GameUnitMovementController,
+                            GameWorldMapManager = this.GameWorldMapManager,
+                            NewGameMovementController = this.NewGameMovementController,
+                            SpecialTilemapManager = this.specialTilemapManager,
+                            MovingCharacter = curentSelect.GetComponent<MovingCharacter>(),
+                            AttackingCharacter = curentSelect.GetComponent<AttackingCharacter>()
+                        };
+
+                        curentSelect.Select_Start(inputData, curentSelectEventArgs);
+
+                        //MovingCharacter movingCharacter = hit.collider.GetComponent<MovingCharacter>();
+
+                        //if (movingCharacter != null)
+                        //{
+                        //    DrawMoveRange(inputData.tileMousePosition, movingCharacter.movePoints);
+                        //}
+
+                        OnNewSelect.Invoke(curentSelect);
                     }
-                        
 
-                    specialTilemapManager.ClearTilemap();
-                    specialTilemapManager.aboveSpecialTilemap.ClearAllTiles();
-                    curentSelect = selectableObject;
-
-                    curentSelectEventArgs = new SelectModule.SelectEventArgs
-                    {
-                        SelectableObject = curentSelect,
-                        //GameUnitMovementController = GameUnitMovementController,
-                        GameWorldMapManager = this.GameWorldMapManager,
-                        NewGameMovementController = this.NewGameMovementController,
-                        SpecialTilemapManager = this.specialTilemapManager,
-                        MovingCharacter = curentSelect.GetComponent<MovingCharacter>(),
-                        AttackingCharacter = curentSelect.GetComponent<AttackingCharacter>()
-                    };
-
-                    curentSelect.Select_Start(inputData, curentSelectEventArgs);
-
-                    //MovingCharacter movingCharacter = hit.collider.GetComponent<MovingCharacter>();
-
-                    //if (movingCharacter != null)
-                    //{
-                    //    DrawMoveRange(inputData.tileMousePosition, movingCharacter.movePoints);
-                    //}
-
-                    OnNewSelect.Invoke(curentSelect);
                 }
-
             }
+       
         }
     }
 

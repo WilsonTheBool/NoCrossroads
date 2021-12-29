@@ -62,6 +62,42 @@ public class UnitMovementData
         return GetCell(globalPos).moveLength;
     }
 
+    public int GetPathCost_Attack(Vector3Int globalPos)
+    {
+        int minLength = int.MaxValue;
+
+        Vector3Int offset;
+        offset = new Vector3Int(0, 1,0);
+        var data = GetCell(globalPos + offset);
+        if (data != null && data.moveLength < minLength)
+        {
+            minLength = data.moveLength;
+        }
+
+        offset = new Vector3Int(1, 0, 0);
+        data = GetCell(globalPos + offset);
+        if (data != null && data.moveLength < minLength)
+        {
+            minLength = data.moveLength;
+        }
+
+        offset = new Vector3Int(0, -1, 0);
+       data = GetCell(globalPos + offset);
+        if (data != null && data.moveLength < minLength)
+        {
+            minLength = data.moveLength;
+        }
+
+        offset = new Vector3Int(-1, 0, 0);
+        data = GetCell(globalPos + offset);
+        if (data != null && data.moveLength < minLength)
+        {
+            minLength = data.moveLength;
+        }
+
+        return minLength;
+    }
+
     public Vector3Int[] GetMovementArea()
     {
         List<Vector3Int> area = new List<Vector3Int>(moveAreaPositions.Count);

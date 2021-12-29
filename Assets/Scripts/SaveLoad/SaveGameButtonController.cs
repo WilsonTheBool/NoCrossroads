@@ -7,14 +7,16 @@ public class SaveGameButtonController : MonoBehaviour
 
     public UnityEngine.Events.UnityEvent OnCanLoad;
     public UnityEngine.Events.UnityEvent OnCanNotLoad;
-     
+
+   
 
     // Use this for initialization
     void Start()
     {
         GameSaveLoadController = GameSaveLoadController.instance;
 
-        if (GameSaveLoadController.HasSaveData())
+        
+        if (GameSaveLoadController != null && GameSaveLoadController.HasSaveData())
         {
             OnCanLoad.Invoke();
         }
@@ -22,6 +24,13 @@ public class SaveGameButtonController : MonoBehaviour
         {
             OnCanNotLoad.Invoke();
         }
+    }
+
+    public void ClearSaveData()
+    {
+        print("Save data cleared");
+
+        GameSaveLoadController.DeleteSaveData();
     }
 
     public void SaveGame()

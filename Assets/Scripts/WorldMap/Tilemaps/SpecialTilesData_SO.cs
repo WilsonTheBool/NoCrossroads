@@ -15,5 +15,7 @@ public class SpecialTilesData_SO: ScriptableObject
 
     public TileBase NotPlaceTIle;
 
+    public TileBase AttackTargetTile;
+
 }
 

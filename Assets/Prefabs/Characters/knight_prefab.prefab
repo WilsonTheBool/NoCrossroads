@@ -44,6 +44,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlacableObject: {fileID: 5360309382200189375}
+--- !u!1 &7863732059938367724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2917945079456736670}
+  - component: {fileID: 2875752307504398778}
+  m_Layer: 0
+  m_Name: SaveLoad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2917945079456736670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7863732059938367724}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8782812116646191694}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2875752307504398778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7863732059938367724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c470226b55f1e48a9c59a278d3e4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  removeOnStartIfNoData: 1
+  owner: {fileID: 8782812116646191691}
+  component_Converters:
+  - {fileID: 11400000, guid: 5ec7d627384944348ab5ff329801cf97, type: 2}
+  - {fileID: 11400000, guid: d582469af6ba71c479bfe0273e9588d5, type: 2}
+  - {fileID: 11400000, guid: 90db8b8625a3b6e4a9d8a7d8e8fccce6, type: 2}
+  - {fileID: 11400000, guid: 73d602bb7faf7cb4a9b00600e61ffd00, type: 2}
 --- !u!1 &8782812116646191692
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,6 +143,7 @@ Transform:
   m_Children:
   - {fileID: 8782812117351415282}
   - {fileID: 8333081678677429130}
+  - {fileID: 2917945079456736670}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -189,6 +240,9 @@ MonoBehaviour:
   pathableForPlayer: 1
   pathableForEnemy: 0
   OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRemoveFromWorld:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &8782812116646191690

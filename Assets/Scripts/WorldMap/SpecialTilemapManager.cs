@@ -11,6 +11,27 @@ public class SpecialTilemapManager : MonoBehaviour
     [SerializeField]
     SpecialTilesData_SO SpecialTilesData_SO;
 
+    private void Awake()
+    {
+        if(true)
+        {
+            foreach(Tilemap tilemap in FindObjectsOfType<Tilemap>())
+            {
+                if (tilemap.CompareTag("SpecialTilemap"))
+                {
+                    specialTilemap = tilemap;
+                    
+                }
+
+                if (tilemap.CompareTag("AboveTilemap"))
+                {
+                    aboveSpecialTilemap = tilemap;
+                    
+                }
+            }
+        }
+    }
+
     public void DrawTile_CanPlaceTile(Vector3Int position)
     {
         specialTilemap.SetTile(position, SpecialTilesData_SO.CanPlaceTile);
@@ -39,5 +60,10 @@ public class SpecialTilemapManager : MonoBehaviour
     public bool TilemapHasTile_CanNotPlaceTIle(Vector3Int pos)
     {
         return specialTilemap.GetTile(pos) == SpecialTilesData_SO.NotPlaceTIle;
+    }
+
+    public bool TilemapHasTile_AttackTile(Vector3Int pos)
+    {
+        return specialTilemap.GetTile(pos) == SpecialTilesData_SO.AttackTargetTile;
     }
 }

@@ -18,6 +18,7 @@ public class LandTilemapManager : MonoBehaviour
                 if (tilemap.CompareTag("LandTilemap"))
                 {
                     landTIlemap = tilemap;
+                    return;
                 }
             }
         }

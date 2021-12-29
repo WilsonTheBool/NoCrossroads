@@ -496,6 +496,9 @@ MonoBehaviour:
   OnSetUpComplete:
     m_PersistentCalls:
       m_Calls: []
+  OnRemoveFromWorld:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &41845158
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1795,6 +1798,9 @@ MonoBehaviour:
   OnSetUpComplete:
     m_PersistentCalls:
       m_Calls: []
+  OnRemoveFromWorld:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &192304347
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2460,6 +2466,9 @@ MonoBehaviour:
   pathableForPlayer: 0
   pathableForEnemy: 0
   OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRemoveFromWorld:
     m_PersistentCalls:
       m_Calls: []
 --- !u!212 &272473449
@@ -3239,6 +3248,9 @@ MonoBehaviour:
   pathableForPlayer: 0
   pathableForEnemy: 0
   OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRemoveFromWorld:
     m_PersistentCalls:
       m_Calls: []
 --- !u!212 &378273806
@@ -4036,6 +4048,9 @@ MonoBehaviour:
   OnSetUpComplete:
     m_PersistentCalls:
       m_Calls: []
+  OnRemoveFromWorld:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &536601129
 Animator:
   serializedVersion: 3
@@ -4112,6 +4127,153 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7a4c96ca77de004a99aaa024325b6a9, type: 3}
+--- !u!1001 &549646191
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 356338645107076728}
+    m_Modifications:
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891023, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_Name
+      value: PauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073366657249891023, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6459891530920191486, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993607484293389676, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993607484353559398, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993607484783370834, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993607484803138910, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993607485230571449, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993607485395030760, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993607485632309914, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993607486044300873, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+--- !u!1 &549646192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2073366657249891023, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+  m_PrefabInstance: {fileID: 549646191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &549646193 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2073366657249891016, guid: d157da9bd5565cd49a8d185a687b357e, type: 3}
+  m_PrefabInstance: {fileID: 549646191}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &549679896
 GameObject:
   m_ObjectHideFlags: 0
@@ -5251,6 +5413,9 @@ MonoBehaviour:
   OnSetUpComplete:
     m_PersistentCalls:
       m_Calls: []
+  OnRemoveFromWorld:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &641541195
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5527,6 +5692,9 @@ MonoBehaviour:
   OnSetUpComplete:
     m_PersistentCalls:
       m_Calls: []
+  OnRemoveFromWorld:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &649025372
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5794,6 +5962,9 @@ MonoBehaviour:
   pathableForPlayer: 0
   pathableForEnemy: 0
   OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRemoveFromWorld:
     m_PersistentCalls:
       m_Calls: []
 --- !u!212 &678287369
@@ -6784,6 +6955,9 @@ MonoBehaviour:
   pathableForPlayer: 0
   pathableForEnemy: 0
   OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRemoveFromWorld:
     m_PersistentCalls:
       m_Calls: []
 --- !u!212 &769595909
@@ -8140,6 +8314,9 @@ MonoBehaviour:
   OnSetUpComplete:
     m_PersistentCalls:
       m_Calls: []
+  OnRemoveFromWorld:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &946913608
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8384,6 +8561,9 @@ MonoBehaviour:
   pathableForPlayer: 0
   pathableForEnemy: 0
   OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRemoveFromWorld:
     m_PersistentCalls:
       m_Calls: []
 --- !u!212 &959458088
@@ -9514,6 +9694,9 @@ MonoBehaviour:
   OnSetUpComplete:
     m_PersistentCalls:
       m_Calls: []
+  OnRemoveFromWorld:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &1155532643
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9990,6 +10173,7 @@ MonoBehaviour:
   OrcNumberToKill: 2
   killOrcsObjectivetext: Defend your king. Attack the orcs.
   TurnOrderController: {fileID: 11400000, guid: 464bb92e4beac884db33557143f3ed91, type: 2}
+  isPlayerTurn: 0
 --- !u!1 &1246365044
 GameObject:
   m_ObjectHideFlags: 0
@@ -11253,6 +11437,9 @@ MonoBehaviour:
   pathableForPlayer: 0
   pathableForEnemy: 0
   OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRemoveFromWorld:
     m_PersistentCalls:
       m_Calls: []
 --- !u!212 &1413975416
@@ -13013,6 +13200,9 @@ MonoBehaviour:
   OnSetUpComplete:
     m_PersistentCalls:
       m_Calls: []
+  OnRemoveFromWorld:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &1686415292
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14024,6 +14214,9 @@ MonoBehaviour:
   pathableForPlayer: 0
   pathableForEnemy: 0
   OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRemoveFromWorld:
     m_PersistentCalls:
       m_Calls: []
 --- !u!212 &1765834407
@@ -15218,6 +15411,9 @@ MonoBehaviour:
   OnSetUpComplete:
     m_PersistentCalls:
       m_Calls: []
+  OnRemoveFromWorld:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &1933836038
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15562,6 +15758,9 @@ MonoBehaviour:
   pathableForPlayer: 0
   pathableForEnemy: 0
   OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRemoveFromWorld:
     m_PersistentCalls:
       m_Calls: []
 --- !u!212 &1974739541
@@ -16075,6 +16274,9 @@ MonoBehaviour:
   OnSetUpComplete:
     m_PersistentCalls:
       m_Calls: []
+  OnRemoveFromWorld:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &2025957422
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16430,6 +16632,9 @@ MonoBehaviour:
   pathableForPlayer: 0
   pathableForEnemy: 0
   OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRemoveFromWorld:
     m_PersistentCalls:
       m_Calls: []
 --- !u!212 &2063228090
@@ -17001,6 +17206,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5087028557272258851, guid: 0ef97ba8f37d8f649909b9eccea74741, type: 3}
+      propertyPath: hp
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087028557272258851, guid: 0ef97ba8f37d8f649909b9eccea74741, type: 3}
+      propertyPath: maxHp
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5087028557272258855, guid: 0ef97ba8f37d8f649909b9eccea74741, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -17209,6 +17422,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7a4c96ca77de004a99aaa024325b6a9, type: 3}
+--- !u!1 &2142333910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2142333911}
+  - component: {fileID: 2142333912}
+  m_Layer: 0
+  m_Name: PauseController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2142333911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142333910}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 356338646099130413}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2142333912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142333910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebef679b68d9cec4fb448bdbf29e8abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menu: {fileID: 549646192}
 --- !u!1001 &2146709614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18215,6 +18472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Town Guard
   itemDescription: "Defends nearby territory \nfrom enemy units"
+  priceData: {fileID: 11400000, guid: 56672e9a211b0ba4e8eb7e5f3cd7936c, type: 2}
   itemPrice:
   - data: {fileID: 11400000, guid: 8af0702f014885c4387f483801aef08d, type: 2}
     value: 50
@@ -19572,6 +19830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Farmer
   itemDescription: PLace near water to poduce food
+  priceData: {fileID: 11400000, guid: fe92ba7fbfc1dd94da74521103ea02ae, type: 2}
   itemPrice:
   - data: {fileID: 11400000, guid: c6eb2057a2a362049b603efc852c4739, type: 2}
     value: 100
@@ -19809,6 +20068,7 @@ RectTransform:
   - {fileID: 356338645180364219}
   - {fileID: 356338645607274452}
   - {fileID: 818879795}
+  - {fileID: 549646193}
   m_Father: {fileID: 356338646099130413}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21166,6 +21426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: King
   itemDescription: Place to expand your territory
+  priceData: {fileID: 11400000, guid: f40f02377ea4fdc4ba85232b88131105, type: 2}
   itemPrice:
   - data: {fileID: 11400000, guid: 8af0702f014885c4387f483801aef08d, type: 2}
     value: 100
@@ -21545,6 +21806,7 @@ MonoBehaviour:
   itemDescription: 'Range hero (max 2)
 
     Level up by killing enemies'
+  priceData: {fileID: 11400000, guid: 6948681371103cf439087b8c25f64634, type: 2}
   itemPrice:
   - data: {fileID: 11400000, guid: 8af0702f014885c4387f483801aef08d, type: 2}
     value: 50
@@ -36607,6 +36869,7 @@ MonoBehaviour:
   itemDescription: 'Melee  hero (max 2)
 
     Level up by killing enemies'
+  priceData: {fileID: 11400000, guid: 383c411a238351240bfd8dbce53c5abd, type: 2}
   itemPrice:
   - data: {fileID: 11400000, guid: 8af0702f014885c4387f483801aef08d, type: 2}
     value: 50
@@ -37045,6 +37308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Worker
   itemDescription: Place on a resource tile to start mining
+  priceData: {fileID: 11400000, guid: cde2b26203879a7478baccabe60fa4cb, type: 2}
   itemPrice:
   - data: {fileID: 11400000, guid: 8af0702f014885c4387f483801aef08d, type: 2}
     value: 50
@@ -38166,6 +38430,7 @@ GameObject:
   - component: {fileID: 356338646099130419}
   - component: {fileID: 356338646099130418}
   - component: {fileID: 356338646099130417}
+  - component: {fileID: 356338646099130409}
   m_Layer: 0
   m_Name: Initialize_prefab
   m_TagString: Untagged
@@ -38173,6 +38438,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &356338646099130409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356338646099130408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a84afb2004204fb4da7ab6f71cdcbb68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameSaveLoadController: {fileID: 0}
 --- !u!114 &356338646099130412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38217,6 +38495,7 @@ Transform:
   - {fileID: 356338646439356622}
   - {fileID: 356338644806799872}
   - {fileID: 356338646248239235}
+  - {fileID: 2142333911}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -38234,7 +38513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceHolders:
   - data: {fileID: 11400000, guid: 8af0702f014885c4387f483801aef08d, type: 2}
-    value: 350
+    value: 500
   - data: {fileID: 11400000, guid: 9edf893276b400f42bc87cc649b13042, type: 2}
     value: 300
   - data: {fileID: 11400000, guid: c6eb2057a2a362049b603efc852c4739, type: 2}
@@ -38257,6 +38536,7 @@ MonoBehaviour:
   ResourcesChanged:
     m_PersistentCalls:
       m_Calls: []
+  save: {fileID: 356338646099130409}
 --- !u!114 &356338646099130415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38273,6 +38553,8 @@ MonoBehaviour:
   TerritoryTilemapManager: {fileID: 356338646329677710}
   SpecialTilemapManager: {fileID: 356338646329677704}
   pathTilemap: {fileID: 356338646329677708}
+  GameSaveLoadController: {fileID: 0}
+  GameWorld_EnemyPositionController: {fileID: 0}
   mainTilemap: {fileID: 0}
   allObjectsOnMap: []
   playerTerritory: []
@@ -38924,6 +39206,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isAllExploredOnStart: 0
+  save: {fileID: 0}
 --- !u!1001 &356338646175559469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41540,6 +41823,8 @@ MonoBehaviour:
   levelUpText: {fileID: 6024816972111273595, guid: 78201593e30fad545af54ba943c6f6db, type: 3}
   heal_text_prefab: {fileID: 3089663678013084167, guid: 5e036b009c30f4f4f9f888cd2285fa39, type: 3}
   owner: {fileID: 8782812117566516578}
+  WorldObject: {fileID: 0}
+  GameWorldUI_ResourceBar: {fileID: 0}
 --- !u!483693784 &3669766260886885006
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -53511,6 +53796,9 @@ MonoBehaviour:
   OnSetUpComplete:
     m_PersistentCalls:
       m_Calls: []
+  OnRemoveFromWorld:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6080095172851259532
 GameObject:
   m_ObjectHideFlags: 0
@@ -53562,6 +53850,12 @@ MonoBehaviour:
   AiBehaviourController: {fileID: 0}
   behaviourNodes: []
   nest: {fileID: 0}
+  curentTarget:
+    isCreated: 0
+    targetPos: {x: 0, y: 0, z: 0}
+    maxAgents: 0
+    curentAgents: 0
+    canDefendersJoin: 0
   isPlayer: 0
   isDefender: 0
 --- !u!212 &6080095172851259534
@@ -53653,6 +53947,8 @@ MonoBehaviour:
   levelUpText: {fileID: 0}
   heal_text_prefab: {fileID: 0}
   owner: {fileID: 6080095172851259539}
+  WorldObject: {fileID: 0}
+  GameWorldUI_ResourceBar: {fileID: 0}
 --- !u!4 &6080095172851259537
 Transform:
   m_ObjectHideFlags: 0
@@ -53847,6 +54143,9 @@ MonoBehaviour:
   pathableForPlayer: 0
   pathableForEnemy: 1
   OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRemoveFromWorld:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &6080095172851259544
@@ -54264,6 +54563,7 @@ MonoBehaviour:
           m_StringArgument: level_up
           m_BoolArgument: 0
         m_CallState: 2
+  canLevelUp: 0
 --- !u!114 &7561677655746086642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54527,6 +54827,7 @@ MonoBehaviour:
   expDropAmmount: 10
   expDropRange: 4
   KillableCharacter: {fileID: 6080095172851259539}
+  expMultPerCharacter: 0.3
 --- !u!4 &8333081677184058528
 Transform:
   m_ObjectHideFlags: 0
@@ -54812,6 +55113,9 @@ MonoBehaviour:
   OnSetUpComplete:
     m_PersistentCalls:
       m_Calls: []
+  OnRemoveFromWorld:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8782812117566516578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54824,8 +55128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ec2bc4973ea0a4b983cb6c0ace94b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 35
-  hp: 35
+  maxHp: 55
+  hp: 55
   OnDeath:
     m_PersistentCalls:
       m_Calls:

@@ -28,13 +28,30 @@ public class CameraMovementController : MonoBehaviour
         MoveCamera(horizontal, vertical);
     }
 
-    void MoveCamera(Vector3 mousePos)
+    private void FixedUpdate()
+    {
+        if(objToLook != null)
+        {
+            transform.position = objToLook.transform.position - new Vector3(0, 0, 10);
+            objToLook = null;
+        }
+    }
+
+    public void MoveCamera(Vector3 mousePos)
     {
         Vector3 vel = (mousePos - new Vector3(0.5f, 0.5f))* cameraSpeed * Time.deltaTime;
 
         cam.transform.Translate(vel);
 
         cam.transform.position = cameraBounds.GetCamPosition(cam.transform.position);
+    }
+
+
+    private GameObject objToLook;
+
+    public void CameraLookAtObject(GameObject gameObject)
+    {
+        objToLook = gameObject;
     }
 
     void MoveCamera(float horizontalAxis, float verticalAxis)

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using UnityEngine.Events;
 using System.Collections.Generic;
 
@@ -35,6 +36,12 @@ public class AiAgentNest : MonoBehaviour
 
     public NestTarget curentTarget;
 
+    [HideInInspector]
+    public int turnCount;
+
+
+    public TurnOrderController TurnOrderController;
+
     private void Awake()
     {
         territoryCreator.createRadius = nestRange;
@@ -42,6 +49,13 @@ public class AiAgentNest : MonoBehaviour
         behaviourNodes = GetComponents<NestBehaviourNode>();
 
         spawnAgents = GetComponent<NestBehaviour_SpawnAgents>();
+       
+        TurnOrderController.OnTurnStarted += TurnOrderController_OnTurnStarted;
+    }
+
+    private void TurnOrderController_OnTurnStarted(object sender, EventArgs e)
+    {
+        turnCount++;
     }
 
     private void OnWorldObjectSetUpComplete()
@@ -56,7 +70,7 @@ public class AiAgentNest : MonoBehaviour
     {
         foreach(NestBehaviourNode node in behaviourNodes)
         {
-            node.TickAction();
+            node.TickAction(turnCount);
         }
     }
 
@@ -69,14 +83,16 @@ public class AiAgentNest : MonoBehaviour
 
 
 
-
+    [System.Serializable]
     public class NestTarget
     {
+        public bool isCreated;
+
         public Vector3Int targetPos;
 
         public int maxAgents;
 
-        int curentAgents;
+        public int curentAgents;
 
         public bool canDefendersJoin = false;
 
@@ -104,5 +120,6 @@ public class AiAgentNest : MonoBehaviour
         {
             curentAgents--; 
         }
+
     }
 }

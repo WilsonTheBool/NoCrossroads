@@ -128,6 +128,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2761760125273801325}
+  - {fileID: 1042819200681236376}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -171,7 +172,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5449452598024201899, guid: dfc8b5cc5d1b5ab4a8410e0a07fae757, type: 3}
+  m_Sprite: {fileID: 5635882575137521074, guid: dfc8b5cc5d1b5ab4a8410e0a07fae757, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -456,6 +457,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 96e156eb4fb0a2a42aff6583af736f6b, type: 2}
   - {fileID: 11400000, guid: f8385799818b2fd4a9f9c3121c2f96ad, type: 2}
   nest: {fileID: 0}
+  curentTarget:
+    isCreated: 0
+    targetPos: {x: 0, y: 0, z: 0}
+    maxAgents: 0
+    curentAgents: 0
+    canDefendersJoin: 0
   isPlayer: 0
   isDefender: 0
 --- !u!114 &-1718492943725292454
@@ -477,6 +484,7 @@ MonoBehaviour:
   levelUpText: {fileID: 0}
   heal_text_prefab: {fileID: 0}
   owner: {fileID: 2761760127051881943}
+  WorldObject: {fileID: 0}
   GameWorldUI_ResourceBar: {fileID: 0}
 --- !u!114 &-6850933027216987044
 MonoBehaviour:
@@ -605,6 +613,7 @@ MonoBehaviour:
   expDropAmmount: 15
   expDropRange: 4
   KillableCharacter: {fileID: 2761760127051881943}
+  expMultPerCharacter: 0.3
 --- !u!114 &2666210378653388114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,3 +640,52 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   canLevelUp: 0
+--- !u!1 &7280534258706608029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1042819200681236376}
+  - component: {fileID: 1062147594794028473}
+  m_Layer: 0
+  m_Name: SaveController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1042819200681236376
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280534258706608029}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2761760127051881937}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1062147594794028473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280534258706608029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c470226b55f1e48a9c59a278d3e4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priority: 0
+  removeOnStartIfNoData: 1
+  owner: {fileID: 2761760127051881940}
+  component_Converters:
+  - {fileID: 11400000, guid: fb5559d9942b3a24f9b1fda13a1680e6, type: 2}
+  - {fileID: 11400000, guid: d582469af6ba71c479bfe0273e9588d5, type: 2}

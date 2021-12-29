@@ -36,8 +36,9 @@ public class ResourceIconController : MonoBehaviour
         }
     }
 
-    private void SetIcon(bool isFree)
+    public void SetIcon(bool isFree)
     {
+        if(tile != null)
         if (isFree)
         {
             IconObject.sprite = tile.resource.icon;

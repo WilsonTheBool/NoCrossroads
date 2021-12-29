@@ -10,6 +10,8 @@ public class SelectFreeUnitController: GameWorldMap_Dependable
 
     Camera Camera;
 
+    CameraMovementController CameraMovementController;
+
     [SerializeField]
     NewGameMovementController newGameMovementController;
 
@@ -28,6 +30,7 @@ public class SelectFreeUnitController: GameWorldMap_Dependable
         //UnitSelectController.OnRemoveSelect.AddListener(RemoveCurentSelect);
 
         Camera = Camera.main;
+        CameraMovementController = Camera.GetComponent<CameraMovementController>();
     }
 
     public void ChangeCurentSelect(SelectableObject selectableObject)
@@ -137,7 +140,7 @@ public class SelectFreeUnitController: GameWorldMap_Dependable
                     SelectUnit(movingCharacters[index]);
                     curentIndex = index;
                     
-                    break;
+                    return;
                 }
                 else
                 {
@@ -146,7 +149,10 @@ public class SelectFreeUnitController: GameWorldMap_Dependable
             }
             while (index != curentIndex);
 
-           
+           if(movingCharacters[curentIndex].movePoints > 0)
+            {
+                SelectUnit(movingCharacters[curentIndex]);
+            }
         }
     }
 
@@ -167,7 +173,7 @@ public class SelectFreeUnitController: GameWorldMap_Dependable
 
             UnitSelectController.OnTrySelect(selectableObject);
 
-            Camera.transform.position = unit.transform.position - new Vector3(0, 0, 10);
+            CameraMovementController.CameraLookAtObject(unit.gameObject);
         }
     }
 

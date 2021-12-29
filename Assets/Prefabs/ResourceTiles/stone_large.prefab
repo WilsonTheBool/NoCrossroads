@@ -60,6 +60,9 @@ MonoBehaviour:
   OnSetUpComplete:
     m_PersistentCalls:
       m_Calls: []
+  OnRemoveFromWorld:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7385301559814408942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,6 +349,7 @@ Transform:
   - {fileID: 1786674645703585826}
   - {fileID: 8128387636882362904}
   - {fileID: 1786674646089763073}
+  - {fileID: 4481355239619415346}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -412,7 +416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc28f8af21ae09c4cacca2188d34c40f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeName: 
+  typeName: stone_large
   canMove: 0
   worldPosition: {x: 0, y: 0, z: 0}
   OnPositionChnaged:
@@ -423,6 +427,9 @@ MonoBehaviour:
   pathableForPlayer: 0
   pathableForEnemy: 0
   OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRemoveFromWorld:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &6024909699066898255
@@ -440,7 +447,7 @@ MonoBehaviour:
   worldObject: {fileID: 0}
   resource: {fileID: 11400000, guid: c6eb2057a2a362049b603efc852c4739, type: 2}
   ResourceIconController: {fileID: 0}
-  baseMineAmmount: 8
+  baseMineAmmount: 10
   isFree: 0
   OnFreeStateChanged:
     m_PersistentCalls:
@@ -457,8 +464,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  maxResourceAmmount: 900
-  curentResourceCount: 900
+  maxResourceAmmount: 500
+  curentResourceCount: 500
   OnEmpty:
     m_PersistentCalls:
       m_Calls:
@@ -565,3 +572,69 @@ MonoBehaviour:
   WeaponSprite: {fileID: 0}
   destroyDelay: 0.1
   smokeDelay: 0
+--- !u!1 &6065686041755650723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4481355239619415346}
+  - component: {fileID: 6321202026324998056}
+  - component: {fileID: 8413463440769600603}
+  m_Layer: 0
+  m_Name: SaveLoad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4481355239619415346
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6065686041755650723}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6024909699066898240}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6321202026324998056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6065686041755650723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c470226b55f1e48a9c59a278d3e4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priority: 50
+  removeOnStartIfNoData: 1
+  owner: {fileID: 5250863903468698387}
+  component_Converters:
+  - {fileID: 11400000, guid: 00c73894e84465048ac4da4447b5bad4, type: 2}
+--- !u!114 &8413463440769600603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6065686041755650723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c470226b55f1e48a9c59a278d3e4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priority: 50
+  removeOnStartIfNoData: 1
+  owner: {fileID: 1786674645703585884}
+  component_Converters:
+  - {fileID: 11400000, guid: 00c73894e84465048ac4da4447b5bad4, type: 2}

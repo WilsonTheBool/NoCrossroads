@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - LandTilemap
+  - FogTilemap
+  - SpecialTilemap
+  - TerritoryTilemap
+  - PathTilemap
+  - AboveTilemap
   layers:
   - Default
   - TransparentFX

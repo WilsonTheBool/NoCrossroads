@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06bc058af05bf014ba510daf4d322601, type: 3}
   m_Name: Ogre_Data
   m_EditorClassIdentifier: 
-  unitName: Camp defender
+  unitName: Ogre
   unitDiscription: 
-  unitIcon: {fileID: 2322691267093018060, guid: ec0101e032e76254fa272906cd650f4a, type: 3}
+  unitIcon: {fileID: -7676948438716415536, guid: 543f0a10831db854b9c3f719b2653b9e, type: 3}

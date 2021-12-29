@@ -1,31 +1,43 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
 
 public class GameSaveLoadController : MonoBehaviour
 {
+    
     public static GameSaveLoadController instance;
 
     public Level_SaveData levelSaveData;
 
     const string gameSaveNameInPrefs = "GameSaveData";
 
+    [HideInInspector]
     public GameWorldMapManager GameWorldMapManager;
 
+    [HideInInspector]
     public PrefabSpawner PrefabSpawner;
+
+    public bool freshDataOnStart;
+
+    public bool isCurentlyLoading;
 
     public bool HasSaveData()
     {
-        return levelSaveData != null;
+        return PlayerPrefs.HasKey(gameSaveNameInPrefs);
     }
 
     public void Awake()
     {
-        if(true)
+        if(instance == null)
         {
             instance = this;
             DontDestroyOnLoad(this.gameObject);
             SetUp();
+        }
+        else
+        {
+            Destroy(this.gameObject);
         }
         //else
         //{
@@ -38,7 +50,12 @@ public class GameSaveLoadController : MonoBehaviour
 
     private void SetUp()
     {
+        if(!freshDataOnStart)
         LoadLevelDataFromDisc();
+        else
+        {
+           // CreateEmptyLevelData();
+        }
     }
 
     public void SaveLevelDataToDisc()
@@ -65,9 +82,24 @@ public class GameSaveLoadController : MonoBehaviour
         levelSaveData = null;
     }
 
+    public void DeleteSaveData()
+    {
+        PlayerPrefs.DeleteKey(gameSaveNameInPrefs);
+        ClearSaveData();
+    }
+
     public void CreateEmptyLevelData()
     {
-        levelSaveData = new Level_SaveData() { sceneName = "Save test", playTime = "a lot"};
+
+        levelSaveData = new Level_SaveData()
+        {
+            sceneName = SceneManager.GetActiveScene().name,
+            playTime = LevelPlayTimerController.instance.GetPlayTimeString(),
+            resourceManagerSaveData = GameResourceManager.instance.save.Save(),
+            upgradeSaveData = FindObjectOfType<ShopUpgrades_SaveLoadConverter>().Save(),
+            ExplorationControllerSaveData = FindObjectOfType<ExplorationController_SaveLoadController>().Save(),
+        };
+
         var objs = FindObjectsOfType<WorldObject_SaveLoadController>(false);
         List<WorldObject_SaveData> savedatas = new List<WorldObject_SaveData>();
         foreach(WorldObject_SaveLoadController obj in objs)
@@ -87,6 +119,8 @@ public class GameSaveLoadController : MonoBehaviour
 
         WorldObject_SaveLoadController[] loads = FindObjectsOfType<WorldObject_SaveLoadController>(false);
 
+        System.Array.Sort(loads, new WorldObjectSave_PriorityComparer());
+
         //update object in scene on start
         foreach(WorldObject_SaveLoadController load in loads)
         {
@@ -99,10 +133,12 @@ public class GameSaveLoadController : MonoBehaviour
             else
             {
                 if (load.removeOnStartIfNoData)
-                    if (load.transform.parent != null)
-                    Destroy(load.transform.parent.gameObject);
-                else
-                    Destroy(load.gameObject);
+                {
+                   // load.owner.RemoveFromWorld();
+
+                    load.owner.GetComponent<CharacterDeathController>().OnDeath_Destroy_Instant();
+                }
+                    
             }
         }
 
@@ -111,6 +147,11 @@ public class GameSaveLoadController : MonoBehaviour
 
     public void CreateNewObjectsFromLoad()
     {
+        GameWorldMapManager = GameWorldMapManager.instance;
+        PrefabSpawner = PrefabSpawner.instance;
+
+        allSavedObjs.Sort(new SaveData_PriorityComparer());
+
         //Create new object no in scene on start
         foreach (WorldObject_SaveData saveData in allSavedObjs)
         {
@@ -119,6 +160,8 @@ public class GameSaveLoadController : MonoBehaviour
             WorldObject obj = Instantiate(prefab, GameWorldMapManager.GetTileCenterInWorld(saveData.worldPosition), Quaternion.Euler(0, 0, 0));
 
             obj.GetComponentInChildren<WorldObject_SaveLoadController>().LoadOverrideFromManager(saveData);
+
+            obj.gameObject.SetActive(true);
         }
     }
 
@@ -135,5 +178,21 @@ public class GameSaveLoadController : MonoBehaviour
 
         data = null;
         return false;
+    }
+
+    private class WorldObjectSave_PriorityComparer : IComparer<WorldObject_SaveLoadController>
+    {
+        public int Compare(WorldObject_SaveLoadController x, WorldObject_SaveLoadController y)
+        {
+            return x.priority.CompareTo(y.priority); 
+        }
+    }
+
+    private class SaveData_PriorityComparer : IComparer<WorldObject_SaveData>
+    {
+        public int Compare(WorldObject_SaveData x, WorldObject_SaveData y)
+        {
+            return -x.priority.CompareTo(y.priority);
+        }
     }
 }
