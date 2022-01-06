@@ -9,8 +9,8 @@ public class SelectModule_Accept_RangeAttack : SelectModule
     public TileBase attackAreaTile;
     public TileBase moveAreaTile;
 
-    public Texture2D cursorSprite_attack;
-    public Texture2D cursorSprite_default;
+    //public Texture2D cursorSprite_attack;
+    //public Texture2D cursorSprite_default;
 
     public override void OnSelect_AcceptPressed(GameInputData inputData, SelectEventArgs selectEventArgs)
     {

@@ -61,7 +61,9 @@ public class UnitSelectController : MonoBehaviour
                             NewGameMovementController = this.NewGameMovementController,
                             SpecialTilemapManager = this.specialTilemapManager,
                             MovingCharacter = curentSelect.GetComponent<MovingCharacter>(),
-                            AttackingCharacter = curentSelect.GetComponent<AttackingCharacter>()
+                            AttackingCharacter = curentSelect.GetComponent<AttackingCharacter>(),
+                            HealingCharacter = curentSelect.GetComponent<HealingCharacter>()
+                            
                         };
 
                         curentSelect.Select_Start(inputData, curentSelectEventArgs);
@@ -112,7 +114,8 @@ public class UnitSelectController : MonoBehaviour
                 NewGameMovementController = this.NewGameMovementController,
                 SpecialTilemapManager = this.specialTilemapManager,
                 MovingCharacter = curentSelect.GetComponent<MovingCharacter>(),
-                AttackingCharacter = curentSelect.GetComponent<AttackingCharacter>()
+                AttackingCharacter = curentSelect.GetComponent<AttackingCharacter>(),
+                HealingCharacter = curentSelect.GetComponent<HealingCharacter>(),
             };
 
             curentSelect.Select_Start(curentInputData, curentSelectEventArgs);

@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/CrazySDK/CrazyLogo/CrazyLogo.unity
+    guid: 54237a42c0e098a4d96d788ed66fa9aa
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 6b715882579d5b546b957ce058fe4b46
   - enabled: 1
@@ -17,6 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/SnowTribunal.unity
     guid: e1bf01ac36b39ae4bbc37f98369ae34a
+  - enabled: 1
+    path: Assets/Scenes/Levels/RichAndPeaceful.unity
+    guid: 65b7475bac4136d44b2f8d455c8d20b0
+  - enabled: 1
+    path: Assets/Scenes/Levels/HerosJourney.unity
+    guid: 8d0837c842e848049b8991ba75ee9bea
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 2d41d04bfa9055e4fa4c47539d072698

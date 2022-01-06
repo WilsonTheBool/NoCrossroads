@@ -13,11 +13,22 @@ public class UpgradableCharacter : MonoBehaviour
 
     public Miner_Structure Structure;
 
+    public HealingCharacter HealingCharacter;
+
     GameWorldMapManager GameWorldMapManager;
 
     private void Start()
     {
         GameWorldMapManager = GameWorldMapManager.instance;
+    }
+
+    public void UpgradeHeal(int value)
+    {
+        if (HealingCharacter != null)
+        {
+            HealingCharacter.healPower += value;
+        }
+        
     }
 
     public void UpgradeAttack(int value)

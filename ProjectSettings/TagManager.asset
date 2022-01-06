@@ -10,6 +10,7 @@ TagManager:
   - TerritoryTilemap
   - PathTilemap
   - AboveTilemap
+  - MainCanvas
   layers:
   - Default
   - TransparentFX

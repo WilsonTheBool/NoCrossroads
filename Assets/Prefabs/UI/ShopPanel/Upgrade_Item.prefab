@@ -41,8 +41,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 30.153595, y: -30}
-  m_SizeDelta: {x: 54.5072, y: 12.2296}
+  m_AnchoredPosition: {x: 30.153595, y: -27.0089}
+  m_SizeDelta: {x: 54.5072, y: 18.2118}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &9044274908460180967
 CanvasRenderer:
@@ -65,14 +65,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.31764707, g: 0.31764707, b: 0.31764707, a: 1}
+  m_Color: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 0ffd89ef17d44e74099f7e2319cbc3c1, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -140,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Knight Attack Up
   itemDescription: Increace attack by 10
+  priceData: {fileID: 0}
   itemPrice:
   - data: {fileID: 11400000, guid: 8af0702f014885c4387f483801aef08d, type: 2}
     value: 100
@@ -285,9 +286,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLocked: 0
-  lockedColor: {r: 0.15686275, g: 0.15686275, b: 0.15686275, a: 1}
-  unlockedColor: {r: 0.31764707, g: 0.31764707, b: 0.31764707, a: 1}
-  image: {fileID: 9044274908460180966}
+  lockedColor: {r: 0.33962262, g: 0.33449623, b: 0.33449623, a: 1}
+  unlockedColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  image: {fileID: 0}
 --- !u!1 &9044274908776538228
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +323,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 1}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9044274908776538227
@@ -380,8 +381,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 11
+  m_fontSizeBase: 11
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

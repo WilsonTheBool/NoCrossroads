@@ -38,5 +38,7 @@ public class SelectModule : ScriptableObject
         public MovingCharacter MovingCharacter;
 
         public AttackingCharacter AttackingCharacter;
+
+        public HealingCharacter HealingCharacter;
     }
 }

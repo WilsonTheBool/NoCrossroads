@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95c470226b55f1e48a9c59a278d3e4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  priority: 0
   removeOnStartIfNoData: 1
   owner: {fileID: 3429150398535149367}
   component_Converters:
@@ -557,6 +558,7 @@ MonoBehaviour:
   levelUpText: {fileID: 0}
   heal_text_prefab: {fileID: 3089663678013084167, guid: 5e036b009c30f4f4f9f888cd2285fa39, type: 3}
   owner: {fileID: 3429150398535149364}
+  WorldObject: {fileID: 0}
   GameWorldUI_ResourceBar: {fileID: 0}
 --- !u!114 &5011773468259968950
 MonoBehaviour:
@@ -707,6 +709,7 @@ MonoBehaviour:
   MovingCharacter: {fileID: 3429150398535149371}
   TerritoryCreator: {fileID: 0}
   Structure: {fileID: 0}
+  HealingCharacter: {fileID: 0}
 --- !u!114 &9005096979488967494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -719,7 +722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0018c347b7e55554394a6d61406a68c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  regenAmmount: 2
+  regenAmmount: 1
   KillableCharacter: {fileID: 3429150398535149364}
 --- !u!1 &8305271168170774853
 GameObject:

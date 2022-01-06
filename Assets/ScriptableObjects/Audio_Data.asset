@@ -25,3 +25,5 @@ MonoBehaviour:
     name: buy_error
   - AudioClip: {fileID: 8300000, guid: ef6b1ccf6d368e1409604b1c18f6acd5, type: 3}
     name: level_up
+  - AudioClip: {fileID: 8300000, guid: 4e44db5da89a592439e3d14e49ffc3f2, type: 3}
+    name: unit_heal

@@ -1,0 +1,852 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &440156820531936328
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4847220616780149050}
+  - component: {fileID: 5535750303995925790}
+  m_Layer: 0
+  m_Name: SaveLoad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4847220616780149050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440156820531936328}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1357984790792255210}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5535750303995925790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440156820531936328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95c470226b55f1e48a9c59a278d3e4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priority: 0
+  removeOnStartIfNoData: 1
+  owner: {fileID: 1357984790792255215}
+  component_Converters:
+  - {fileID: 11400000, guid: d582469af6ba71c479bfe0273e9588d5, type: 2}
+  - {fileID: 11400000, guid: 90db8b8625a3b6e4a9d8a7d8e8fccce6, type: 2}
+  - {fileID: 11400000, guid: 73d602bb7faf7cb4a9b00600e61ffd00, type: 2}
+  - {fileID: 11400000, guid: 5265aceed1fb5a54f92d702d4e78972e, type: 2}
+--- !u!1 &1357984789080402261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1357984789080402262}
+  - component: {fileID: 1357984789080402263}
+  m_Layer: 0
+  m_Name: kight_sword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1357984789080402262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984789080402261}
+  m_LocalRotation: {x: 0, y: 0, z: 0.13052616, w: 0.9914449}
+  m_LocalPosition: {x: -0.29, y: -0.08, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1357984790792255210}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 15}
+--- !u!212 &1357984789080402263
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984789080402261}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 80676ae47305c244c985f63c01ab6de5, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.3125, y: 0.5}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &1357984790792255208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1357984790792255210}
+  - component: {fileID: 1357984790792255209}
+  - component: {fileID: 1357984790792255211}
+  - component: {fileID: 1357984790792255215}
+  - component: {fileID: 1357984790792255214}
+  - component: {fileID: 2403218050200581403}
+  - component: {fileID: 273082598631366012}
+  - component: {fileID: 5950422304482782569}
+  - component: {fileID: 1357984790792255212}
+  - component: {fileID: 1357984790792255203}
+  - component: {fileID: 1697031669703293169}
+  - component: {fileID: 5185854899474978307}
+  - component: {fileID: 8701843490625123950}
+  - component: {fileID: 79563393760487900}
+  - component: {fileID: 6704752370027680995}
+  - component: {fileID: 334097415377828110}
+  - component: {fileID: 938388235437174373}
+  - component: {fileID: 5342115833167747452}
+  - component: {fileID: 1099376821357376371}
+  - component: {fileID: 1357984790792255207}
+  m_Layer: 0
+  m_Name: bishop_prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1357984790792255210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984790792255208}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10.6, y: -10.39, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1357984789080402262}
+  - {fileID: 1774237160214175534}
+  - {fileID: 4847220616780149050}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1357984790792255209
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984790792255208}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 5062245374955803801, guid: 73ce210eb61dfb4459859a587bcae98c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.5, y: 1.5}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!95 &1357984790792255211
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984790792255208}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 028541ce9b3a66e4e9cd0fa1ffa397cf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1357984790792255215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984790792255208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc28f8af21ae09c4cacca2188d34c40f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeName: Bishop
+  canMove: 1
+  worldPosition: {x: 0, y: 0, z: 0}
+  OnPositionChnaged:
+    m_PersistentCalls:
+      m_Calls: []
+  mapManager: {fileID: 0}
+  blockMovement: 1
+  pathableForPlayer: 1
+  pathableForEnemy: 0
+  OnSetUpComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  OnRemoveFromWorld:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1357984790792255214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984790792255208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69eebb9cf82873c4395cce04ab251978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 11400000, guid: 464bb92e4beac884db33557143f3ed91, type: 2}
+  OnNewTurn:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: RegenCharacter, Assembly-CSharp
+        m_MethodName: Regen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnNewTurn_Late:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTurnEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTurnEnd_Late:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1357984790792255203}
+        m_TargetAssemblyTypeName: MovingCharacter, Assembly-CSharp
+        m_MethodName: RegenMovePoints
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2403218050200581403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984790792255208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e458d35d22fcbbe4a9e8362ba78d2980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRules:
+  - {fileID: 11400000, guid: 50cff27e3e14a8f4d843b2a215c39b7e, type: 2}
+  - {fileID: 11400000, guid: 7c3f98c00da3d3b4091404f4e44bb957, type: 2}
+  - {fileID: 11400000, guid: 3679c269dd1333b4987ba932e7dd199f, type: 2}
+  UnitPlacementController: {fileID: 3900262693700121536}
+--- !u!114 &273082598631366012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984790792255208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5729873b2d24db4399b68ff20f74018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 9a4c1900227fd42468e0ae732893ea7f, type: 2}
+  selectModules:
+  - {fileID: 11400000, guid: ec170b6d6fba13442abdb210165b4005, type: 2}
+  - {fileID: 11400000, guid: 405e1fcacc9324742b71eb9bdbf428f2, type: 2}
+  OnSelect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1099376821357376371}
+        m_TargetAssemblyTypeName: MaterialSwapController, Assembly-CSharp
+        m_MethodName: Swap_To_New
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDeselect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1099376821357376371}
+        m_TargetAssemblyTypeName: MaterialSwapController, Assembly-CSharp
+        m_MethodName: Swap_To_Default
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  isPlayerSide: 1
+  canAutoSelect: 1
+  WorldObject: {fileID: 0}
+--- !u!65 &5950422304482782569
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984790792255208}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1357984790792255212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984790792255208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ec2bc4973ea0a4b983cb6c0ace94b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 8
+  hp: 8
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1697031669703293169}
+        m_TargetAssemblyTypeName: CharacterDeathController, Assembly-CSharp
+        m_MethodName: OnDeath_Destroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 334097415377828110}
+        m_TargetAssemblyTypeName: CharacterAudioController, Assembly-CSharp
+        m_MethodName: PlayAudio_Death
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5185854899474978307}
+        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
+        m_MethodName: Spawn_DamageText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AttackingCharacter, Assembly-CSharp
+        m_MethodName: TryToRetaliate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 334097415377828110}
+        m_TargetAssemblyTypeName: CharacterAudioController, Assembly-CSharp
+        m_MethodName: PlayAudio_Hit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnHealSelf:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5185854899474978307}
+        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
+        m_MethodName: Spawn_HealText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1357984790792255203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984790792255208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7e3e189062375e40af17e8d0d62421b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onMove:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 334097415377828110}
+        m_TargetAssemblyTypeName: CharacterAudioController, Assembly-CSharp
+        m_MethodName: PlayAudio_Move
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  movePoints: 3
+  maxMovePoints: 3
+--- !u!114 &1697031669703293169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984790792255208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f74baa6b4bf5547b0f30b769e3e74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smokePrefab: {fileID: 6864265418000636999, guid: ad350efe4b5bfc24b96464247cc0d46f, type: 3}
+  WorldObject: {fileID: 1357984790792255215}
+  sprite: {fileID: 1357984790792255209}
+  WeaponSprite: {fileID: 1357984789080402263}
+  destroyDelay: 1.5
+  smokeDelay: 0.7
+--- !u!114 &5185854899474978307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984790792255208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2451ca44fe3ce534884bcbdafb101f7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameWorldUIController: {fileID: 11400000, guid: d85f334486f0adc4da57f232b8a1076d, type: 2}
+  HpBar_prefab: {fileID: 1795801909851451307, guid: 34b369a0eb91ffe418984643e8c2cb8d, type: 3}
+  damageText_prefab: {fileID: 4898742278718063514, guid: c58ea78c0b3bd264dba402a66f2457be, type: 3}
+  exp_text_prefab: {fileID: 8691338739696596141, guid: bf8029a0536f1114cb6576fc86d09a99, type: 3}
+  levelUpText: {fileID: 6024816972111273595, guid: 78201593e30fad545af54ba943c6f6db, type: 3}
+  heal_text_prefab: {fileID: 3089663678013084167, guid: 5e036b009c30f4f4f9f888cd2285fa39, type: 3}
+  owner: {fileID: 1357984790792255212}
+  WorldObject: {fileID: 0}
+  GameWorldUI_ResourceBar: {fileID: 0}
+--- !u!114 &8701843490625123950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984790792255208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f16fb44dcecc9324e9e7017f84f03e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smokePrefab: {fileID: 6864265418000636999, guid: ad350efe4b5bfc24b96464247cc0d46f, type: 3}
+  destroySmokeDelay: 0.7
+--- !u!114 &79563393760487900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984790792255208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcc69f115d1894542bfacd46369b0481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovingCharacter: {fileID: 1357984790792255203}
+  GameWorld_ExplorationController: {fileID: 0}
+  worldObject: {fileID: 0}
+  ExploreRange: 5
+--- !u!114 &6704752370027680995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984790792255208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf1da239ca8efd848a15057ad1d7cacc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldObject: {fileID: 1357984790792255215}
+  OnFadeStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5185854899474978307}
+        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
+        m_MethodName: DeleteHealthBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnFadeEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5185854899474978307}
+        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
+        m_MethodName: Spawn_HPBar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &334097415377828110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984790792255208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd5e4d38a331944fa58da2484d1f9ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio_name_onHit: unit_hit
+  audio_name_onDeath: unit_death
+  audio_name_onMove: unit_move
+--- !u!114 &938388235437174373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984790792255208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bebd8cf1f1024d45b9795697b76614c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelingTable: {fileID: 11400000, guid: 0bf7576cc732da24b9754867a89c253c, type: 2}
+  upgradableCharacter: {fileID: 5342115833167747452}
+  WorldObject: {fileID: 1357984790792255215}
+  curentLevel: 0
+  maxLevel: 0
+  curentExp: 0
+  newLevelExp: 0
+  OnExpGain:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5185854899474978307}
+        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
+        m_MethodName: Spawn_ExpText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnNewLevel:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5185854899474978307}
+        m_TargetAssemblyTypeName: CharacterUIController, Assembly-CSharp
+        m_MethodName: Spawn_LevelUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1357984790792255212}
+        m_TargetAssemblyTypeName: KillableCharacter, Assembly-CSharp
+        m_MethodName: HealToFull
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 334097415377828110}
+        m_TargetAssemblyTypeName: CharacterAudioController, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: level_up
+          m_BoolArgument: 0
+        m_CallState: 2
+  canLevelUp: 1
+--- !u!114 &5342115833167747452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984790792255208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df459f45fca8752428f9b6a412e3c991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WorldObject: {fileID: 0}
+  AttackingCharacter: {fileID: 0}
+  KillableCharacter: {fileID: 1357984790792255212}
+  MovingCharacter: {fileID: 1357984790792255203}
+  TerritoryCreator: {fileID: 0}
+  Structure: {fileID: 0}
+  HealingCharacter: {fileID: 1357984790792255207}
+--- !u!114 &1099376821357376371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984790792255208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 745f74c7d12db154392639c06e9c6662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  swapMaterial: {fileID: 2100000, guid: 36b3b6b87fe02964abb41b47da6cdfaf, type: 2}
+  SpriteRenderer: {fileID: 1357984790792255209}
+  weaponSprite: {fileID: 1357984789080402263}
+--- !u!114 &1357984790792255207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357984790792255208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a387de779c848f47922f7edb6bf6956, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healPower: 5
+  targetRules:
+  - {fileID: 11400000, guid: 2640fa16cbcb7a94a9a52675f1967436, type: 2}
+  - {fileID: 11400000, guid: 2dd371a4b27fb5943a7bd506baab15c8, type: 2}
+  GameWorldMapManager: {fileID: 0}
+  OnHealStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 334097415377828110}
+        m_TargetAssemblyTypeName: CharacterAudioController, Assembly-CSharp
+        m_MethodName: PlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: unit_heal
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &5623885399345676445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1774237160214175534}
+  - component: {fileID: 3900262693700121536}
+  m_Layer: 0
+  m_Name: PLacementControler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1774237160214175534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623885399345676445}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1357984790792255210}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3900262693700121536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623885399345676445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f801497d833ea4db1bc9d2b92f40a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlacableObject: {fileID: 2403218050200581403}

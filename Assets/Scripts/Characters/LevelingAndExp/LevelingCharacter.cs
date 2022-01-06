@@ -55,13 +55,23 @@ public class LevelingCharacter : MonoBehaviour
     {
         if(levelData.AttackIncreace > 0)
         {
-            upgradableCharacter.UpgradeAttack(levelData.AttackIncreace);
+            if(TryGetComponent<HealingCharacter>(out HealingCharacter healingCharacter))
+            {
+                upgradableCharacter.UpgradeHeal(levelData.AttackIncreace);
+            }
+            else
+            {
+                upgradableCharacter.UpgradeAttack(levelData.AttackIncreace);
+            }
+                
         }
 
         if (levelData.HPIncreace  > 0)
         {
             upgradableCharacter.UpgradeHealth(levelData.HPIncreace);
         }
+
+        
     }
 
     private void OnNewLevelTreshholdReached()

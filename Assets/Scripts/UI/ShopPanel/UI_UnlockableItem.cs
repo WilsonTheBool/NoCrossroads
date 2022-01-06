@@ -11,8 +11,17 @@ public class UI_UnlockableItem : MonoBehaviour
 
     public Image image;
 
+    private void Awake()
+    {
+        if (image == null)
+        {
+            image = GetComponent<Image>();
+        }
+    }
+
     private void Start()
     {
+
         if (isLocked)
         {
             LockItem();

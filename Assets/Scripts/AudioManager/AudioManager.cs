@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
@@ -27,16 +26,31 @@ public class AudioManager : MonoBehaviour
     {
         if(audioData.TryGetAudioClipByName(name, out AudioClip clip))
         {
-            MusicChanel.PlayOneShot(clip);
+            MusicChanel.clip = clip;
+            MusicChanel.Play();
         }
+    }
+
+    public void Play_Audio_Music(AudioClip clip)
+    {
+        MusicChanel.clip = clip;
+        MusicChanel.Play();
     }
 
     public void Play_Audio_BackgroundSFX(string name)
     {
         if (audioData.TryGetAudioClipByName(name, out AudioClip clip))
         {
-            BackgroundSFXChanel.PlayOneShot(clip);
+            BackgroundSFXChanel.clip = clip;
+            BackgroundSFXChanel.Play();
         }
+    }
+
+    public void Play_Audio_BackgroundSFX(AudioClip clip)
+    {
+        BackgroundSFXChanel.clip = clip;
+        BackgroundSFXChanel.Play();
+        
     }
 
     public void Play_Audio_Effect(string name)

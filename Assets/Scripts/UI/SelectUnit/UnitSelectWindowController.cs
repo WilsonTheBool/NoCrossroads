@@ -9,6 +9,7 @@ public class UnitSelectWindowController : MonoBehaviour
     public TMPro.TMP_Text hpText;
 
     public TMPro.TMP_Text attackText;
+    public TMPro.TMP_Text HealText;
 
     public TMPro.TMP_Text nameText;
 
@@ -35,14 +36,27 @@ public class UnitSelectWindowController : MonoBehaviour
         }
 
         AttackingCharacter attackingCharacter = unit.GetComponent<AttackingCharacter>();
+        HealingCharacter healing = unit.GetComponent<HealingCharacter>();
 
         if (attackingCharacter != null)
         {
+            attackText.transform.parent.gameObject.SetActive(true);
+            HealText.transform.parent.gameObject.SetActive(false);
             attackText.text = attackingCharacter.damage.ToString();
         }
         else
         {
-            attackText.text = "0";
+            if(healing != null)
+            {
+                attackText.transform.parent.gameObject.SetActive(false);
+                HealText.transform.parent.gameObject.SetActive(true);
+                HealText.text = healing.healPower.ToString();
+            }
+            else
+            {
+                attackText.transform.parent.gameObject.SetActive(false);
+                HealText.transform.parent.gameObject.SetActive(false);
+            }
         }
 
         LevelingCharacter levelingCharacter = unit.GetComponent<LevelingCharacter>();
